@@ -1,0 +1,367 @@
+.services-section {
+  padding: 80px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+/* Header */
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-badge {
+  color: #f06820;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.services-title {
+  font-size: 45px;
+  font-weight: 900;
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  filter: none;
+}
+
+.services-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* --- FANNING CARD LOGIC --- */
+.services-cards-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 680px;
+  margin: 0 auto;
+}
+
+.service-card-wrapper {
+  width: 312px;
+  height: 460px;
+  position: absolute;
+  transform-origin: bottom center;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Card positions: zigzag pattern — high, low, high, low-mid, high, low
+   Rotations from the inspiration image angles */
+.card-fan-0 {
+  left: -13%;
+  top: 20px;
+  transform: rotate(-5.47deg);
+  z-index: 0;
+}
+.card-fan-0 .service-card {
+  background-color: #6c25f7;
+}
+
+.card-fan-0:hover{
+    transform: rotate(0deg)  translate(-100px, 10px);}
+
+.card-fan-1 {
+  left: 4%;
+  top: 140px;
+  transform: rotate(-4.36deg);
+  z-index: 1;
+}
+.card-fan-1 .service-card {
+  background-color: #0055cc;
+}
+
+.card-fan-1:hover{
+transform: rotate(0deg) translate(-80px, 26px);}
+
+.card-fan-2 {
+  left: 20%;
+  top: 0px;
+  transform: rotate(13.3deg);
+  z-index: 2;
+}
+.card-fan-2 .service-card {
+  background-color: #0cb666;
+}
+.card-fan-2:hover{
+    transform: rotate(0deg)  translate(20px, 30px);
+}
+.card-fan-3 {
+  left: 54%;
+  top: 100px;
+  transform: rotate(-30deg);
+  z-index: 4;
+}
+.card-fan-3 .service-card {
+  background-color: #0d6efd;
+}
+.card-fan-3:hover{
+    transform: rotate(0deg) translate(-140px, -10px);
+}
+.card-fan-4 {
+  left: 62%;
+  top: 10px;
+  transform: rotate(7.09deg);
+  z-index: 5;
+}
+.card-fan-4 .service-card {
+  background-color: #00a2c2;
+}
+.card-fan-4:hover{
+    transform: rotate(0deg) translate(-30px, 20px);
+}
+.card-fan-5 {
+  left: 67%;
+  top: 80px;
+  transform: rotate(43deg);
+  z-index: 6;
+}
+.card-fan-5 .service-card {
+  background-color: #ff0084;
+}
+.card-fan-5:hover{
+    transform: rotate(0deg) translate(130px, 150px);
+}
+
+/* Colors matching inspiration */
+.card-icon-purple {
+  border-color: #6c25f7;
+  background-color: #551ac6;
+}
+
+.card-icon-orange {
+    border-color: #0055cc;
+    background-color: #0044aa;
+}
+
+.card-icon-green {
+    border-color: #0cb666;
+    background-color:  #079552;
+}
+
+.card-icon-dark-blue {
+    border-color: #0d6efd;
+    background-color: #0752c2;
+}
+
+.card-icon-gold {
+    border-color: #00a2c2;
+    background-color: #007a96;
+}
+
+.card-icon-pink {
+    border-color: #ff0084;
+    background-color: #b5035f;
+}
+
+.services-card-top-content {
+  padding: 30px 22px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.services-card-title {
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.services-card-desc {
+  color: white;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Perfect Seam Icon Circle */
+.services-card-bottom-area {
+  position: relative;
+  width: 100%;
+}
+
+.services-card-icon {
+  width: 85px;
+  height: 85px;
+  display: inline-flex;
+  border-radius: 50%;
+  border-style:solid;
+  border-width: 8px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.services-icon-inner{
+    width: 55%;
+    height: 63%;
+    object-fit: cover;
+}
+
+.services-card-image-container {
+  width: calc(100% - 24px);
+  height: 190px;
+  overflow: hidden;
+  border-radius: 0px 0px 18px 18px;
+  margin: 0 auto 12px;
+}
+
+.services-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 1440px) {
+  .services-section { padding: 55px 0; }
+  .services-title { font-size: 36px; }
+  .services-header { margin-bottom: 55px; }
+}
+
+@media (min-width: 1200px) and (max-width: 1317px) {
+    .services-cards-wrapper {
+        transform: scale(0.75);
+    }
+    .services-header{
+        margin-bottom: -5px;
+     }
+}
+
+/* --- FIX FOR MEDIUM DESKTOPS (1102px - 1566px) --- */
+@media (min-width: 1318px) and (max-width: 1566px) {
+  .services-container {
+    padding: 0 20px; /* Reduce side padding to gain extra horizontal space */
+  }
+
+  .services-cards-wrapper {
+    /* Scale down the entire fanned arrangement to fit the narrower viewport */
+    transform: scale(0.85);
+    transform-origin: center top;
+    margin-bottom: -80px; /* Adjust for the space created by scaling */
+  }
+
+  /* Pull the outermost cards inward so they don't clip the screen edges */
+  .card-fan-0 {
+    left: -9% !important;
+  }
+
+  .card-fan-5 {
+    left: 65% !important;
+  }
+
+}
+
+/* --- TABLET RESPONSIVE (image_40bf38.png) --- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .services-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns as per your tablet image */
+    gap: 30px;
+    height: auto;
+  }
+
+  .services-badge{
+    font-size: 15px;
+  }
+
+  .service-card-wrapper {
+    position: relative;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important; /* Remove rotation for grid */
+    width: 90%;
+    height: auto;
+  }
+
+  .service-card-wrapper:hover .service-card {
+    transform: translateY(-10px) !important; /* Simple lift on tablet */
+  }
+}
+
+/* --- MOBILE RESPONSIVE (image_40bbd3.png) --- */
+@media (max-width: 767px) {
+  .services-section {
+    padding: 40px 0;
+  }
+
+  .services-container {
+    padding: 0 20px;
+  }
+
+  .services-cards-wrapper {
+    display: flex;
+    flex-direction: column; /* 1 column as per your mobile image */
+    gap: 40px;
+    height: auto;
+  }
+
+  .services-card-image-container {
+    height: 210px;
+  }
+  .services-card-desc{
+    font-size: 16px;
+  }
+  .services-subtitle {
+    font-size: 15px;
+  }
+
+  .service-card-wrapper {
+    position: relative;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: 100%;
+    height: 490px;
+  }
+
+  .service-card-wrapper:hover .service-card {
+    transform: scale(1.02) !important;
+  }
+
+  .services-title {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .service-card-wrapper {
+    /* This variable calculates how far the card should be pushed to the side. Fallback is 1 (normal fanned placement) */
+    --side-offset: calc(600px * (1 - var(--scroll-ratio, 1)));
+  }
+
+  /* Left 3 cards: Apply their original rotation + a scroll-linked translateX */
+  .card-fan-0 { transform: rotate(-5.47deg) translateX(calc(-1 * var(--side-offset))); }
+  .card-fan-1 { transform: rotate(-4.36deg) translateX(calc(-1 * var(--side-offset))); }
+  .card-fan-2 { transform: rotate(13.3deg) translateX(calc(-1 * var(--side-offset))); }
+
+  /* Right 3 cards: Apply their original rotation + a scroll-linked translateX */
+  .card-fan-3 { transform: rotate(-30deg) translateX(var(--side-offset)); }
+  .card-fan-4 { transform: rotate(7.09deg) translateX(var(--side-offset)); }
+  .card-fan-5 { transform: rotate(43deg) translateX(var(--side-offset)); }
+
+}

@@ -1,0 +1,197 @@
+.team-section {
+  padding: 80px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+/* Header */
+.team-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.team-badge {
+  color: #f06820;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.team-title {
+  font-size: 45px;
+  font-weight: 900;
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  filter: none;
+}
+
+.team-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* --- UNIVERSAL AUTO SCROLLER --- */
+.team-scroller-viewport {
+    overflow: hidden;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.team-grid {
+    display: flex;
+    gap: 39px;
+    width: max-content;
+    align-items: center;
+}
+
+.scroller-animation {
+    animation: infiniteScroll 45s linear infinite;
+}
+
+@keyframes infiniteScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.team-member-card {
+    flex: 0 0 260px; /* Fixed width for desktop */
+    transition: transform 0.4s ease;
+}
+
+/* Staggering Effect - Desktop Only */
+.team-member-card:nth-child(odd) {
+    transform: translateY(50px);
+}
+.team-member-card:nth-child(even) {
+    transform: translateY(-50px);
+}
+
+/* Original Image Wrapper Dimensions - UNCHANGED */
+.image-wrapper {
+    width: 107%;
+    position: relative;
+    border-radius: 1000px;
+    overflow: hidden;
+    border: 1px solid rgba(240, 104, 32, 0.15);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hover Effect Logic */
+.team-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 80, 200, 0.9) 0%, rgba(0, 80, 200, 0.9) 30%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 46px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
+}
+
+.team-member-card:hover .team-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-wrapper:hover {
+    border: 2px solid rgba(240, 104, 32, 0.6);
+}
+
+.linkedin-link {
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.linkedin-link img {
+    width: 20px; /* Sizing the custom LinkedIn image */
+    height: 20px;
+}
+.member-info { text-align: center; color: #fff; }
+.m-name { font-size: 22px; font-weight: 700; margin: 0; }
+.m-role { font-size: 17px; margin: 2px 0 0; opacity: 0.9; }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media screen and (max-width: 1440px) {
+  .team-section { padding: 55px 0; }
+  .team-title { font-size: 36px; }
+  .team-header { margin-bottom: 50px; }
+}
+
+@media screen and (max-width: 1025px) {
+    .team-member-card {
+        transform: none !important; /* Remove zig-zag */
+        flex: 0 0 280px; /* Tablet width */
+    }
+
+    .team-overlay {
+        opacity: 1;
+        transform: translateY(0); /* Permanent visibility */
+    }
+
+    .image-wrapper {
+        border: 2px solid rgba(240, 104, 32, 0.6);
+    }
+
+    .team-header {
+        margin-bottom: -11px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .team-container {
+        padding: 0 20px;
+    }
+    .team-section{
+        padding: 40px 0;
+    }
+
+    .team-badge{
+        font-size:15px;
+    }
+
+    .team-title {
+        font-size: 32px;
+    }
+
+    /* Shows one image at a time */
+    .team-member-card {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .team-grid {
+        gap: 10px; /* Reduced gap for mobile */
+    }
+}

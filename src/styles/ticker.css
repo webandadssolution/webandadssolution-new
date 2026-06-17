@@ -1,0 +1,61 @@
+/* Services Ticker Section */
+
+.services-ticker {
+  position: relative;
+  background: #f8f8f6;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  padding: 12px 0;
+  z-index: 10;
+}
+
+.ticker-container {
+  display: flex;
+  width: 100%;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll-left 30s linear infinite;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 40px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a0a0a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+  text-shadow: none;
+}
+
+.ticker-item:hover {
+  color: #f06820;
+}
+
+.ticker-separator {
+  display: inline-block;
+  margin: 0 20px;
+  color: #f06820;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .ticker-item { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .ticker-item { font-size: 12px; padding: 0 28px; }
+}

@@ -1,0 +1,392 @@
+.portfolio-section {
+  padding: 80px 0;
+  background: #f8f8f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-container {
+  max-width: 100%; /* Changed to full width for marquee effect */
+  margin: 0 auto;
+}
+
+/* Header */
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.portfolio-badge {
+  color: #f06820;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.portfolio-title {
+  font-size: 45px;
+  font-weight: 900;
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  filter: none;
+}
+
+/* Update the general icon style */
+.portfolio-title span img {
+  height: 90px;
+  width: auto;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* Marquee Logic */
+.portfolio-marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.portfolio-marquee-row {
+  overflow: hidden;
+  display: flex;
+  user-select: none;
+}
+
+.portfolio-marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  gap: 30px;
+  min-width: 100%;
+}
+
+.portfolio-card {
+  width: 550px;
+  height: 420px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.portfolio-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: brightness(110%);
+}
+
+/* Hover Overlay */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background-color: rgba(0, 15, 50, 0.92);
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  transform: translateX(-101%);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2;
+  overflow: visible; /* Important: allows arrow to sit on the edge */
+}
+
+/* Hover States */
+.portfolio-card:hover .portfolio-overlay {
+  transform: translateX(0);
+}
+
+.portfolio-card:hover .portfolio-img {
+  transform: translateX(20%); /* Image slides right when overlay comes from left */
+}
+
+/* Content inside overlay */
+.portfolio-overlay-content {
+  color: #fff;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease 0.2s;
+}
+
+.portfolio-card:hover .portfolio-overlay-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.portfolio-category-tag {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.portfolio-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 30px;
+}
+
+.portfolio-arrow-circle {
+  width: 80px;
+  height: 80px;
+  background: #1a1a1a; /* Dark center like image */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -66.5px; /* Half of width to sit exactly on the right edge */
+  bottom: -75px;   /* Positioned towards the bottom as shown */
+  transition: transform 0.3s ease;
+  /* Creative gradient border */
+  border: 2px solid transparent;
+  background-image: linear-gradient(#0a1628, #0a1628),
+                    linear-gradient(to right, #f06820, #0055ff, #7700cc, #f06820);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/* Thin Long Arrow Icon Styling */
+.portfolio-arrow-icon {
+  width: 30px;
+  height: 40px;
+  transform: rotate(45deg);
+  color: #fff;
+  stroke: white;
+  stroke-width: 1px; /* Makes it look thinner */
+}
+
+.portfolio-arrow-circle:hover {
+  transform: scale(1.1);
+}
+
+/* Keeping the existing Marquee Animations */
+.portfolio-marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.portfolio-marquee-row {
+  overflow: hidden;
+  display: flex;
+}
+
+.portfolio-marquee-content {
+  display: flex;
+  gap: 30px;
+}
+
+.row-rtl .portfolio-marquee-content {
+  animation: scroll-rtl 40s linear infinite;
+}
+
+.row-ltr .portfolio-marquee-content {
+  animation: scroll-ltr 40s linear infinite;
+}
+
+@keyframes scroll-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 15px)); }
+}
+
+@keyframes scroll-ltr {
+  from { transform: translateX(calc(-50% - 15px)); }
+  to { transform: translateX(0); }
+}
+
+.portfolio-card.is-reverse .portfolio-overlay {
+  left: auto;
+  right: 0;
+  transform: translateX(101%);
+}
+
+.portfolio-card.is-reverse:hover .portfolio-overlay {
+  transform: translateX(0);
+}
+
+.portfolio-card.is-reverse:hover .portfolio-img {
+  transform: translateX(-20%); /* Image slides left when overlay comes from right */
+}
+
+/* Mirror the arrow for the second row */
+.portfolio-card.is-reverse .portfolio-arrow-icon {
+  transform: rotate(-45deg);
+}
+
+/* Ensure overlay content in reverse row also slides in from the right */
+.portfolio-card.is-reverse .portfolio-overlay-content {
+  transform: translateX(20px);
+}
+
+.portfolio-card.is-reverse:hover .portfolio-overlay-content {
+  transform: translateX(0);
+}
+.portfolio-card.is-reverse .portfolio-arrow-circle {
+  right: auto;
+  left: -66.5px;
+  bottom: -75px;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+@media (max-width: 1440px) {
+  .portfolio-section { padding: 55px 0; }
+  .portfolio-title { font-size: 36px; }
+  .portfolio-header { margin-bottom: 40px; }
+}
+
+/* Tablet View (768px to 1024px) */
+@media (max-width: 1024px) {
+  .portfolio-title {
+    font-size: 36px;
+  }
+
+  .portfolio-title span img {
+    height: 70px;
+  }
+
+  .portfolio-card {
+    width: 450px;
+    height: 350px;
+  }
+
+  /* On tablets, we show a 'peek' of the overlay so users know it is interactive */
+  .portfolio-overlay {
+    width: 65%;
+    transform: translateX(-80%); /* Partially visible from the left */
+  }
+
+  .portfolio-card.is-reverse .portfolio-overlay {
+    transform: translateX(80%); /* Partially visible from the right */
+  }
+
+  /* On tap (which triggers hover on touch), reveal the full overlay */
+  .portfolio-card:hover .portfolio-overlay {
+    transform: translateX(0);
+  }
+
+  .portfolio-arrow-circle {
+    width: 65px;
+    height: 65px;
+    right: -63.5px;
+    bottom: -61px;
+  }
+
+  .portfolio-card.is-reverse .portfolio-arrow-circle {
+    left: -63.5px;
+    bottom: -61px;
+  }
+
+  .portfolio-arrow-icon {
+    width: 22px;
+    height: 30px;
+  }
+
+  .portfolio-card-title {
+    font-size: 22px;
+  }
+}
+
+/* Phone View (up to 767px) */
+@media (max-width: 767px) {
+  .portfolio-section{
+    padding: 40px 0;
+  }
+  .portfolio-header {
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+
+  .portfolio-title {
+    font-size: 26px;
+  }
+
+  .portfolio-badge{
+    font-size: 15px;
+  }
+
+  .portfolio-title span img {
+    height: 60px;
+  }
+
+  /* Stack cards vertically for mobile */
+  .portfolio-marquee-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    animation: none !important;
+  }
+
+  /* Hide duplicate cards on mobile */
+  .portfolio-marquee-content > .portfolio-card:nth-child(n+7) {
+    display: none;
+  }
+
+  .portfolio-card {
+    width: 92%;
+    height: 280px;
+  }
+
+  /* Force all overlays to be Left-to-Right and 50% width */
+  .portfolio-overlay,
+  .portfolio-card.is-reverse .portfolio-overlay {
+    left: 0 !important;
+    right: auto !important;
+    width: 50% !important;
+    transform: translateX(0) !important;
+    padding: 20px;
+  }
+
+  /* Ensure all images shift the same way */
+  .portfolio-card .portfolio-img,
+  .portfolio-card.is-reverse .portfolio-img {
+    transform: translateX(15%) !important;
+  }
+
+  .portfolio-overlay-content {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  .portfolio-card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Standardize arrow circle for all cards on mobile */
+  .portfolio-arrow-circle,
+  .portfolio-card.is-reverse .portfolio-arrow-circle {
+    width: 60px !important;
+    height: 60px !important;
+    right: -43px !important;
+    left: auto !important;
+    bottom: -47px !important;
+  }
+
+  /* Standardize arrow icon direction */
+  .portfolio-arrow-icon,
+  .portfolio-card.is-reverse .portfolio-arrow-icon {
+    width: 18px !important;
+    height: 25px !important;
+    transform: rotate(45deg) !important;
+  }
+}

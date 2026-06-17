@@ -1,0 +1,437 @@
+.choose-us-section {
+  padding: 80px 0;
+  background: #f8f8f6;
+  position: relative;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.choose-us-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section Header */
+.choose-us-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.choose-us-badge {
+  color: #f06820;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(251, 151, 36, 0.82);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(251, 151, 36, 0.82);
+  }
+}
+
+.choose-us-title {
+  font-size: 45px;
+  font-weight: 900;
+  color: #0a0a0a;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.choose-us-title .choose-us-highlight {
+  background: linear-gradient(135deg, #f06820 0%, #cc3800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.choose-us-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Accordion Layout */
+.accordion-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 520px;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.accordion-panel {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+  overflow: hidden;
+  /* Technical Divider */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 1. PROFESSIONAL GRADIENT for Closed Bars */
+.accordion-panel:not(.active) {
+  background: linear-gradient(
+    180deg,
+    #0b1121 0%,
+    #ffffff 45%,
+    #ffffff 55%,
+    #020617 100%
+  );
+}
+
+/* Technical Accent (Glow line on the left) */
+.accordion-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 200, 255, 0.4), transparent);
+  z-index: 5;
+}
+
+.accordion-panel.active {
+  flex: 5;
+}
+
+/* Background Image - Only reveals on active */
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.6s ease, transform 0.8s ease;
+}
+
+.accordion-panel.active .panel-bg {
+  opacity: 1;
+  transform: scale(1);
+  filter: brightness(120%);
+}
+
+.panel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    #0b1121 0%,
+    #1b315b 45%,
+    #1b315b 55%,
+    #020617 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.accordion-panel.active .panel-overlay {
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.1) 0%, rgba(2, 6, 23, 0.9) 100%);
+}
+
+.panel-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 2. VERTICAL TEXT (Reads Upwards / Bottom-to-Top) */
+.panel-vertical-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 30px;
+  transition: opacity 0.3s ease;
+}
+
+.v-number {
+  color: #f06820;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(251, 135, 36, 0.3);
+}
+
+.v-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.accordion-panel.active .panel-vertical-label {
+  opacity: 0;
+}
+
+/* Expanded State Content */
+.expanded-content {
+  padding: 30px 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.3s;
+
+  /* FIX: Set a fixed width or min-width to prevent content wrapping during closing animation */
+  width: 500px;
+  white-space: nowrap; /* Prevents text from jumping to new lines */
+}
+
+.accordion-panel.active .expanded-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.expanded-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.item-index {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: rgba(0, 200, 255, 0.7);
+  line-height: 1;
+}
+
+.arrow-circle {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #f06820;
+  background: #f06820;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+
+/* 3. TITLE HOVER UNDERLINE ANIMATION */
+.item-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.item-title::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffffff;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item-title:hover::after {
+  width: 100%;
+}
+
+.item-desc {
+  color: #cbd5e1;
+  max-width: 460px;
+  line-height: 1.65;
+  font-size: 1.02rem;
+  margin-bottom: 22px;
+  white-space: normal;
+}
+
+.explore-btn {
+  width: fit-content;
+  background: #f06820;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #fff;
+  color: #f06820;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 1440px) {
+  .choose-us-section { padding: 55px 0; }
+  .choose-us-title { font-size: 36px; }
+}
+
+@media (max-width: 1280px) {
+  /* Adjusting for slightly smaller desktop/laptop screens to prevent overflow */
+  .expanded-content {
+    width: 500px;
+    min-width: 500px;
+    padding: 40px;
+  }
+  .item-title {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive Handling */
+@media (max-width: 1024px) {
+  .choose-us-section {
+    padding: 40px 0;
+  }
+
+  .choose-us-container {
+    padding: 0 20px;
+  }
+
+  .choose-us-header {
+    margin-bottom: 40px;
+  }
+
+  .choose-us-badge {
+    font-size: 15px;
+  }
+
+  .choose-us-title {
+    font-size: 26px;
+  }
+
+  .choose-us-subtitle {
+    font-size: 15px;
+  }
+  .choose-us-card {
+    /* Set width to fit phone screens with a small margin */
+    width: 334px;
+    /* Set height to auto so it adjusts based on content length */
+    height: auto;
+    min-height: 400px;
+    padding: 25px 20px;
+    margin: 0 10px;
+  }
+  .accordion-wrapper {
+    flex-direction: column;
+    height: auto; /* Allow height to be determined by content */
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .accordion-panel {
+    height: 70px; /* Reduced width of horizontal bars to be appropriate */
+    width: 100%;
+    flex: none; /* Disable flex growth in vertical stack */
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: height 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  .explore-btn:hover {
+      background: #f06820;
+      color: #fff;
+   }
+
+  .accordion-panel:not(.active) {
+    background: linear-gradient(
+      90deg,
+      #0b1121 0%,
+      #ffffff 45%,
+      #ffffff 55%,
+      #020617 100%
+    );
+  }
+
+  /* 2. BORDER LINE (matches vertical style but horizontal) */
+  .accordion-panel::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px; /* Top border glow */
+    background: linear-gradient(to right, transparent, rgba(0, 200, 255, 0.4), transparent);
+    z-index: 5;
+  }
+
+  .accordion-panel.active {
+    height: 550px; /* Expanded height for mobile active card */
+
+  }
+
+  /* DULL BACKGROUND IMAGE FOR PHONE VIEW */
+  .accordion-panel.active .panel-bg {
+    opacity: 0.4; /* Reduced opacity to make it look duller/darker on mobile */
+  }
+
+  /* Aligning vertical text to be horizontal for mobile tabs */
+  .panel-vertical-label {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .v-text {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  .expanded-content {
+    padding: 30px 20px;
+    width: 100%;
+    min-width: 100%;
+    white-space: normal;
+  }
+
+  .item-title {
+    font-size: 1.6rem;
+    max-width: 100%;
+    white-space: normal; /* Allows title to wrap on small phone screens */
+  }
+
+  .item-desc {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+}

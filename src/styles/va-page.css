@@ -1,0 +1,222 @@
+/* Virtual Assistant Page */
+.va-page {
+  --accent: #f06820;
+  --accent-rgb: 240, 104, 32;
+}
+
+/* ── Hero Visual — Task Dashboard ── */
+.va-hero-visual {
+  flex-shrink: 0;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.va-dashboard {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+}
+
+.va-dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.va-dash-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+}
+
+.va-dash-add {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f06820;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(240,104,32,0.1);
+  border: 1px solid rgba(240,104,32,0.2);
+}
+
+.va-task-list {
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.va-task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.va-task-row:hover { background: rgba(255,255,255,0.04); }
+.va-task-row.done  { opacity: 0.55; }
+.va-task-row.active { background: rgba(240,104,32,0.08); border: 1px solid rgba(240,104,32,0.2); }
+
+.va-task-check {
+  font-size: 14px;
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.3);
+  width: 18px;
+  text-align: center;
+}
+
+.va-task-row.done  .va-task-check { color: #34d399; }
+.va-task-row.active .va-task-check { color: #f06820; }
+
+.va-task-label {
+  flex: 1;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+.va-task-row.done .va-task-label { text-decoration: line-through; color: rgba(255,255,255,0.4); }
+
+.va-task-badge {
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.va-task-badge.done   { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399; }
+.va-task-badge.active { background: rgba(240,104,32,0.12); border: 1px solid rgba(240,104,32,0.3); color: #60a5fa; }
+
+.va-time-card {
+  background: rgba(240,104,32,0.08);
+  border: 1px solid rgba(240,104,32,0.2);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.va-time-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.va-time-val {
+  font-size: 32px;
+  font-weight: 900;
+  color: #f06820;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.va-time-val span {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+}
+
+.va-time-bar-bg {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.va-time-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f06820, #60a5fa);
+  transition: width 1.5s ease;
+}
+
+.va-time-chips {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── Time Savings Section ── */
+.va-savings-section { padding: 90px 24px; background: #f8f8f6; }
+
+.va-savings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.va-savings-card {
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.va-savings-card:hover {
+  border-color: rgba(240,104,32,0.3);
+  box-shadow: 0 8px 24px rgba(240,104,32,0.07);
+  transform: translateY(-3px);
+}
+
+.va-savings-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin-bottom: 8px;
+}
+
+.va-savings-val {
+  display: block;
+  font-size: 24px;
+  font-weight: 900;
+  color: #f06820;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.va-savings-bar-bg {
+  height: 5px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.va-savings-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f06820, #60a5fa);
+  border-radius: 3px;
+  animation: va-bar-in 1s ease both;
+}
+
+@keyframes va-bar-in {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+@media (max-width: 1024px) {
+  .va-hero-visual { width: 100%; max-width: 380px; }
+}
+
+@media (max-width: 768px) {
+  .va-savings-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .va-savings-grid { grid-template-columns: 1fr; }
+}

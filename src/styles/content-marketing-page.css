@@ -1,0 +1,156 @@
+/* Content Marketing Page */
+.cm-page {
+  --accent: #f06820;
+  --accent-rgb: 240, 104, 32;
+}
+
+/* ── Hero Visual ── */
+.cm-hero-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex-shrink: 0;
+  width: 420px;
+}
+
+.cm-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.cm-card:hover { transform: translateY(-4px); border-color: rgba(240,104,32,0.35); }
+
+.cm-card-blog { grid-column: 1 / -1; }
+
+.cm-card-video {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(240,104,32,0.08);
+  border-color: rgba(240,104,32,0.2);
+}
+
+.cm-play {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #f06820;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.cm-card-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #f06820;
+  margin-bottom: 8px;
+}
+
+.cm-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.cm-card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+
+.cm-card-lines { display: flex; flex-direction: column; gap: 6px; }
+.cm-card-lines div { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); }
+.cm-card-lines div:nth-child(1) { width: 100%; }
+.cm-card-lines div:nth-child(2) { width: 80%; }
+.cm-card-lines div:nth-child(3) { width: 60%; }
+.cm-card-lines.short div:nth-child(1) { width: 90%; }
+.cm-card-lines.short div:nth-child(2) { width: 65%; }
+
+.cm-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 44px;
+  margin: 10px 0;
+}
+.cm-bars div {
+  flex: 1;
+  background: linear-gradient(180deg, #f06820, rgba(240,104,32,0.3));
+  border-radius: 3px 3px 0 0;
+}
+
+.cm-email-meta { display: flex; gap: 8px; margin-bottom: 12px; }
+.cm-email-chip {
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(240,104,32,0.12);
+  border: 1px solid rgba(240,104,32,0.25);
+  color: #f06820;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Content Funnel ── */
+.cm-funnel-section { padding: 100px 24px; background: #f8f8f6; }
+
+.cm-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cm-funnel-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin: 0 auto;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.cm-funnel-row:hover {
+  border-color: rgba(240,104,32,0.3);
+  box-shadow: 0 6px 20px rgba(240,104,32,0.08);
+  transform: scale(1.01);
+}
+
+.cm-funnel-row:nth-child(1) { background: rgba(240,104,32,0.04); border-color: rgba(240,104,32,0.15); }
+
+.cm-funnel-icon { font-size: 22px; flex-shrink: 0; }
+
+.cm-funnel-stage {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #f06820;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.cm-funnel-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .cm-hero-visual { width: 100%; grid-template-columns: 1fr; }
+  .cm-card-blog   { grid-column: auto; }
+  .cm-funnel-row  { width: 100% !important; }
+  .cm-funnel-stage { width: 80px; }
+}

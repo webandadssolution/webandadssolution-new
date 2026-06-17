@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install 2>&1)",
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\contact-page.js\" -NewName \"contact-page.tsx\")",
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\va-page.js\" -NewName \"va-page.tsx\")",
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\web-dev-page.js\" -NewName \"web-dev-page.tsx\")",
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\smo-page.js\" -NewName \"smo-page.tsx\")",
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\ppc-page.js\" -NewName \"ppc-page.tsx\")"
+    ]
+  }
+}

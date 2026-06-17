@@ -1,0 +1,140 @@
+import React from "react"
+import "../styles/our_team.css"
+
+const Our_team = () => {
+   const teamMembers = [
+  {
+    name: "Nitesh",
+    designation: "CEO",
+    img: "/team/nitesh.png",
+  },
+  {
+    name: "Abhishek",
+    designation: "Content Writer",
+    img: "/team/Abhishek.png",
+  },
+  {
+    name: "Aman",
+    designation: "SEO Manger",
+    img: "/team/aman.png",
+  },
+  {
+    name: "Amit",
+    designation: "Head of Developer",
+    img: "/team/Amit.png",
+  },
+  {
+    name: "Ashish",
+    designation: "Excutive SEO Manger",
+    img: "/team/Ashish.png",
+  },
+  {
+    name: "Ayush",
+    designation: "Business Development Executive",
+    img: "/team/Ayush.png",
+  },
+
+  {
+    name: "Musaraf",
+    designation: "Developer",
+    img: "/team/Musaaraf.png",
+  },
+  {
+    name: "Nash",
+    designation: "Sales Manager",
+    img: "/team/nash.png",
+  },
+  {
+    name: "Nicki",
+    designation: "Sales Head",
+    img: "/team/nicki.png",
+  },
+  {
+    name: "Rekha",
+    designation: "SEO Executive",
+    img: "/team/rekha.png",
+  },
+  {
+    name: "Shivam",
+    designation: "Vice President",
+    img: "/team/shivam.png",
+  },
+  {
+    name: "Simi",
+    designation: "Project Manager",
+    img: "/team/simi.png",
+  },
+  {
+    name: "Sumit",
+    designation: " Senior Developer",
+    img: "/team/Sumit.png",
+  },
+  {
+    name: "Shruti",
+    designation: "Chief Financial Officer",
+    img: "/team/shruti.png",
+  },
+    {
+    name: "Ikra",
+    designation: "HR Executive",
+    img: "/team/ikra.png",
+  },
+  {
+    name: "Vatsla",
+    designation: "SEO Executive",
+    img: "/team/Vatsla.png",
+  },
+  {
+    name: "Virjesh",
+    designation: "SEO Executive",
+    img: "/team/Virjesh.png",
+  },
+  {
+    name: "Yukta",
+    designation: "Virtual Assistant",
+    img: "/team/yukta.png",
+  },
+];
+
+    // Double the array for a seamless infinite scroll effect
+    const displayMembers = [...teamMembers, ...teamMembers];
+
+    return (
+    <section className="team-section">
+      <div className="team-container">
+        <div className="team-header scroll-reveal">
+          <span className="team-badge">● Our Team</span>
+          <h2 className="team-title">Meet Our Experienced Team</h2>
+          <p className="team-subtitle">
+            Expertise, collaboration, and passion come together to drive exceptional results
+          </p>
+        </div>
+
+        <div className="team-scroller-viewport scroll-reveal delay-2">
+            <div className="team-grid scroller-animation">
+                {displayMembers.map((member, index) => (
+                    <div key={index} className="team-member-card">
+                        <div className="image-wrapper">
+                            <img src={member.img} alt={member.name} />
+                            <div className="team-overlay">
+                                <div className="social-box">
+                                    <a href="#" className="linkedin-link">
+                                        <img src="/logo.png" alt="Web and Ads Solutions" />
+                                    </a>
+                                </div>
+                                <div className="member-info">
+                                    <h4 className="m-name">{member.name}</h4>
+                                    <p className="m-role">{member.designation}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </div>
+    </section>
+   )
+}
+
+export default Our_team
