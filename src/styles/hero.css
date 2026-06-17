@@ -5,7 +5,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--bg-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,9 +18,9 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--text-primary) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--text-primary) 3.5%, transparent) 1px, transparent 1px);
   background-size: 44px 44px;
   background-position: center top;
   pointer-events: none;
@@ -70,8 +70,8 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  background: rgba(10, 10, 10, 0.03);
-  border: 1px solid rgba(10, 10, 10, 0.08);
+  background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
   border-radius: 30px;
   margin-bottom: 28px;
 }
@@ -92,7 +92,7 @@
 .badge-text {
   font-size: 10px;
   font-weight: 700;
-  color: #050505;
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-family: 'Space Grotesk', sans-serif;
@@ -105,7 +105,7 @@
   line-height: 1.1;
   letter-spacing: -2px;
   margin-bottom: 0;
-  color: #050505;
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -145,21 +145,21 @@
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 400;
   font-style: italic;
-  color: #555555;
+  color: var(--text-secondary);
   letter-spacing: -0.5px;
 }
 
 .hero-word.font-bold {
   font-weight: 800;
-  color: #050505;
+  color: var(--text-primary);
 }
 
 /* Highlight badge */
 .hero-word.text-accent {
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
   padding: 0 16px;
   border-radius: 60px;
-  background: rgba(0, 0, 0, 0.02);
+  background: color-mix(in srgb, var(--text-primary) 2%, transparent);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.025);
   font-weight: 800;
 }
@@ -181,7 +181,7 @@
 /* Subtitle */
 .hero-subtitle {
   font-size: clamp(0.95rem, 1.2vw, 1.02rem);
-  color: #4b5563;
+  color: var(--text-secondary);
   line-height: 1.65;
   max-width: 540px;
   margin: 24px 0 36px 0;
@@ -201,8 +201,8 @@
   padding: 16px 36px;
   font-size: 13.5px;
   font-weight: 700;
-  color: #ffffff;
-  background: #050505;
+  color: var(--bg-primary-solid);
+  background: var(--text-primary);
   border: none;
   border-radius: 50px;
   cursor: none;
@@ -222,9 +222,9 @@
   padding: 15px 34px;
   font-size: 13.5px;
   font-weight: 600;
-  color: #050505;
+  color: var(--text-primary);
   background: transparent;
-  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border: 1.5px solid color-mix(in srgb, var(--text-primary) 15%, transparent);
   border-radius: 50px;
   cursor: none;
   font-family: 'Space Grotesk', sans-serif;
@@ -232,8 +232,8 @@
 }
 
 .cta-button-secondary:hover {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: #050505;
+  background: color-mix(in srgb, var(--text-primary) 3%, transparent);
+  border-color: var(--text-primary);
   transform: translateY(-2px);
 }
 
@@ -262,10 +262,10 @@
 /* Global Dashboard Card Settings */
 .dashboard-card {
   position: absolute;
-  background: rgba(255, 255, 255, 0.88);
+  background: color-mix(in srgb, var(--card-bg) 88%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 7%, transparent);
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   padding: 20px;
@@ -319,7 +319,7 @@
 .card-header-title {
   font-size: 11px;
   font-weight: 700;
-  color: #050505;
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: 'Space Grotesk', sans-serif;
@@ -327,7 +327,7 @@
 
 .card-meta {
   font-size: 9.5px;
-  color: #888888;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -346,14 +346,14 @@
 .metric-num {
   font-size: 22px;
   font-weight: 800;
-  color: #050505;
+  color: var(--text-primary);
   line-height: 1.1;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .metric-sub {
   font-size: 9px;
-  color: #6b7280;
+  color: var(--text-secondary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -451,13 +451,13 @@
 .camp-name {
   font-size: 11px;
   font-weight: 700;
-  color: #050505;
+  color: var(--text-primary);
   display: block;
 }
 
 .camp-sub {
   font-size: 9px;
-  color: #6b7280;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -470,12 +470,12 @@
 .camp-stat-val {
   font-size: 13px;
   font-weight: 800;
-  color: #050505;
+  color: var(--text-primary);
 }
 
 .camp-stat-lbl {
   font-size: 8px;
-  color: #9ca3af;
+  color: var(--text-muted);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -521,12 +521,12 @@
 .ai-title {
   font-size: 10.5px;
   font-weight: 700;
-  color: #050505;
+  color: var(--text-primary);
 }
 
 .ai-desc {
   font-size: 8px;
-  color: #888888;
+  color: var(--text-secondary);
 }
 
 .ai-status-row {
@@ -540,7 +540,7 @@
 .ai-status-text {
   font-size: 9.5px;
   font-weight: 600;
-  color: #4b5563;
+  color: var(--text-secondary);
 }
 
 .ai-pulse-dot {
@@ -559,7 +559,7 @@
 .ai-progress-bar {
   width: 100%;
   height: 4px;
-  background: rgba(0, 0, 0, 0.05);
+  background: color-mix(in srgb, var(--text-primary) 5%, transparent);
   border-radius: 10px;
   overflow: hidden;
 }

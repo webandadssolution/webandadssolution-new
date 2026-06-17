@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import ThemeToggle from "./theme-toggle"
 import "../styles/header.css"
 
 const Header = () => {
@@ -193,6 +194,8 @@ const Header = () => {
         <div className="right-section">
           <button className="header-cta-outline" onClick={() => document.querySelector('.services-section')?.scrollIntoView({ behavior: 'smooth' })}>Our Work</button>
           <button className="header-cta-button" onClick={() => document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' })}>Let's Talk</button>
+
+          <ThemeToggle />
 
           {/* Mobile Menu Toggle */}
           <button

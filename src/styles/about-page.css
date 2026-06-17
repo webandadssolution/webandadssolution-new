@@ -1,8 +1,8 @@
 /* ── About Page ─────────────────────────────── */
 .about-page {
   min-height: 100vh;
-  background: #fff;
-  color: #0a0a0a;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
@@ -42,7 +42,7 @@
   font-size: 42px;
   font-weight: 800;
   line-height: 1.15;
-  color: #0a0a0a;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
 
@@ -51,7 +51,7 @@
 .ab-lead {
   font-size: 17px;
   line-height: 1.7;
-  color: #666;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -255,7 +255,7 @@
 /* ── Story Section ── */
 .ab-story-section {
   padding: 100px 24px;
-  background: #f8f8f6;
+  background: var(--bg-secondary);
 }
 
 .ab-story-inner {
@@ -272,11 +272,11 @@
 .ab-story-text {
   font-size: 16px;
   line-height: 1.8;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
-.ab-story-text strong { color: #0a0a0a; font-weight: 700; }
+.ab-story-text strong { color: var(--text-primary); font-weight: 700; }
 
 /* ── Timeline ── */
 .ab-timeline {
@@ -326,13 +326,13 @@
 .ab-timeline-event {
   font-size: 14.5px;
   line-height: 1.6;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 /* ── Mission/Vision ── */
 .ab-mv-section {
   padding: 100px 24px;
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .ab-mv-grid {
@@ -367,9 +367,9 @@
 }
 
 .ab-mv-card.impact {
-  background: #f8f8f6;
-  border: 1px solid #ebebeb;
-  color: #0a0a0a;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .ab-mv-icon {
@@ -391,10 +391,10 @@
   opacity: 0.8;
 }
 
-.ab-mv-card.impact p { color: #555; opacity: 1; }
+.ab-mv-card.impact p { color: var(--text-secondary); opacity: 1; }
 
 /* ── Values ── */
-.ab-values-section { padding: 100px 24px; background: #f8f8f6; }
+.ab-values-section { padding: 100px 24px; background: var(--bg-secondary); }
 
 .ab-values-grid {
   max-width: 1200px;
@@ -405,8 +405,8 @@
 }
 
 .ab-value-card {
-  background: #fff;
-  border: 1px solid #ebebeb;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 32px 28px;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -423,11 +423,11 @@
 .ab-value-title {
   font-size: 18px;
   font-weight: 700;
-  color: #0a0a0a;
+  color: var(--text-primary);
   margin-bottom: 10px;
 }
 
-.ab-value-desc { font-size: 14.5px; line-height: 1.7; color: #666; }
+.ab-value-desc { font-size: 14.5px; line-height: 1.7; color: var(--text-secondary); }
 
 /* ── Stats (dark) ── */
 .ab-stats-section {
@@ -483,7 +483,7 @@
 .ab-stat-label { font-size: 12.5px; color: rgba(255,255,255,0.48); line-height: 1.4; }
 
 /* ── Team ── */
-.ab-team-section { padding: 100px 24px; background: #fff; }
+.ab-team-section { padding: 100px 24px; background: var(--bg-primary); }
 
 .ab-team-grid {
   max-width: 1200px;
@@ -500,8 +500,8 @@
   text-align: center;
   gap: 12px;
   padding: 32px 16px;
-  background: #f8f8f6;
-  border: 1px solid #ebebeb;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
@@ -529,7 +529,7 @@
 .ab-team-name {
   font-size: 14px;
   font-weight: 700;
-  color: #0a0a0a;
+  color: var(--text-primary);
   line-height: 1.3;
 }
 

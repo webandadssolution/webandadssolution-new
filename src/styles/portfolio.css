@@ -1,6 +1,6 @@
 .portfolio-section {
   padding: 80px 0;
-  background: #f8f8f6;
+  background: var(--bg-secondary);
   position: relative;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
 .portfolio-title {
   font-size: 45px;
   font-weight: 900;
-  color: #0a0a0a;
+  color: var(--text-primary);
   margin-bottom: 20px;
   line-height: 1.2;
   letter-spacing: -1px;

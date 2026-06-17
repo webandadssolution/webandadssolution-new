@@ -6,7 +6,9 @@
       "PowerShell(Rename-Item -Path \"src\\\\views\\\\va-page.js\" -NewName \"va-page.tsx\")",
       "PowerShell(Rename-Item -Path \"src\\\\views\\\\web-dev-page.js\" -NewName \"web-dev-page.tsx\")",
       "PowerShell(Rename-Item -Path \"src\\\\views\\\\smo-page.js\" -NewName \"smo-page.tsx\")",
-      "PowerShell(Rename-Item -Path \"src\\\\views\\\\ppc-page.js\" -NewName \"ppc-page.tsx\")"
+      "PowerShell(Rename-Item -Path \"src\\\\views\\\\ppc-page.js\" -NewName \"ppc-page.tsx\")",
+      "Bash(npx --yes playwright --version)",
+      "Bash(node -e \"console.log\\(require.resolve\\('playwright'\\)\\)\")"
     ]
   }
 }

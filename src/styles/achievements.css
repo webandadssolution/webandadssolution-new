@@ -1,7 +1,7 @@
 .achievements-section {
   padding: 80px 0;
-  background-color: #ffffff;
-  color: #0a0a0a;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .achievements-container {
@@ -33,7 +33,7 @@
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 25px;
-  color: #0a0a0a;
+  color: var(--text-primary);
   letter-spacing: -1px;
 }
 
@@ -129,22 +129,22 @@
 }
 
 .achievements-contact-form-card {
-  background: #f8f8f6;
+  background: var(--bg-secondary);
   padding: 50px;
   border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
   position: relative;
 }
 
 .achievements-contact-form-card h3 {
   font-size: 32px;
   margin-bottom: 10px;
-  color: #0a0a0a;
+  color: var(--text-primary);
   font-weight: 800;
 }
 
 .achievements-form-subtitle {
-  color: #6b7280;
+  color: var(--text-secondary);
   font-size: 14px;
   margin-bottom: 30px;
 }
@@ -166,7 +166,7 @@
   left: 50px;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: var(--text-muted);
   pointer-events: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 14px;
@@ -184,7 +184,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  color: #9ca3af;
+  color: var(--text-muted);
   pointer-events: none;
   transition: color 0.3s ease;
 }
@@ -198,11 +198,11 @@
 .achievements-input-group select,
 .achievements-input-group textarea {
   width: 100%;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
   padding: 15px 15px 15px 50px;
   border-radius: 8px;
-  color: #0a0a0a;
+  color: var(--text-primary);
   font-size: 14px;
   outline: none;
   transition: all 0.3s ease;
@@ -226,11 +226,11 @@
 
 .achievements-submit-btn {
   width: 100%;
-  background: #0a0a0a;
+  background: var(--text-primary);
   border: none;
   padding: 18px;
   border-radius: 40px;
-  color: #ffffff;
+  color: var(--bg-primary-solid);
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
@@ -254,7 +254,7 @@
 .achievements-arrow-icon { font-size: 20px; }
 
 .achievements-submit-btn:hover {
-  background: #333333;
+  background: color-mix(in srgb, var(--text-primary) 80%, var(--bg-primary-solid) 20%);
   transform: translateY(-1px);
 }
 
@@ -273,7 +273,7 @@
   left: 50px;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: var(--text-muted);
   pointer-events: none;
   font-size: 14px;
   z-index: 5;
@@ -313,11 +313,11 @@
 .achievements-file-trigger {
   display: block;
   width: 100%;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
   padding: 15px 15px 15px 50px;
   border-radius: 8px;
-  color: #9ca3af;
+  color: var(--text-muted);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;

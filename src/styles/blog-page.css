@@ -1,10 +1,10 @@
 /* ── Blog Page ───────────────────────────────── */
 .blog-page {
   min-height: 100vh;
-  background: #fff;
+  background: var(--bg-primary);
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
-  color: #0a0a0a;
+  color: var(--text-primary);
 }
 
 .bl-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -235,7 +235,7 @@
 .bl-author-avatar.sm { width: 24px; height: 24px; font-size: 10px; }
 
 .bl-author-name { font-weight: 700; color: rgba(255,255,255,0.85); }
-.bl-author-name.sm { font-weight: 700; color: #444; }
+.bl-author-name.sm { font-weight: 700; color: var(--text-secondary); }
 .bl-meta-divider { opacity: 0.4; }
 
 .bl-read-btn {
@@ -265,11 +265,11 @@
 .bl-filter-chip {
   padding: 9px 20px;
   border-radius: 100px;
-  border: 1.5px solid #e8e8e8;
-  background: #fff;
+  border: 1.5px solid var(--border-muted);
+  background: var(--card-bg);
   font-size: 13.5px;
   font-weight: 600;
-  color: #555;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s, color 0.2s;
   font-family: inherit;
@@ -285,8 +285,8 @@
 }
 
 .bl-post-card {
-  background: #fff;
-  border: 1px solid #ebebeb;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 18px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -338,14 +338,14 @@
 .bl-post-title {
   font-size: 17px;
   font-weight: 800;
-  color: #0a0a0a;
+  color: var(--text-primary);
   line-height: 1.35;
 }
 
 .bl-post-excerpt {
   font-size: 13.5px;
   line-height: 1.65;
-  color: #777;
+  color: var(--text-secondary);
   flex: 1;
 }
 
@@ -354,11 +354,11 @@
 .bl-tag {
   padding: 3px 10px;
   border-radius: 100px;
-  background: #f8f8f6;
-  border: 1px solid #e8e8e8;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-muted);
   font-size: 11px;
   font-weight: 600;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .bl-post-footer {
@@ -366,11 +366,11 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 12px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
   gap: 8px;
 }
 
-.bl-post-date { font-size: 12px; color: #999; }
+.bl-post-date { font-size: 12px; color: var(--text-secondary); }
 
 .bl-post-link {
   font-size: 13px;
@@ -390,7 +390,7 @@
 
 .bl-empty-icon { font-size: 48px; display: block; margin-bottom: 16px; }
 
-.bl-empty p { font-size: 16px; color: #666; }
+.bl-empty p { font-size: 16px; color: var(--text-secondary); }
 
 .bl-empty button {
   background: none;

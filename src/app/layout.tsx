@@ -5,6 +5,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import GsapEffects from "../components/gsap_effects"
 import SiteChrome from "../components/site-chrome"
+import ThemeScript from "../components/theme-script"
 import "../styles/index.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={spaceGrotesk.variable}>
       <body>
+        <ThemeScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

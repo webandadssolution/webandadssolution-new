@@ -1,7 +1,7 @@
 .pkg-page {
   min-height: 100vh;
-  background: #f8f8f6;
-  color: #0a0a0a;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   padding-bottom: 60px;
@@ -62,11 +62,11 @@
   gap: 8px;
   padding: 14px 26px;
   border-radius: 100px;
-  border: 1px solid #e8e8e8;
-  background: #fff;
+  border: 1px solid var(--border-muted);
+  background: var(--card-bg);
   font-size: 14.5px;
   font-weight: 700;
-  color: #444;
+  color: var(--text-secondary);
   cursor: pointer;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -93,14 +93,14 @@
   font-size: 22px;
   font-weight: 900;
   letter-spacing: 1px;
-  color: #0a0a0a;
+  color: var(--text-primary);
 }
 
 .pkg-tagline {
   text-align: center;
   margin: 26px auto 0;
   font-size: 15px;
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -116,8 +116,8 @@
 }
 
 .pkg-card {
-  background: #fff;
-  border: 1px solid #ebebeb;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 18px;
   overflow: hidden;
   position: relative;
@@ -151,8 +151,8 @@
 .pkg-card-head {
   padding: 28px 22px 24px;
   text-align: center;
-  border-bottom: 1px solid #f0f0f0;
-  background: #fafafa;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
 }
 
 .pkg-card-icon {
@@ -171,7 +171,7 @@
   font-size: 16.5px;
   font-weight: 800;
   margin-bottom: 10px;
-  color: #0a0a0a;
+  color: var(--text-primary);
 }
 
 .pkg-card-price {
@@ -182,14 +182,14 @@
 }
 
 .pkg-card-price-symbol { font-size: 18px; margin-right: 2px; }
-.pkg-card-price-period { font-size: 13px; font-weight: 600; color: #999; margin-left: 2px; }
+.pkg-card-price-period { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-left: 2px; }
 
 .pkg-card-cta {
   display: inline-block;
   width: 100%;
   padding: 11px 0;
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--text-primary);
+  color: var(--bg-primary-solid);
   border-radius: 8px;
   font-size: 13.5px;
   font-weight: 700;
@@ -232,8 +232,8 @@
   line-height: 1.5;
 }
 
-.pkg-card-feature-list li.is-included { color: #1a1a1a; }
-.pkg-card-feature-list li.is-excluded { color: #bbb; }
+.pkg-card-feature-list li.is-included { color: var(--text-primary); }
+.pkg-card-feature-list li.is-excluded { color: var(--text-muted); }
 
 .pkg-feature-icon { flex-shrink: 0; font-weight: 800; margin-top: 1px; }
 .is-included .pkg-feature-icon { color: #1aa260; }
@@ -248,7 +248,7 @@
 }
 
 .pkg-cta-title { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
-.pkg-cta-desc { font-size: 15px; color: #666; margin-bottom: 24px; }
+.pkg-cta-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
 
 .pkg-cta-btn {
   display: inline-block;

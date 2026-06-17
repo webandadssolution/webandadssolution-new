@@ -1,6 +1,6 @@
 .who-we-are-section {
   padding: 80px 0;
-  background: #ffffff;
+  background: var(--bg-primary);
   background-size: cover;
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
 .who-we-are-title {
   font-size: 45px;
   font-weight: 900;
-  color: #0a0a0a;
+  color: var(--text-primary);
   line-height: 1.2;
   max-width: 950px;
   letter-spacing: -1px;
