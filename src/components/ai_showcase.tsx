@@ -25,6 +25,9 @@ const Ai_showcase = () => {
 
     return (
         <section className="ai-showcase-section">
+            <div className="ai-side-line ai-side-line-left" />
+            <div className="ai-side-line ai-side-line-right" />
+
             <div className="ai-showcase-container">
                 <div className="ai-showcase-header scroll-reveal">
                     <span className="ai-showcase-badge">● Professional & Trust-Building</span>

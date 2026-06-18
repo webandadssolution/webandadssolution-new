@@ -2,10 +2,13 @@ import "../styles/who_we_are.css"
 
 const Who_we_are = () => {
   const images = [
-    "/virtual-assistant-working-remotely-with-laptop-and.jpg",
-    "/website-development-team-illustration.jpg",
-    "/content-marketing-team-illustration.jpg",
-    "/social-media-marketing-team-illustration.jpg"
+    "images/New Project (24).png",
+    "images/New Project (25).png",
+    "images/New Project (26).png",
+    "images/New Project (27).png",
+    "images/New Project (28).png",
+    "images/New Project (29).png"
+    
   ];
 
   // Creates a 4-layer stack for the "inside-out" tunnel effect

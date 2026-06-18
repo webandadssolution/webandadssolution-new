@@ -5,27 +5,27 @@ const Industries = () => {
     {
       name: "Marketing",
       tag: "Digital Growth",
-      icon: "/home-icon/marketing.png",
+      icon: "/home-icon/Marketing.png",
     },
     {
       name: "E-commerce",
       tag: "Online Retail",
-      icon: "/home-icon/ecommerce.png",
+      icon: "/home-icon/E commerce.png",
     },
     {
       name: "Healthcare",
       tag: "Digital Health",
-      icon: "/home-icon/healthcare.png",
+      icon: "/home-icon/health care.png",
     },
     {
       name: "Real Estate",
       tag: "Property Tech",
-      icon: "/home-icon/real-estate.png",
+      icon: "/home-icon/real estate.png",
     },
     {
       name: "Education",
       tag: "EdTech",
-      icon: "/home-icon/education.png",
+      icon: "/home-icon/Education.png",
     },
     {
       name: "Technology",
@@ -38,32 +38,32 @@ const Industries = () => {
     {
       name: "Finance",
       tag: "FinTech",
-      icon: "/home-icon/finance.png",
+      icon: "/home-icon/Finance.png",
     },
     {
       name: "Logistics",
       tag: "Supply Chain",
-      icon: "/home-icon/logistics.png",
+      icon: "/home-icon/Logistics.png",
     },
     {
       name: "Manufacturing",
       tag: "Industry 4.0",
-      icon: "/home-icon/manufacturing.png",
+      icon: "/home-icon/Manufacturing.png",
     },
     {
       name: "Hospitality",
       tag: "Travel & Tourism",
-      icon: "/home-icon/hospitality.png",
+      icon: "/home-icon/Hospitality.png",
     },
     {
       name: "Legal",
       tag: "LegalTech",
-      icon: "/home-icon/legal.png",
+      icon: "/home-icon/Legal.png",
     },
     {
       name: "Food & Beverage",
       tag: "Restaurant Tech",
-      icon: "/home-icon/food-beverage.png",
+      icon: "/home-icon/Food & Beverage.png",
     },
   ];
 

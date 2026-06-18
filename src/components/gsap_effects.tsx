@@ -348,7 +348,7 @@ const GsapEffects = () => {
             trigger: servicesPanel || servicesSection,
             start: "top bottom",
             end: "top top",
-            scrub: 0.6,
+            scrub: true,
             onUpdate: (self) => {
               servicesSection.style.setProperty("--scroll-ratio", String(self.progress))
               servicesWrapper.style.setProperty("--scroll-ratio", String(self.progress))

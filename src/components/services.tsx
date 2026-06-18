@@ -2,7 +2,6 @@ import React from "react"
 import "../styles/services.css"
 
 const Services = () => {
-  // --scroll-ratio is now driven by GSAP ScrollTrigger in gsap_effects.js
 
   const services = [
     {
@@ -28,7 +27,7 @@ const Services = () => {
         "Built with conversion in mind",
         "Ready to support SEO, AEO, GEO and paid campaigns"
       ],
-      image: "/responsive-website-design-on-multiple-devices-lapt.jpg",
+      image: "/images/WEBSITE DEVELOPMENT.jpg",
       colorClass: "green"
     },
     {
@@ -41,7 +40,7 @@ const Services = () => {
         "Clear positioning",
         "Engagement strategies that build trust"
       ],
-      image: "/social-media-marketing.jpg",
+      image: "/images/Social media.jpg",
       colorClass: "dark-blue"
     },
     {
@@ -54,7 +53,7 @@ const Services = () => {
         "Long-term organic presence",
         "Searchable, structured, and sustainable."
       ],
-      image: "/seo-services-illustration.jpg",
+      image: "/images/seo.jpg",
       colorClass: "gold"
     },
     {
@@ -66,7 +65,7 @@ const Services = () => {
         "Blogs, landing pages, and campaign copy that converts",
         "Creative storytelling backed by business clarity"
       ],
-      image: "/content-marketing-illustration.jpg",
+      image: "/images/Content marketing.jpg",
       colorClass: "pink"
     },
     {
@@ -90,6 +89,7 @@ const Services = () => {
         <div className="services-header scroll-reveal">
           <span className="services-badge">● Our Services That Drive Success</span>
           <h2 className="services-title">Creative Execution backed by Clear Strategy.</h2>
+
         </div>
 
         <div className="services-cards-wrapper scroll-reveal delay-2">

@@ -10,6 +10,7 @@ import Review from "../components/review"
 import Why_choose_us from "../components/why_choose_us"
 import Blog from "../components/blog"
 import Ai_showcase from "../components/ai_showcase"
+import Ai_visibility from "../components/ai_visibility"
 import Industries from "../components/industries"
 import Achievements from "../components/achievements"
 
@@ -21,6 +22,7 @@ const stackedSections = [
     { id: "portfolio",  el: <Portfolio /> },  
   { id: "why-us",     el: <Why_choose_us /> },
   { id: "ai",         el: <Ai_showcase /> },
+  { id: "ai-visibility", el: <Ai_visibility /> },
   { id: "industries", el: <Industries /> },
   { id: "achieve",    el: <Achievements /> },
   { id: "review",     el: <Review /> },
