@@ -24,15 +24,15 @@ const Who_we_are = () => {
             <div className="who-we-are-header scroll-reveal">
                 <span className="who-we-are-badge">● Who We Are</span>
                 <h2 className="who-we-are-title">
-                    We help
+                    Creative Digital 
                     <span>
                         <img src="https://paimage.picode.in/aivora/php/assets/img/icon/original-66948a0d81d.gif" alt='image' />
                     </span>
-                    businesses grow and
+                   Marketing, Designed Around 
                     <span>
                         <img src="https://paimage.picode.in/aivora/php/assets/img/icon/0deec720000b2066289b.gif" alt='image' />
                     </span>
-                    scale with smart, data-driven AI agency
+                    Business Goals.
                     <span>
                         <img src="https://paimage.picode.in/aivora/php/assets/img/icon/b10c3e43e836d32554bf.gif" alt='image' />
                     </span>

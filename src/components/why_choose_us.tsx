@@ -9,38 +9,38 @@ const Why_choose_us = () => {
 
     const chooseUsData = [
       {
-        title: "Results-Driven Solutions",
-        description: "We target meaningful outcomes, ensuring that our efforts align with your core business goals—whether it's boosting traffic, increasing engagement, or driving conversions.",
+        title: "Understanding",
+        description: "We learn about your business, goals, and current challenges.",
         image: "https://i.ibb.co/DPbJVvF2/result-driven.png"
       },
       {
-        title: "Technical Expertise",
-        description: "Our team brings strong technical knowledge across modern web technologies, performance optimization, and ad platforms. This ensures fast, secure, and scalable solutions.",
+        title: "Planning",
+        description: "We outline a strategy customized to your stage of growth.",
         image: "https://i.ibb.co/4Zr2N06K/technical-expertise.png"
       },
       {
-        title: "Tailored Approaches",
-        description: "Every business is unique, and so are our strategies. We analyze your goals, audience, and challenges to create customized strategies that align perfectly.",
+        title: "Research & Audit",
+        description: "We review your website structure and content presence to identify opportunities and gaps.",
         image: "https://i.ibb.co/VpwzZrz5/tailored-approach.png"
       },
       {
-        title: "Transparent Communication",
-        description: "We value transparency and keep you informed with detailed reports and updates, providing full insight into our progress and results.",
+        title: "Alignment",
+        description: "Messaging, design, and performance goals are aligned across channels.",
         image: "https://i.ibb.co/27NfcskY/communication.png"
       },
       {
-        title: "Advanced Technology",
-        description: "Stay ahead of the competition with our use of the latest digital tools and technologies that accelerate your growth and efficiency.",
+        title: "Monitoring",
+        description: "We track performance consistently through dashboards and reports.",
         image: "https://i.ibb.co/vCv8h0jv/advance-tech.png"
       },
       {
-        title: "Dedicated Support",
-        description: "Our strong client relationships are built on trust. Our support team stands ready to assist, providing expert guidance whenever required.",
+        title: "Executing",
+        description: "We build, launch, and manage with attention to detail.",
         image: "https://i.ibb.co/9mnLJWwH/support.png"
       },
       {
-        title: "Proven Success",
-        description: "Our portfolio of successful projects and satisfied clients demonstrates our commitment to excellence and transformative results.",
+        title: "Improving",
+        description: "We review performance consistently and understand what needs improvement.",
         image: "https://i.ibb.co/4nL9G3Sy/proven-success.png"
       }
     ];
@@ -51,12 +51,10 @@ const Why_choose_us = () => {
                 <div className="choose-us-header scroll-reveal">
                     <span className="choose-us-badge">● Discover Our Advantage</span>
                     <h2 className="choose-us-title">
-                        Maximize Your Growth With <br />
-                        <span className="choose-us-highlight">Expert Digital Strategies</span>
+                        Web development, social media, and <br />
+                        <span className="choose-us-highlight">performance advertising designed to help growing businesses.</span>
                     </h2>
-                    <p className="choose-us-subtitle">
-                        Harness the power of proven methodologies and cutting-edge techniques to elevate your business
-                    </p>
+                   
                 </div>
             </div>
 

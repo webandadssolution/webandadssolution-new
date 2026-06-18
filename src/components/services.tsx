@@ -7,51 +7,80 @@ const Services = () => {
   const services = [
     {
       id: 0,
-      icon: "https://i.ibb.co/xtt30RYz/app-development-2.png",
-      title: "Application Development",
-      description: "Bring your innovative ideas to life with applications that combine functionality and elegance. Our development process is focused on creating seamless user experiences that align with your business goals. Smart architecture and thoughtful design.",
-      image: "/application-development-team-illustration.jpg",
-      colorClass: "purple"
-    },
-    {
-      id: 1,
       icon: "https://i.ibb.co/LhdczyFZ/pay-per-click.png",
-      title: "Pay-Per-Click(PPC) Advertising",
-      description: "Elevate your marketing with PPC campaigns that get results. We design targeted ads that work. We design targeted ads that speak directly to your ideal audience, ensuring every click counts.",
+      title: "Paid Campaigns (PPC)",
+      bullets: [
+        "Google Ads",
+        "Social media ads",
+        "Lead generation funnels",
+        "E-commerce campaigns"
+      ],
       image: "/ppc-advertising-illustration.jpg",
       colorClass: "orange"
     },
     {
-      id: 2,
+      id: 1,
       icon: "https://i.ibb.co/21zRdf3D/development.png",
-      title: "Website Development",
-      description: "Your website is your digital handshake—make it count. We develop sleek, responsive websites. Every detail is meticulously crafted to provide an exceptional user experience and drive conversions. Fast, flexible, and optimized for every screen.",
+      title: "Websites Design & Development",
+      bullets: [
+        "Fast and mobile-friendly",
+        "Structured around user experience",
+        "Built with conversion in mind",
+        "Ready to support SEO, AEO, GEO and paid campaigns"
+      ],
       image: "/responsive-website-design-on-multiple-devices-lapt.jpg",
       colorClass: "green"
     },
     {
-      id: 3,
+      id: 2,
       icon: "https://i.ibb.co/mr1rjry4/SMO.png",
-      title: "Social Media Optimization (SMO)",
-      description: "Transform your social media platforms into dynamic communities. Our SMO strategies boost presence. Our strategies are designed to boost your brand's presence, turning every post into an opportunity for engagement.",
+      title: "Social Media",
+      bullets: [
+        "Defined content themes",
+        "Thoughtful design",
+        "Clear positioning",
+        "Engagement strategies that build trust"
+      ],
       image: "/social-media-marketing.jpg",
       colorClass: "dark-blue"
     },
     {
-      id: 4,
+      id: 3,
       icon: "https://i.ibb.co/3mBHsC3n/seo-2.png",
       title: "Search Engine Optimization (SEO)",
-      description: "Imagine your business popping up exactly when customers need it. That's the magic of our SEO. We craft customized strategies that improve your search rankings, bringing you the visibility you need to grow.",
+      bullets: [
+        "Search strategies that improve visibility",
+        "Keyword alignment and on-page optimization",
+        "Long-term organic presence",
+        "Searchable, structured, and sustainable."
+      ],
       image: "/seo-services-illustration.jpg",
       colorClass: "gold"
     },
     {
-      id: 5,
+      id: 4,
       icon: "https://i.ibb.co/rfxzD8Hx/content-creation.png",
       title: "Content Marketing",
-      description: "Engage and educate your audience with content that sparks interest and fosters trust. Our content marketing strategies turn your brand's message into compelling stories that connect with your audience's needs and desires.",
+      bullets: [
+        "Content that supports the entire funnel",
+        "Blogs, landing pages, and campaign copy that converts",
+        "Creative storytelling backed by business clarity"
+      ],
       image: "/content-marketing-illustration.jpg",
       colorClass: "pink"
+    },
+    {
+      id: 5,
+      icon: "/images/tech-wave.png",
+      title: "AEO & GEO",
+      bullets: [
+        "Optimize content for featured snippets, direct answers, and zero-click searches",
+        "Structure pages around real user questions and conversational intent",
+        "Improve visibility in voice search and AI-driven search experiences",
+        "Future-proof your brand's visibility beyond traditional search rankings"
+      ],
+      image: "/seo-services-illustration.jpg",
+      colorClass: "amber"
     }
   ]
 
@@ -60,19 +89,20 @@ const Services = () => {
       <div className="services-container">
         <div className="services-header scroll-reveal">
           <span className="services-badge">● Our Services That Drive Success</span>
-          <h2 className="services-title">360° Digital Marketing Innovation</h2>
-          <p className="services-subtitle">
-            Transform your brand's digital footprint and achieve excellence with our comprehensive marketing approach
-          </p>
+          <h2 className="services-title">Creative Execution backed by Clear Strategy.</h2>
         </div>
 
         <div className="services-cards-wrapper scroll-reveal delay-2">
           {services.map((service, index) => (
             <div key={service.id} className={`service-card-wrapper card-fan-${index}`}>
-              <div className="service-card">
+              <div className={`service-card card-bg-${service.colorClass}`}>
                 <div className="services-card-top-content">
                   <h3 className="services-card-title">{service.title}</h3>
-                  <p className="services-card-desc">{service.description}</p>
+                  <ul className="services-card-bullets">
+                    {service.bullets.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className="services-card-bottom-area">

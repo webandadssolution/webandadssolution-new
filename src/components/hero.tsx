@@ -1,5 +1,4 @@
 "use client"
-
 import { useRef, useLayoutEffect } from "react"
 import type { MouseEvent as ReactMouseEvent } from "react"
 import gsap from "gsap"
@@ -76,36 +75,33 @@ const Hero = () => {
         <div className="hero-text-wrapper">
           <div className="hero-badge">
             <span className="badge-dot" />
-            <span className="badge-text">Web & Ads Solutions</span>
+            <span className="badge-text">Web & Ads Solution</span>
           </div>
 
           <h1 className="hero-title">
             <span className="hero-line">
-              <span className="word-mask"><span className="hero-word font-light">Step</span></span>
+              <span className="word-mask"><span className="hero-word font-light">Creative</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-light">into</span></span>
+              <span className="word-mask"><span className="hero-word font-light">Digital</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-light">the</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-accent">Future</span></span>
+              <span className="word-mask"><span className="hero-word font-bold text-accent">Marketing,</span></span>
             </span>
             <span className="hero-line hero-title-line2">
-              <span className="word-mask"><span className="hero-word font-bold">of</span></span>
+              <span className="word-mask"><span className="hero-word font-bold">Designed</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">Web</span></span>
+              <span className="word-mask"><span className="hero-word font-bold">Around</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">&amp;</span></span>
+              <span className="word-mask"><span className="hero-word font-bold">Your</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">Ads</span></span>
+              <span className="word-mask"><span className="hero-word font-bold">Business</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-growth">Growth</span></span>
+              <span className="word-mask"><span className="hero-word font-bold text-growth">Goals</span></span>
               <span className="hero-period">.</span>
             </span>
           </h1>
 
           <p className="hero-subtitle">
-            Maximize your potential with a powerful agency built to shape the future of digital presence.
-            We deliver next-generation development and advertising strategies that drive measurable results.
+            Web development, social media, and performance advertising designed to help growing businesses.
           </p>
 
           <div className="cta-buttons">
@@ -113,13 +109,13 @@ const Hero = () => {
               className="cta-button-primary"
               onClick={() => document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Get Started Free &nbsp;→
+              Book a Strategy Call &nbsp;→
             </button>
             <button
               className="cta-button-secondary"
               onClick={() => document.querySelector('.services-section')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              View Our Work
+              Explore Our Services
             </button>
           </div>
         </div>

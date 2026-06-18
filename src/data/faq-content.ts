@@ -60,6 +60,26 @@ export const seoFaqs: Faq[] = [
     q: "How do I know if my SEO is working?",
     a: "You'll receive monthly reports with keyword ranking movements, organic traffic trends, conversion data, and a breakdown of tasks completed — fully transparent and jargon-free.",
   },
+  {
+    q: "How long does SEO take to show results?",
+    a: "SEO is a gradual process. While some improvements may appear early, consistent and sustainable growth typically develops over several months, depending on your industry and competition.",
+  },
+  {
+    q: "Should I choose SEO or paid advertising?",
+    a: "Both serve different purposes. Paid ads can deliver quicker visibility, while SEO supports long-term organic growth. The right mix depends on your goals and timeline.",
+  },
+  {
+    q: "Do you offer local and international SEO?",
+    a: "Yes. We tailor strategies based on where your audience is searching, whether that's a specific region or a broader global market.",
+  },
+  {
+    q: "How do you measure SEO performance?",
+    a: "We track metrics such as organic traffic, keyword movement, and conversions, supported by transparent reporting and dashboards.",
+  },
+  {
+    q: "Is SEO still relevant with AI-driven search?",
+    a: "Search continues to evolve, but visibility remains essential. Modern SEO includes preparing content for conversational and AI-influenced search experiences.",
+  },
 ]
 
 export const contentMarketingFaqs: Faq[] = [

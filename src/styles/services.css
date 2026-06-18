@@ -48,13 +48,13 @@
   position: relative;
   width: 100%;
   max-width: 1400px;
-  height: 680px;
+  height: 700px;
   margin: 0 auto;
 }
 
 .service-card-wrapper {
   width: 312px;
-  height: 460px;
+  height: 480px;
   position: absolute;
   transform-origin: bottom center;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -66,6 +66,7 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -78,9 +79,6 @@
   transform: rotate(-5.47deg);
   z-index: 0;
 }
-.card-fan-0 .service-card {
-  background-color: #6c25f7;
-}
 
 .card-fan-0:hover{
     transform: rotate(0deg)  translate(-100px, 10px);}
@@ -90,9 +88,6 @@
   top: 140px;
   transform: rotate(-4.36deg);
   z-index: 1;
-}
-.card-fan-1 .service-card {
-  background-color: #0055cc;
 }
 
 .card-fan-1:hover{
@@ -104,9 +99,6 @@ transform: rotate(0deg) translate(-80px, 26px);}
   transform: rotate(13.3deg);
   z-index: 2;
 }
-.card-fan-2 .service-card {
-  background-color: #0cb666;
-}
 .card-fan-2:hover{
     transform: rotate(0deg)  translate(20px, 30px);
 }
@@ -115,9 +107,6 @@ transform: rotate(0deg) translate(-80px, 26px);}
   top: 100px;
   transform: rotate(-30deg);
   z-index: 4;
-}
-.card-fan-3 .service-card {
-  background-color: #0d6efd;
 }
 .card-fan-3:hover{
     transform: rotate(0deg) translate(-140px, -10px);
@@ -128,9 +117,6 @@ transform: rotate(0deg) translate(-80px, 26px);}
   transform: rotate(7.09deg);
   z-index: 5;
 }
-.card-fan-4 .service-card {
-  background-color: #00a2c2;
-}
 .card-fan-4:hover{
     transform: rotate(0deg) translate(-30px, 20px);
 }
@@ -140,12 +126,19 @@ transform: rotate(0deg) translate(-80px, 26px);}
   transform: rotate(43deg);
   z-index: 6;
 }
-.card-fan-5 .service-card {
-  background-color: #ff0084;
-}
 .card-fan-5:hover{
     transform: rotate(0deg) translate(130px, 150px);
 }
+
+/* Card background colors — keyed by colorClass so they travel with the
+   content instead of the fan position */
+.card-bg-purple { background-color: #6c25f7; }
+.card-bg-orange { background-color: #0055cc; }
+.card-bg-green { background-color: #0cb666; }
+.card-bg-dark-blue { background-color: #0d6efd; }
+.card-bg-gold { background-color: #00a2c2; }
+.card-bg-pink { background-color: #ff0084; }
+.card-bg-amber { background-color: #d97706; }
 
 /* Colors matching inspiration */
 .card-icon-purple {
@@ -178,10 +171,18 @@ transform: rotate(0deg) translate(-80px, 26px);}
     background-color: #b5035f;
 }
 
+.card-icon-amber {
+    border-color: #d97706;
+    background-color: #92400e;
+}
+
 .services-card-top-content {
-  padding: 30px 22px;
+  padding: 24px 20px 0;
   flex-grow: 1;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .services-card-title {
@@ -195,6 +196,32 @@ transform: rotate(0deg) translate(-80px, 26px);}
   color: white;
   font-size: 15px;
   line-height: 1.5;
+}
+
+.services-card-bullets {
+  list-style: none;
+  color: white;
+  font-size: 13.5px;
+  line-height: 1.4;
+  text-align: left;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.services-card-bullets li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 5px;
+}
+
+.services-card-bullets li::before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  font-size: 6px;
+  color: #f06820;
 }
 
 /* Perfect Seam Icon Circle */
@@ -226,7 +253,7 @@ transform: rotate(0deg) translate(-80px, 26px);}
 
 .services-card-image-container {
   width: calc(100% - 24px);
-  height: 190px;
+  height: 165px;
   overflow: hidden;
   border-radius: 0px 0px 18px 18px;
   margin: 0 auto 12px;
@@ -336,7 +363,8 @@ transform: rotate(0deg) translate(-80px, 26px);}
     top: 0 !important;
     transform: none !important;
     width: 100%;
-    height: 490px;
+    height: auto;
+    min-height: 490px;
   }
 
   .service-card-wrapper:hover .service-card {
