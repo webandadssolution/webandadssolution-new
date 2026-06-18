@@ -2,6 +2,7 @@ import React from "react"
 import "../styles/services.css"
 
 const Services = () => {
+  // --scroll-ratio is now driven by GSAP ScrollTrigger in gsap_effects.js
 
   const services = [
     {
