@@ -25,8 +25,6 @@ const Header = () => {
       setActiveNav("Blogs")
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
-    } else if (pathname.startsWith("/package")) {
-      setActiveNav("Packages")
     }
   }, [pathname])
 
@@ -39,7 +37,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = ["Home", "AboutUs", "Blogs", "Services", "Locations", "Industry", "Packages"]
+  const navItems = ["Home", "AboutUs", "Blogs", "Services", "Locations", "Industry"]
 
   const dropdownData: Record<string, string[]> = {
     Services: [
@@ -57,7 +55,6 @@ const Header = () => {
     Industry: [
       "Casino SEO", "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
     ],
-    Packages: ["Web Packages", "SMO Packages", "SEO Packages", "PPC Packages"],
   }
 
   const handleNavClick = (item: string) => {
@@ -105,7 +102,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               {(() => {
-                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog", Packages: "/packages" }
+                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog" }
                 const to = navRoutes[item]
                 return to ? (
                   <Link
@@ -155,10 +152,6 @@ const Header = () => {
                           "Social Media Optimization (SMO)":        "/services/smo",
                           "Website Development":                    "/services/web-development",
                           "Virtual Assistant Services":             "/services/virtual-assistant",
-                          "Web Packages":                           "/package/web-usd",
-                          "SMO Packages":                           "/package/smo-usd",
-                          "SEO Packages":                           "/package/seo-usd",
-                          "PPC Packages":                           "/package/ppc-usd",
                         }
                         const to = serviceRoutes[option]
                         return to ? (
@@ -213,7 +206,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className={`nav-mobile ${isMenuOpen ? "open" : ""}`}>
         {navItems.map((item) => {
-          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog", Packages: "/packages" }
+          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog" }
           const to = mobileRoutes[item]
           return to ? (
             <Link

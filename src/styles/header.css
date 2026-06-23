@@ -25,6 +25,9 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   animation: slideDownFloating 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 @keyframes slideDownFloating {
@@ -56,6 +59,7 @@
   justify-content: space-between;
   gap: 24px;
   transition: height 0.4s ease;
+  flex-shrink: 0;
 }
 
 .header.scrolled .header-container {
@@ -88,6 +92,7 @@
   justify-content: center;
   gap: 4px;
   flex: 1;
+  min-width: 0; /* allow shrinking instead of forcing overflow */
 }
 
 .nav-item-wrapper {
@@ -107,6 +112,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  white-space: nowrap;
 }
 
 .nav-link::before {
@@ -243,9 +249,10 @@
   font-weight: 600;
   font-size: 13px;
   font-family: 'Space Grotesk', sans-serif;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.25s ease;
   letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .header-cta-outline:hover {
@@ -265,10 +272,11 @@
   font-weight: 700;
   font-size: 13px;
   font-family: 'Space Grotesk', sans-serif;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.25s ease;
   letter-spacing: 0.3px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
 }
 
 .header-cta-button:hover {
@@ -358,6 +366,7 @@
   max-height: 520px;
   opacity: 1;
   padding: 16px 0;
+  overflow-y: auto;
 }
 
 .nav-link-mobile {
@@ -411,13 +420,34 @@
   }
 }
 
+/* NEW: tablet-range fix — shrink nav before the mobile menu kicks in,
+   so 6 items + dropdown arrows never overlap/clip on laptops & tablets */
 @media (max-width: 1100px) {
   .header-cta-outline {
     display: none;
   }
+  .nav-link {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+  .nav-desktop {
+    gap: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-link {
+    padding: 7px 9px;
+    font-size: 12.3px;
+  }
 }
 
 @media (max-width: 768px) {
+  .header {
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    border-radius: 26px;
+  }
   .header-cta-button {
     display: none;
   }
@@ -427,6 +457,8 @@
   .header-container {
     padding: 0 16px;
     height: 58px;
+    gap: 16px;
+    justify-content: space-between;
   }
   .header.scrolled .header-container {
     height: 54px;
@@ -440,10 +472,56 @@
   .logo {
     height: 36px;
   }
+  .right-section {
+    gap: 8px;
+  }
+  .theme-toggle-btn,
+  .menu-toggle-always {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+  }
+  .menu-toggle-always {
+    padding: 10px;
+  }
 }
 
 @media (max-width: 480px) {
+  .header {
+    width: calc(100% - 16px);
+    max-width: calc(100% - 16px);
+    border-radius: 22px;
+  }
+  .header-container {
+    padding: 0 10px;
+    gap: 10px;
+  }
+  .right-section {
+    gap: 6px;
+  }
   .logo {
-    height: 32px;
+    height: 30px;
+  }
+  .theme-toggle-btn,
+  .menu-toggle-always {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+  .menu-toggle-always {
+    padding: 9px;
+  }
+  .menu-toggle-always span {
+    width: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-container {
+    padding: 0 8px;
+    gap: 8px;
+  }
+  .logo {
+    height: 26px;
   }
 }

@@ -1,19 +1,12 @@
-import type { Metadata } from "next"
-import PackagesHubPage from "../../views/packages-hub-page"
+import type { Metadata } from "next";
+import PackagesLandingPage from "../../views/packages-landing-page";
 
 export const metadata: Metadata = {
-  title: "Pricing Packages",
-  description:
-    "Pick a service to see plans, pricing, and what's included. Transparent digital marketing packages for SEO, SMO, web, and PPC.",
+  title: "Packages",
   alternates: { canonical: "/packages" },
-  openGraph: {
-    title: "Pricing Packages | Web and Ads Solutions",
-    description:
-      "Pick a service to see plans, pricing, and what's included. Transparent digital marketing packages for SEO, SMO, web, and PPC.",
-    url: "/packages",
-  },
-}
+  robots: { index: false, follow: false },
+};
 
 export default function Page() {
-  return <PackagesHubPage />
+  return <PackagesLandingPage />;
 }
