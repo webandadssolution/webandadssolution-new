@@ -11,37 +11,37 @@ const Why_choose_us = () => {
       {
         title: "Understanding",
         description: "We learn about your business, goals, and current challenges.",
-        image: "https://i.ibb.co/DPbJVvF2/result-driven.png"
+        image: "images/Understanding.jpg"
       },
       {
         title: "Planning",
         description: "We outline a strategy customized to your stage of growth.",
-        image: "https://i.ibb.co/4Zr2N06K/technical-expertise.png"
+        image: "images/Planning.jpg"
       },
       {
         title: "Research & Audit",
         description: "We review your website structure and content presence to identify opportunities and gaps.",
-        image: "https://i.ibb.co/VpwzZrz5/tailored-approach.png"
+        image: "images/Research & Audit.jpg"
       },
       {
         title: "Alignment",
         description: "Messaging, design, and performance goals are aligned across channels.",
-        image: "https://i.ibb.co/27NfcskY/communication.png"
+        image: "images/Alignment.jpg"
       },
       {
         title: "Monitoring",
         description: "We track performance consistently through dashboards and reports.",
-        image: "https://i.ibb.co/vCv8h0jv/advance-tech.png"
+        image: "images/Monitoring.jpg"
       },
       {
         title: "Executing",
         description: "We build, launch, and manage with attention to detail.",
-        image: "https://i.ibb.co/9mnLJWwH/support.png"
+        image: "images/Executing.jpg"
       },
       {
         title: "Improving",
         description: "We review performance consistently and understand what needs improvement.",
-        image: "https://i.ibb.co/4nL9G3Sy/proven-success.png"
+        image: "images/Improving.jpg"
       }
     ];
 
@@ -68,7 +68,7 @@ const Why_choose_us = () => {
                     >
                         <div
                             className="panel-bg"
-                            style={{ backgroundImage: `url(${item.image})` }}
+                            style={{ backgroundImage: `url("${item.image}")` }}
                         ></div>
                         <div className="panel-overlay"></div>
 

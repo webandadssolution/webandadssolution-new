@@ -30,7 +30,7 @@ const Industries = () => {
     {
       name: "Technology",
       tag: "SaaS & Apps",
-      icon: "/home-icon/technology-icon.png",
+      icon: "/home-icon/Technology.png",
     },
   ];
 

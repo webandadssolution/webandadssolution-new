@@ -58,7 +58,7 @@
 }
 
 .scroller-animation {
-    animation: infiniteScroll 45s linear infinite;
+    animation: infiniteScroll 90s linear infinite;
 }
 
 @keyframes infiniteScroll {

@@ -182,11 +182,20 @@
 .footer-center-col { display: flex; justify-content: center; }
 
 .footer-cert-wrapper {
+  display: block;
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 15px;
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-cert-wrapper:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.4);
 }
 
 .footer-center-cert-img {

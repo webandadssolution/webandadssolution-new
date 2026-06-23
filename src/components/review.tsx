@@ -7,7 +7,7 @@ const reviews = [
         text: "Nash and Yukta have truly become an invaluable part of both Bevilacqua Deck Building and Bevilacqua Homes. From day one, they brought a level of professionalism and care that you don't always find and it shows in everything they do.",
         name: "Anthony Bevilacqua",
         role: "United States",
-        image: "https://i.pravatar.cc/150?u=anthony-bevilacqua"
+        image: "images/New Project (29) (1).png"
     },
     {
         rating: 5.0,

@@ -1,19 +1,52 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import "../styles/ai_showcase.css"
 
-const Ai_showcase = () => {
-    const dataItems = [
-        { verb: "GET", code: "200", url: "/users/d72d9c38-f0d7-32b6-8c53-508d21343454/1", color: "green" },
-        { verb: "DELETE", code: "500", url: "/users/d72d9c38-f0d7-32b6-8c53-508d21343454/1", color: "red" },
-        { verb: "POST", code: "300", url: "/users/d72d9c38-f0d7-32b6-8c53-508d21343454/1", color: "blue" },
-        { verb: "POST", code: "200", url: "/users/d72d9c38-f0d7-32b6-8c53-508d21343454/1", color: "green" },
-        { verb: "DELETE", code: "500", url: "/users/d72d9c38-f0d7-32b6-8c53-508d21343454/1", color: "red" },
-    ];
+type DataItem = { verb: string; code: string; url: string; color: "green" | "red" | "blue" }
 
-    const Column = ({ speed, delay }: { speed: string; delay: string }) => (
+const dataPool: DataItem[] = [
+    { verb: "GET",    code: "200", url: "/users/8a3f1c2e-77b0-4d91/profile",      color: "green" },
+    { verb: "POST",   code: "201", url: "/campaigns/2b6e9d44-19aa-4cf2/create",   color: "green" },
+    { verb: "DELETE", code: "500", url: "/sessions/f0a7c318-5d2b-49ee/revoke",    color: "red" },
+    { verb: "PUT",    code: "204", url: "/ads/9c4d2b71-3e88-46af/update",         color: "blue" },
+    { verb: "POST",   code: "300", url: "/leads/61fa8e02-bb14-4d6c/route",        color: "blue" },
+    { verb: "GET",    code: "200", url: "/analytics/3d9b5c10-7a44-4e2f/report",   color: "green" },
+    { verb: "DELETE", code: "404", url: "/cache/aa12f6e3-90cd-4b8a/purge",        color: "red" },
+    { verb: "POST",   code: "200", url: "/payments/e75c2a9f-1086-4dd1/capture",   color: "green" },
+    { verb: "PATCH",  code: "300", url: "/audience/5b8e0d27-cc41-4a93/segment",   color: "blue" },
+    { verb: "GET",    code: "200", url: "/insights/d04c9a6b-2e57-4f18/fetch",     color: "green" },
+    { verb: "DELETE", code: "500", url: "/queue/772b4f1e-a93c-40d6/clear",        color: "red" },
+    { verb: "POST",   code: "201", url: "/keywords/c19e6a02-5f37-48bb/index",     color: "green" },
+    { verb: "PUT",    code: "300", url: "/budgets/0e8d3c91-447a-4ab2/sync",       color: "blue" },
+    { verb: "GET",    code: "200", url: "/reports/b6f2a805-8e19-4dc3/export",     color: "green" },
+    { verb: "DELETE", code: "404", url: "/drafts/4a91c7d0-6b2e-4f55/discard",     color: "red" },
+]
+
+const rotate = (offset: number, count: number) =>
+    Array.from({ length: count }, (_, i) => dataPool[(offset + i) % dataPool.length])
+
+const Ai_showcase = () => {
+    const [reqPerSec, setReqPerSec] = useState(1240)
+    const [latency, setLatency] = useState(42)
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setReqPerSec((v) => Math.min(1860, Math.max(960, v + Math.round((Math.random() - 0.5) * 90))))
+            setLatency((v) => Math.min(68, Math.max(24, v + Math.round((Math.random() - 0.5) * 10))))
+        }, 1300)
+        return () => clearInterval(id)
+    }, [])
+
+    const Column = ({ items, speed, delay }: { items: DataItem[]; speed: string; delay: string }) => (
         <div className="ai-column-wrapper">
             <div className="ai-column-track" style={{ animationDuration: speed, animationDelay: delay }}>
-                {[...dataItems, ...dataItems, ...dataItems].map((item, idx) => (
-                    <div key={idx} className={`ai-data-card ${item.color}`}>
+                {[...items, ...items, ...items].map((item, idx) => (
+                    <div
+                        key={idx}
+                        className={`ai-data-card ${item.color}`}
+                        style={{ animationDelay: `${(idx % items.length) * 0.3}s` }}
+                    >
                         <span className="ai-code">{item.code}</span>
                         <span className="ai-verb">{item.verb}</span>
                         <span className="ai-url">{item.url}</span>
@@ -25,6 +58,7 @@ const Ai_showcase = () => {
 
     return (
         <section className="ai-showcase-section">
+            <div className="ai-grid-overlay" />
             <div className="ai-side-line ai-side-line-left" />
             <div className="ai-side-line ai-side-line-right" />
 
@@ -32,9 +66,33 @@ const Ai_showcase = () => {
                 <div className="ai-showcase-header scroll-reveal">
                     <span className="ai-showcase-badge">● Professional & Trust-Building</span>
                     <h2 className="ai-showcase-title">Real-time AI for smarter business</h2>
+
+                    <div className="ai-metrics-bar">
+                        <span className="ai-metrics-live">
+                            <span className="ai-metrics-dot" />
+                            Live
+                        </span>
+                        <span className="ai-metrics-item"><strong>{reqPerSec.toLocaleString()}</strong> req/s</span>
+                        <span className="ai-metrics-item"><strong>{latency}ms</strong> avg latency</span>
+                        <span className="ai-metrics-item"><strong>99.98%</strong> uptime</span>
+                    </div>
                 </div>
 
                 <div className="ai-visual-wrapper scroll-reveal scale-in delay-2">
+                    <div className="ai-particles">
+                        {Array.from({ length: 14 }, (_, i) => (
+                            <span
+                                key={i}
+                                className="ai-particle"
+                                style={{
+                                    left: `${(i * 7.3) % 100}%`,
+                                    animationDuration: `${5 + (i % 5)}s`,
+                                    animationDelay: `${i * 0.4}s`,
+                                }}
+                            />
+                        ))}
+                    </div>
+
                     <div className="ai-scan-zone">
                         <div className="ai-scanner-beam">
                             <img src="https://paimage.picode.in/aivora/php/assets/img/industries/gradient02.png" alt="scanner" />
@@ -42,11 +100,11 @@ const Ai_showcase = () => {
                     </div>
 
                     <div className="ai-streams-container">
-                        <Column speed="2s" delay="0s" />
-                        <Column speed="3.5s" delay="-4s" />
-                        <Column speed="4.5s" delay="-8s" />
-                        <Column speed="3s" delay="-2s" />
-                        <Column speed="4s" delay="-10s" />
+                        <Column items={rotate(0, 5)}  speed="2s"   delay="0s" />
+                        <Column items={rotate(3, 5)}  speed="3.5s" delay="-4s" />
+                        <Column items={rotate(6, 5)}  speed="4.5s" delay="-8s" />
+                        <Column items={rotate(9, 5)}  speed="3s"   delay="-2s" />
+                        <Column items={rotate(12, 5)} speed="4s"   delay="-10s" />
                     </div>
 
                     {/* SEPARATE TOP PATHS OVERLAY */}
@@ -91,6 +149,9 @@ const Ai_showcase = () => {
                     </div>
 
                     <div className="ai-central-logo">
+                        <div className="ai-core-glow" />
+                        <div className="ai-core-ring ai-core-ring-outer" />
+                        <div className="ai-core-ring ai-core-ring-inner" />
                         <img src="https://paimage.picode.in/aivora/php/assets/img/industries/indus-logo.png" alt="AI Center" />
                     </div>
                 </div>
