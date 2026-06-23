@@ -14,76 +14,82 @@ const Our_team = () => {
     img: "/team/aashtha.jpg",
   },
   {
-    name: "Abhishek",
-    designation: "Content Writer",
-    img: "/team/Abhishek.png",
-  },
-  {
-    name: "Aman",
-    designation: "SEO Manger",
-    img: "/team/aman.png",
-  },
-  {
-    name: "Amit",
-    designation: "Head of Developer",
-    img: "/team/Amit.png",
-  },
-  {
-    name: "Ashish",
-    designation: "Excutive SEO Manger",
-    img: "/team/Ashish.png",
-  },
-  {
-    name: "Ayush",
-    designation: "Business Development Executive",
-    img: "/team/Ayush.png",
-  },
-
-  {
-    name: "Musaraf",
-    designation: "Developer",
-    img: "/team/Musaaraf.png",
-  },
-  {
-    name: "Nash",
-    designation: "Sales Manager",
-    img: "/team/nash.png",
-  },
-  {
-    name: "Nicki",
-    designation: "Sales Head",
-    img: "/team/nicki.png",
-  },
-  {
-    name: "Rekha",
-    designation: "SEO Executive",
-    img: "/team/rekha.png",
-  },
-  {
     name: "Shivam",
     designation: "Vice President",
     img: "/team/shivam.png",
-  },
-  {
-    name: "Simi",
-    designation: "Project Manager",
-    img: "/team/simi.png",
-  },
-  {
-    name: "Sumit",
-    designation: " Senior Developer",
-    img: "/team/Sumit.png",
   },
   {
     name: "Shruti",
     designation: "Chief Financial Officer",
     img: "/team/shruti.png",
   },
-    {
+
+ {
     name: "Ikra",
     designation: "HR Executive",
     img: "/team/ikra.png",
   },
+
+{
+    name: "Nicki",
+    designation: "Sales Head",
+    img: "/team/nicki.png",
+  },
+{
+    name: "Nash",
+    designation: "Sales Manager",
+    img: "/team/nash.png",
+  },
+
+
+
+  
+  {
+    name: "Amit",
+    designation: "Head of Developer",
+    img: "/team/Amit.png",
+  },
+ {
+    name: "Sumit",
+    designation: " Senior Developer",
+    img: "/team/Sumit.png",
+  },
+  {
+    name: "Musaraf",
+    designation: "Developer",
+    img: "/team/Musaaraf.png",
+  },
+  
+  {
+    name: "Simi",
+    designation: "Project Manager",
+    img: "/team/simi.png",
+  },
+  {
+    name: "Ayush",
+    designation: "BDM",
+    img: "/team/Ayush.png",
+  },
+
+  
+  
+  
+  {
+    name: "Ashish",
+    designation: "Excutive SEO Manger",
+    img: "/team/Ashish.png",
+  },
+  
+  {
+    name: "Rekha",
+    designation: "SEO Executive",
+    img: "/team/rekha.png",
+  },
+  
+  
+ 
+  
+   
   {
     name: "Vatsla",
     designation: "SEO Executive",
@@ -98,6 +104,16 @@ const Our_team = () => {
     name: "Yukta",
     designation: "Virtual Assistant",
     img: "/team/yukta.png",
+  },
+  {
+    name: "Abhishek",
+    designation: "Head of Content ",
+    img: "/team/Abhishek.png",
+  },
+  {
+    name: "Aman",
+    designation: "SEO Manger",
+    img: "/team/aman.png",
   },
 ];
 

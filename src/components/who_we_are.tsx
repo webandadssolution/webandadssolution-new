@@ -2,8 +2,9 @@ import "../styles/who_we_are.css"
 
 const Who_we_are = () => {
   const images = [
-    "images/New Project (29).png",
+    
     "images/New Project (24).png",
+    "images/New Project (29).png",
     "images/New Project (25).png",
     "images/New Project (26).png",
     "images/New Project (27).png",
