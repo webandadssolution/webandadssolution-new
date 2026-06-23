@@ -53,7 +53,7 @@ const Header = () => {
       "Argentina", "Atlanta", "Austin, Texas", "Barcelona", "Berlin", "Boston", "Brazil", "Charlotte", "Chicago", "Colombia", "Columbus, Ohio", "Costa Rica", "Dallas", "Denver", "Detroit", "Dubai", "Fort Worth, Texas", "Geneva", "Honduras", "Houston, TX", "Indianapolis", "Indonesia", "Jacksonville", "Las Vegas", "Los Angeles", "Madrid", "Melbourne", "Mexico", "Miami", "Munich", "Nashville", "New York", "Oklahoma", "Philadelphia", "Philippines", "Phoenix", "San Antonio", "San Diego", "San Francisco", "San Jose", "Seattle", "Shanghai", "Singapore", "Toronto", "Uruguay", "Washington", "Zurich",
     ],
     Industry: [
-      "Casino SEO", "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
+      "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
     ],
   }
 
