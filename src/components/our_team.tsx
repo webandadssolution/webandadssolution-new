@@ -1,4 +1,6 @@
-import React from "react"
+"use client"
+
+import React, { useEffect, useRef, useState } from "react"
 import "../styles/our_team.css"
 
 const Our_team = () => {
@@ -144,6 +146,38 @@ const Our_team = () => {
     // Double the array for a seamless infinite scroll effect
     const displayMembers = [...teamMembers, ...teamMembers];
 
+    const trackRef = useRef<HTMLDivElement>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [step, setStep] = useState(299); // fallback: card width + gap
+
+    useEffect(() => {
+        const measure = () => {
+            const track = trackRef.current;
+            const card = track?.querySelector(".team-member-card") as HTMLElement | null;
+            if (!track || !card) return;
+            const gap = parseFloat(getComputedStyle(track).gap || "0");
+            setStep(card.getBoundingClientRect().width + gap);
+        };
+        measure();
+        window.addEventListener("resize", measure);
+        return () => window.removeEventListener("resize", measure);
+    }, []);
+
+    const slide = (direction: 1 | -1) => {
+        setActiveIndex((prev) => {
+            const next = prev + direction;
+            if (next < 0) return teamMembers.length - 1;
+            if (next >= teamMembers.length) return 0;
+            return next;
+        });
+    };
+
+    // Ambient auto-advance, paused while the user is interacting via arrows
+    useEffect(() => {
+        const timer = setInterval(() => slide(1), 3500);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
     <section className="team-section">
       <div className="team-container">
@@ -156,9 +190,29 @@ const Our_team = () => {
         </div>
 
         <div className="team-scroller-viewport scroll-reveal delay-2">
-            <div className="team-grid scroller-animation">
-                {displayMembers.map((member, index) => (
-                    <div key={index} className="team-member-card">
+            <button
+                type="button"
+                className="team-arrow team-arrow-left"
+                aria-label="Previous team member"
+                onClick={() => slide(-1)}
+            >
+                ‹
+            </button>
+            <button
+                type="button"
+                className="team-arrow team-arrow-right"
+                aria-label="Next team member"
+                onClick={() => slide(1)}
+            >
+                ›
+            </button>
+            <div
+                ref={trackRef}
+                className="team-grid"
+                style={{ transform: `translateX(-${activeIndex * step}px)` }}
+            >
+                {displayMembers.map((member, i) => (
+                    <div key={i} className="team-member-card">
                         <div className="image-wrapper">
                             <img src={member.img} alt={member.name} />
                             <div className="team-overlay">

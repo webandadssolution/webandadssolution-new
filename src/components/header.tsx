@@ -20,9 +20,7 @@ const Header = () => {
     } else if (pathname === "/services") {
       setActiveNav("Services")
     } else if (pathname === "/about") {
-      setActiveNav("AboutUs")
-    } else if (pathname === "/blog") {
-      setActiveNav("Blogs")
+      setActiveNav("AboutUs")    
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
     }
@@ -37,7 +35,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = ["Home", "AboutUs", "Blogs", "Services", "Locations", "Industry"]
+  const navItems = ["Home", "AboutUs","Services", "Locations", "Industry"]
 
   const dropdownData: Record<string, string[]> = {
     Services: [
@@ -85,7 +83,7 @@ const Header = () => {
         <div className="logo-section">
           <Link href="/">
             <img
-              src="https://webandadssolution.com/wp-content/uploads/2025/04/new-logo.png"
+              src="https://webandadssolution.net/wp-content/uploads/2025/04/new-logo.png"
               alt="Web and Ads Solutions Logo"
               className="logo"
             />
@@ -102,7 +100,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               {(() => {
-                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog" }
+                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about" }
                 const to = navRoutes[item]
                 return to ? (
                   <Link
@@ -146,12 +144,12 @@ const Header = () => {
                     <div className="dropdown-list">
                       {dropdownData[item].map((option, index) => {
                         const serviceRoutes: Record<string, string> = {
-                          "Search Engine Optimization (SEO)":      "/services/seo",
-                          "Content Marketing":                      "/services/content-marketing",
-                          "Pay-Per-Click (PPC) Advertising":        "/services/ppc",
-                          "Social Media Optimization (SMO)":        "/services/smo",
-                          "Website Development":                    "/services/web-development",
-                          "Virtual Assistant Services":             "/services/virtual-assistant",
+                          "Search Engine Optimization (SEO)":      "#",
+                          "Content Marketing":                      "#",
+                          "Pay-Per-Click (PPC) Advertising":        "#",
+                          "Social Media Optimization (SMO)":        "#",
+                          "Website Development":                    "#",
+                          "Virtual Assistant Services":             "#",
                         }
                         const to = serviceRoutes[option]
                         return to ? (
@@ -185,7 +183,10 @@ const Header = () => {
 
         {/* Right Section - CTA & Menu */}
         <div className="right-section">
-          <button className="header-cta-outline" onClick={() => document.querySelector('.services-section')?.scrollIntoView({ behavior: 'smooth' })}>Our Work</button>
+          <a href="tel:+14374670986" target="_blank" rel="noopener noreferrer" className="header-cta-outline no-underline">
+            Get A Quote
+            </a>
+         
           <button className="header-cta-button" onClick={() => document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' })}>Let's Talk</button>
 
           <ThemeToggle />
@@ -206,7 +207,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className={`nav-mobile ${isMenuOpen ? "open" : ""}`}>
         {navItems.map((item) => {
-          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Blogs: "/blog" }
+          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about" }
           const to = mobileRoutes[item]
           return to ? (
             <Link

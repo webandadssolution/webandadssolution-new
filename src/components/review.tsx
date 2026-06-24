@@ -7,7 +7,7 @@ const reviews = [
         text: "Nash and Yukta have truly become an invaluable part of both Bevilacqua Deck Building and Bevilacqua Homes. From day one, they brought a level of professionalism and care that you don't always find and it shows in everything they do.",
         name: "Anthony Bevilacqua",
         role: "United States",
-        image: "images/New Project (29) (1).png"
+        image: "images/New Project (29) (1).jpg"
     },
     {
         rating: 5.0,
@@ -28,7 +28,7 @@ const reviews = [
         text: "I have worked with website builders before. The web and ads solution people have been outstanding. Always very patient to help me navigate their excellent instructions! They really know the best way to market a brand and my business! Aastha is the project manager. She is marvelous, well spoken and knowledgeable. I ask her to make a change and she gets right on it. Always available and happy to help!",
         name: "Chuck Rogers",
         role: "United States",
-        image: "https://i.pravatar.cc/150?u=chuck-rogers"
+        image: "./client/chuck-rogers.jpg"
     },
     {
         rating: 5.0,
@@ -56,7 +56,7 @@ const reviews = [
         text: "Web and ads solutions was a great choice for me. I was frustrated with former companies and i was lucky to find these guys. I found them to be very knowledgeable, honest, and dependable. I dealt with Aastha and she was sweet, patient and extremely easy to get along with and creative. I would recommend them to anyone.",
         name: "Anthony Calderaio",
         role: "United States",
-        image: "https://i.pravatar.cc/150?u=anthony-calderaio"
+        image: "./client/anthony-calderaio.jpg"
     },
     {
         rating: 5.0,
@@ -84,7 +84,7 @@ const reviews = [
         text: "I was pleased with the work that this company did, the team worked very hard and working with me sending documentation to them, pictures of how I wanted it. They were very understanding. I recommend this company.",
         name: "Jose Cofresi",
         role: "United States",
-        image: "https://i.pravatar.cc/150?u=jose-cofresi"
+        image: "./client/jose-cofresi.jpg"
     },
     {
         rating: 5.0,
@@ -112,14 +112,14 @@ const reviews = [
         text: "It was a great experience with Aastha and her team. We have worked on a big project starting from scratch. If I would have to start all over I would have chosen Aastha again.",
         name: "Ekrem Yilmaz",
         role: "Netherlands",
-        image: "https://i.pravatar.cc/150?u=ekrem-yilmaz"
+        image: "./client/ekrem-yilmaz.jpg"
     },
     {
         rating: 5.0,
         text: "Aastha has been conscientious and detail-oriented at every step of re-creating our website, starting with the eradication of all the malware that had plagued us. She also developed a robust SEO strategy, and has protected our site with strong firewalls.",
         name: "Peter Falk",
         role: "United States",
-        image: "https://i.pravatar.cc/150?u=peter-falk"
+        image: "./client/peter-falk.jpg"
     },
     {
         rating: 5.0,

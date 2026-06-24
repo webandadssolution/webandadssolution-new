@@ -48,6 +48,7 @@
     overflow: hidden;
     width: 100%;
     padding: 60px 0;
+    position: relative;
 }
 
 .team-grid {
@@ -55,15 +56,42 @@
     gap: 39px;
     width: max-content;
     align-items: center;
+    transition: transform 0.6s ease;
 }
 
-.scroller-animation {
-    animation: infiniteScroll 90s linear infinite;
+/* Arrow Controls */
+.team-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(240, 104, 32, 0.3);
+    border-radius: 50%;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-@keyframes infiniteScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.team-arrow:hover {
+    background: #f06820;
+    border-color: #f06820;
+    color: #fff;
+}
+
+.team-arrow-left {
+    left: 10px;
+}
+
+.team-arrow-right {
+    right: 10px;
 }
 
 .team-member-card {

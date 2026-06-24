@@ -72,7 +72,7 @@ const Footer = () => {
                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                    </svg>
                 </span>
-                <a href="tel:+13322635658" className="footer-phone">+1 (332) 263-5658</a>
+                <a href="tel:+14374670986" className="footer-phone">+1 (437) 467-0986</a>
               </div>
               <div className="footer-contact-item">
                 <span className="footer-contact-icon">
@@ -125,13 +125,13 @@ const Footer = () => {
             <div className="footer-link-group">
               <h4 className="footer-group-title">Solutions</h4>
               <ul className="footer-list">
-                <li><Link href="/services/seo"><span className="full-text">Search Engine Optimization (SEO)</span><span className="short-text">SEO</span></Link></li>
-                <li><Link href="/services/smo"><span className="full-text">Social Media Optimization (SMO)</span><span className="short-text">SMO</span></Link></li>
-                <li><Link href="/services/content-marketing"><span className="full-text">Content Marketing</span><span className="short-text">Content</span></Link></li>
-                <li><Link href="/services/web-development"><span className="full-text">Web Development</span><span className="short-text">Web Dev</span></Link></li>
-                <li><Link href="/services/ppc"><span className="full-text">Pay-Per-Click (PPC) Advertising</span><span className="short-text">PPC Ads</span></Link></li>
+                <li><Link href="/"><span className="full-text">Search Engine Optimization (SEO)</span><span className="short-text">SEO</span></Link></li>
+                <li><Link href="/"><span className="full-text">Social Media Optimization (SMO)</span><span className="short-text">SMO</span></Link></li>
+                <li><Link href="/"><span className="full-text">Content Marketing</span><span className="short-text">Content</span></Link></li>
+                <li><Link href="/"><span className="full-text">Web Development</span><span className="short-text">Web Dev</span></Link></li>
+                <li><Link href="/"><span className="full-text">Pay-Per-Click (PPC) Advertising</span><span className="short-text">PPC Ads</span></Link></li>
                 <li><a href="#"><span className="full-text">Application Development</span><span className="short-text">App Dev</span></a></li>
-                <li><Link href="/services/virtual-assistant"><span className="full-text">Virtual Assistant Services</span><span className="short-text">VA Services</span></Link></li>
+                <li><Link href="/"><span className="full-text">Virtual Assistant Services</span><span className="short-text">VA Services</span></Link></li>
               </ul>
             </div>
 
@@ -139,9 +139,8 @@ const Footer = () => {
               <h4 className="footer-group-title">Quick Links</h4>
               <ul className="footer-list">
                 <li><Link href="/about"><span className="full-text">About Us</span><span className="short-text">About</span></Link></li>
-                <li><Link href="/blog"><span className="full-text">Blog & Insights</span><span className="short-text">Blog</span></Link></li>
-                <li><Link href="/contact"><span className="full-text">Contact Us</span><span className="short-text">Contact</span></Link></li>
-                <li><a href="#"><span className="full-text">Casino SEO</span><span className="short-text">Casino SEO</span></a></li>
+                <li><Link href="/"><span className="full-text">Blog & Insights</span><span className="short-text">Blog</span></Link></li>
+                <li><Link href="/contact"><span className="full-text">Contact Us</span><span className="short-text">Contact</span></Link></li>               
                 <li><a href="#"><span className="full-text">SEO For IT Companies</span><span className="short-text">IT SEO</span></a></li>
                 <li><a href="#"><span className="full-text">SEO For Manufacturing</span><span className="short-text">Mfg SEO</span></a></li>
                 <li><a href="#"><span className="full-text">Healthcare SEO Services</span><span className="short-text">Healthcare SEO</span></a></li>

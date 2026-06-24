@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import Link from "next/link"
 import "../styles/sp-base.css"
 import "../styles/about-page.css"
+import Who_we_are from "../components/who_we_are"
+import Our_team from "../components/our_team"
 
 const values = [
   { icon: "🎯", title: "Results First",       desc: "Every strategy we build is tied to measurable business outcomes. Impressions don't pay salaries — results do." },
@@ -12,15 +14,6 @@ const values = [
   { icon: "⚡", title: "Move Fast",            desc: "We move with the urgency your business deserves. Fast execution, rapid iteration, zero bureaucracy." },
   { icon: "🌍", title: "Think Global",         desc: "We've worked across 40+ countries and 20+ industries. A global perspective shapes every local strategy we build." },
   { icon: "❤️", title: "Long-Term Partnership", desc: "We don't churn clients. Our average client relationship is 3+ years because we grow together, not just deliver once." },
-]
-
-const team = [
-  { name: "Nitesh Kumar",    role: "Founder & CEO",           initials: "NK", color: "#f06820" },
-  { name: "Sarah Mitchell",  role: "Head of SEO",             initials: "SM", color: "#0a0a0a" },
-  { name: "Arjun Patel",     role: "Lead Developer",          initials: "AP", color: "#f06820" },
-  { name: "Emily Chen",      role: "PPC Strategist",          initials: "EC", color: "#0a0a0a" },
-  { name: "Marcus Johnson",  role: "Content Director",        initials: "MJ", color: "#f06820" },
-  { name: "Priya Sharma",    role: "Social Media Manager",    initials: "PS", color: "#0a0a0a" },
 ]
 
 const milestones = [
@@ -106,7 +99,7 @@ export default function AboutPage() {
               <span className="ab-section-tag">Our Story</span>
               <h2 className="ab-h2">Started Small.<br />Scaled Globally.</h2>
               <p className="ab-story-text">
-                Web and Ads Solution was born in 2015 in Harrisonville, Missouri — a small office, a big vision, and a belief that every business deserves world-class digital marketing, not just the Fortune 500.
+                Web and Ads Solution was born in 2017 in Harrisonville, Missouri — a small office, a big vision, and a belief that every business deserves world-class digital marketing, not just the Fortune 500.
               </p>
               <p className="ab-story-text">
                 We started with three people and a handful of local clients. Over the next decade, we built a team of 50+ specialists, expanded to serve clients across 40 countries, and developed proven systems for SEO, PPC, content, social media, and web development.
@@ -200,26 +193,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── TEAM ── */}
-      <section className="ab-team-section">
-        <div className="ab-container">
-          <div className="ab-section-header scroll-reveal">
-            <span className="ab-section-tag">Our People</span>
-            <h2 className="ab-h2">The Experts Behind Your Growth</h2>
-            <p className="ab-lead">A team of specialists — not generalists — with deep expertise in every discipline we offer.</p>
-          </div>
-          <div className="ab-team-grid">
-            {team.map((m, i) => (
-              <div key={i} className="ab-team-card scroll-reveal" style={{ animationDelay: `${i * 0.08}s` }}>
-                <div className="ab-team-avatar" style={{ background: m.color }}>
-                  <span className="ab-team-initials">{m.initials}</span>
-                </div>
-                <h3 className="ab-team-name">{m.name}</h3>
-                <p className="ab-team-role">{m.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <Our_team /> 
 
       {/* ── CTA ── */}
       <section className="ab-cta-section">

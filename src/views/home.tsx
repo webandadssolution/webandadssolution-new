@@ -5,7 +5,7 @@ import Stats from "../components/stats"
 import Services from "../components/services"
 import FAQ from "../components/faq"
 import Our_team from "../components/our_team"
-import Portfolio from "../components/portfolio"
+// import Portfolio from "../components/portfolio"
 import Review from "../components/review"
 import Why_choose_us from "../components/why_choose_us"
 import Blog from "../components/blog"
@@ -19,7 +19,7 @@ const stackedSections = [
   { id: "services",   el: <Services /> },
   { id: "team",       el: <Our_team /> },
   { id: "who-we-are", el: <Who_we_are /> },
-    { id: "portfolio",  el: <Portfolio /> },  
+    // { id: "portfolio",  el: <Portfolio /> },  
   { id: "why-us",     el: <Why_choose_us /> },
   { id: "ai",         el: <Ai_showcase /> },
   { id: "ai-visibility", el: <Ai_visibility /> },
