@@ -101,7 +101,7 @@ const Hero = () => {
           </h1>
 
           <p className="hero-subtitle">
-            Web development, social media, and performance advertising designed to help growing businesses.
+            Web development, social media, Ai Visibility and performance advertising designed to help growing businesses.
           </p>
 
           <div className="cta-buttons">

@@ -72,7 +72,11 @@ const Our_team = () => {
   },
 
   
-  
+  {
+    name: "Aman",
+    designation: "Head of SEO",
+    img: "/team/aman.png",
+  },
   
   {
     name: "Ashish",
@@ -111,9 +115,29 @@ const Our_team = () => {
     img: "/team/Abhishek.png",
   },
   {
+    name: "Gargee",
+    designation: "Content Executive",
+    img: "/team/gargee.png",
+  },
+  {
+    name: "Mehak",
+    designation: "Content Executive",
+    img: "/team/mehak.png",
+  },
+  {
     name: "Aman",
-    designation: "SEO Mangager",
-    img: "/team/aman.png",
+    designation: "SEO Executive",
+    img: "/team/aman-e.png",
+  },
+  {
+    name: "Ahmad",
+    designation: " Marketing Head",
+    img: "/team/ahmad.png",
+  },
+  {
+    name: "Murtaza",
+    designation: "Marketing Manager",
+    img: "/team/murtaza.png",
   },
 ];
 
