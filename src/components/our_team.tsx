@@ -9,7 +9,7 @@ const Our_team = () => {
     img: "/team/nitesh.png",
   },
   {
-    name: "Aashtha",
+    name: "Aastha",
     designation: "DIRECTOR",
     img: "/team/aashtha.jpg",
   },
@@ -31,12 +31,12 @@ const Our_team = () => {
   },
 
 {
-    name: "Nicki",
+    name: "Nikita",
     designation: "Sales Head",
     img: "/team/nicki.png",
   },
 {
-    name: "Nash",
+    name: "Arjit",
     designation: "Sales Manager",
     img: "/team/nash.png",
   },
@@ -55,13 +55,13 @@ const Our_team = () => {
     img: "/team/Sumit.png",
   },
   {
-    name: "Musaraf",
+    name: "Musharraf",
     designation: "Developer",
     img: "/team/Musaaraf.png",
   },
   
   {
-    name: "Simi",
+    name: "Simran",
     designation: "Project Manager",
     img: "/team/simi.png",
   },
@@ -76,7 +76,7 @@ const Our_team = () => {
   
   {
     name: "Ashish",
-    designation: "Excutive SEO Manger",
+    designation: "SEO Manger",
     img: "/team/Ashish.png",
   },
   
@@ -91,12 +91,12 @@ const Our_team = () => {
   
    
   {
-    name: "Vatsla",
+    name: "Vatsala",
     designation: "SEO Executive",
     img: "/team/Vatsla.png",
   },
   {
-    name: "Virjesh",
+    name: "Vrijesh",
     designation: "SEO Executive",
     img: "/team/Virjesh.png",
   },

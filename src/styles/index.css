@@ -134,6 +134,7 @@ body {
 .home-container {
   position: relative;
   background: var(--bg-primary);
+  overflow-x: hidden;
 }
 
 /* ── Smooth page transitions ───────────────────────────────────────── */
