@@ -186,7 +186,7 @@ const Header = () => {
           <a href="tel:+19177087134" target="_blank" rel="noopener noreferrer" className="header-cta-outline no-underline">
             Get A Quote
             </a>
-         <a href="/contact" target="_blank" rel="noopener noreferrer" className="header-cta-button no-underline">
+         <a href="https://calendly.com/nickimiller-webandadssolution/30min" target="_blank" rel="nofollow noopener noreferrer" className="header-cta-button no-underline">
           Let's Talk
             </a>
           
