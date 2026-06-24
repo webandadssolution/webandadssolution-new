@@ -83,7 +83,7 @@ const Header = () => {
         <div className="logo-section">
           <Link href="/">
             <img
-              src="https://webandadssolution.net/wp-content/uploads/2025/04/new-logo.png"
+              src="/images/logo.webp"
               alt="Web and Ads Solutions Logo"
               className="logo"
             />
@@ -183,11 +183,13 @@ const Header = () => {
 
         {/* Right Section - CTA & Menu */}
         <div className="right-section">
-          <a href="tel:+14374670986" target="_blank" rel="noopener noreferrer" className="header-cta-outline no-underline">
+          <a href="tel:+19177087134" target="_blank" rel="noopener noreferrer" className="header-cta-outline no-underline">
             Get A Quote
             </a>
-         
-          <button className="header-cta-button" onClick={() => document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' })}>Let's Talk</button>
+         <a href="/contact" target="_blank" rel="noopener noreferrer" className="header-cta-button no-underline">
+          Let's Talk
+            </a>
+          
 
           <ThemeToggle />
 

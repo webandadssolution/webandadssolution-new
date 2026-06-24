@@ -64,7 +64,7 @@ const organizationJsonLd = {
   logo: "https://webandadssolution.com/wp-content/uploads/2025/04/new-logo.png",
   description: SITE_DESCRIPTION,
   email: "info@webandadssolution.com",
-  telephone: "+1-332-263-5658",
+  telephone: "+1-917-708-7134",
   address: {
     "@type": "PostalAddress",
     streetAddress: "117 South Lexington Street STE 100",
@@ -77,7 +77,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={spaceGrotesk.variable}>
+    <html lang="en" className={spaceGrotesk.variable} suppressHydrationWarning>
       <body>
         <ThemeScript />
         <script

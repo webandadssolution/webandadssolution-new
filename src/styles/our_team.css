@@ -96,7 +96,7 @@
 
 .team-member-card {
     flex: 0 0 260px; /* Fixed width for desktop */
-    transition: transform 0.50s ease;
+    transition: transform 0.1s ease;
 }
 
 /* Staggering Effect - Desktop Only */

@@ -105,12 +105,34 @@
 }
 
 .footer-email { font-size: 1rem; color: #6b7280; margin-bottom: 8px; }
-.footer-phone {
-  font-size: 1.5rem;
-  font-weight: 800;
+
+.footer-contact-item-phones { align-items: flex-start; }
+
+.footer-phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-bottom: 20px;
-  color: #fff;
 }
+
+.footer-phone-row { display: flex; align-items: center; gap: 12px; }
+
+.footer-phone-flag {
+  font-size: 1.05rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.footer-phone {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-phone:hover { color: #f06820; }
 .footer-location {
   font-size: 1rem;
   font-weight: 800;

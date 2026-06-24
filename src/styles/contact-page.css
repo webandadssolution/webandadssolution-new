@@ -325,6 +325,15 @@
 
 .ct-info-sub { font-size: 12px; color: var(--text-secondary); }
 
+.ct-info-phone-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 3px; }
+
+.ct-info-phone-row { display: flex; align-items: center; gap: 9px; margin-bottom: 0; }
+
+.ct-info-phone-flag { font-size: 13px; line-height: 1; flex-shrink: 0; }
+
+.ct-info-phone-link { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+.ct-info-phone-link:hover { color: #f06820; }
+
 /* ── Services Panel ── */
 .ct-services-panel {
   background: #0a0a0a;

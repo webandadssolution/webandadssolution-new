@@ -5,9 +5,26 @@ import Link from "next/link"
 import ContactForm from "../components/contact-form"
 import "../styles/contact-page.css"
 
-const contactInfo = [
-  { icon: "📧", label: "Email Us",      value: "info@webandadssolution.com",   sub: "We reply within 2 business hours" },
-  { icon: "📞", label: "Call Us",       value: "(+1) 332 263 5658",            sub: "Mon – Fri, 9am – 6pm CST" },
+type ContactInfo = {
+  icon: string
+  label: string
+  value?: string
+  phones?: { flag: string; tel: string; display: string }[]
+  sub: string
+}
+
+const contactInfo: ContactInfo[] = [
+  { icon: "📧", label: "Email Us", value: "info@webandadssolution.com", sub: "We reply within 2 business hours" },
+  {
+    icon: "📞",
+    label: "Call Us",
+    phones: [
+      { flag: "🇺🇸", tel: "+19177087134", display: "+1 917 708 7134" },
+      { flag: "🇬🇧", tel: "+442046389375", display: "+44 20 4638 9375" },
+      { flag: "🇮🇳", tel: "+917048955080", display: "+91 70489 55080" },
+    ],
+    sub: "Mon – Fri, 9am – 6pm CST",
+  },
   { icon: "📍", label: "Our Office",    value: "117 S Lexington St STE 100",   sub: "Harrisonville, MO 64701, USA" },
   { icon: "⚡", label: "Response Time", value: "Under 2 Hours",                sub: "Guaranteed during business hours" },
 ]
@@ -53,30 +70,25 @@ export default function ContactPage() {
                   <div className="ct-info-icon">{c.icon}</div>
                   <div>
                     <p className="ct-info-label">{c.label}</p>
-                    <p className="ct-info-value">{c.value}</p>
+                    {c.phones ? (
+                      <div className="ct-info-phone-list">
+                        {c.phones.map((p, j) => (
+                          <p key={j} className="ct-info-value ct-info-phone-row">
+                            <span className="ct-info-phone-flag" aria-hidden="true">{p.flag}</span>
+                            <a href={`tel:${p.tel}`} className="ct-info-phone-link">{p.display}</a>
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="ct-info-value">{c.value}</p>
+                    )}
                     <p className="ct-info-sub">{c.sub}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="ct-services-panel">
-              <h3 className="ct-services-title">Our Services</h3>
-              <div className="ct-services-list">
-                {[
-                  { label: "SEO",               to: "/services/seo" },
-                  { label: "PPC Advertising",    to: "/services/ppc" },
-                  { label: "Social Media (SMO)", to: "/services/smo" },
-                  { label: "Content Marketing",  to: "/services/content-marketing" },
-                  { label: "Web Development",    to: "/services/web-development" },
-                  { label: "Virtual Assistant",  to: "/services/virtual-assistant" },
-                ].map((s, i) => (
-                  <Link key={i} href={s.to} className="ct-service-link">
-                    <span>{s.label}</span><span className="ct-arrow">→</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            
 
             <div className="ct-promise-box">
               <h4>Our Promise to You</h4>
