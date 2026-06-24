@@ -76,7 +76,7 @@ const Our_team = () => {
   
   {
     name: "Ashish",
-    designation: "SEO Manger",
+    designation: "SEO Mangager",
     img: "/team/Ashish.png",
   },
   
@@ -112,7 +112,7 @@ const Our_team = () => {
   },
   {
     name: "Aman",
-    designation: "SEO Manger",
+    designation: "SEO Mangager",
     img: "/team/aman.png",
   },
 ];
