@@ -258,6 +258,80 @@
   transform: translateY(-1px);
 }
 
+.achievements-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.achievements-recaptcha-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.achievements-recaptcha-wrapper .g-recaptcha > div {
+  margin: 0 auto;
+}
+
+.achievements-recaptcha-error {
+  color: #e6453c;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.achievements-form-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.achievements-success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgba(240, 104, 32, 0.12);
+  border: 1px solid rgba(240, 104, 32, 0.3);
+  color: #f06820;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievements-form-success h4 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.achievements-form-success p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.achievements-success-reset {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 15%, transparent);
+  color: var(--text-primary);
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.achievements-success-reset:hover {
+  border-color: #f06820;
+  color: #f06820;
+}
+
 .achievements-submit-btn:hover .achievements-arrow-icon {
   animation: achievementsArrowSlide 0.5s forwards;
 }

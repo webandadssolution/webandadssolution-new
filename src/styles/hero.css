@@ -713,25 +713,44 @@
   .hero {
     padding: 110px 18px 48px 18px;
   }
-  
+
   .hero-title {
     font-size: clamp(1.7rem, 10vw, 2.8rem);
   }
-  
+
+  /* Smaller, less stretched badge so wrapped lines stay tidy */
+  .hero-word.text-accent {
+    padding: 2px 12px;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  /* Stack all three dashboard cards in normal flow instead of the
+     absolutely-positioned overlap (which only had room to show one) */
   .hero-dashboard-mockup {
-    height: 230px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
-  
-  .card-analytics {
-    width: 100%;
-    height: 220px;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  
+
+  .card-analytics,
   .card-campaigns,
   .card-ai-optimizer {
-    display: none;
+    position: relative;
+    width: 100%;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+
+  .card-analytics {
+    height: 220px;
+  }
+
+  .card-campaigns,
+  .card-ai-optimizer {
+    height: auto;
   }
 }

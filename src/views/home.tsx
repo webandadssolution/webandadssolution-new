@@ -8,7 +8,6 @@ import Our_team from "../components/our_team"
 // import Portfolio from "../components/portfolio"
 import Review from "../components/review"
 import Why_choose_us from "../components/why_choose_us"
-import Blog from "../components/blog"
 import Ai_showcase from "../components/ai_showcase"
 import Ai_visibility from "../components/ai_visibility"
 import Industries from "../components/industries"
@@ -26,7 +25,6 @@ const stackedSections = [
   { id: "industries", el: <Industries /> },
   { id: "achieve",    el: <Achievements /> },
   { id: "review",     el: <Review /> },
-  { id: "blog",       el: <Blog /> },
   { id: "faq",        el: <FAQ /> },
 ]
 

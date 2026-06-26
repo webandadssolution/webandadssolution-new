@@ -166,7 +166,6 @@ h1, h2, h3, h4, h5, h6,
   position: relative;
   overflow: visible;
   background: var(--bg-primary);
-  will-change: transform, opacity;
 }
 
 .stack-panel::before {
@@ -225,6 +224,12 @@ h1, h2, h3, h4, h5, h6,
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
               filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* will-change only while the one-time reveal is pending/running — once
+   .is-visible lands the transition is done, so drop the layer promotion
+   instead of leaving dozens of composited layers around forever. */
+.scroll-reveal:not(.is-visible) {
   will-change: opacity, transform, filter;
 }
 

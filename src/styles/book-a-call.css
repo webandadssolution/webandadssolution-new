@@ -1,0 +1,112 @@
+/* ── Book A Call Page ────────────────────────────── */
+.bac-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+.bac-accent { color: #f06820; font-style: italic; }
+
+/* ── HERO ── */
+.bac-hero {
+  position: relative;
+  background: #0a0a0a;
+  padding: 110px 24px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bac-hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(240, 104, 32, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bac-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.bac-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(240, 104, 32, 0.1);
+  border: 1px solid rgba(240, 104, 32, 0.28);
+  color: #f06820;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.bac-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f06820;
+  animation: bac-pulse 2s ease-in-out infinite;
+}
+
+@keyframes bac-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .5; transform: scale(.75); }
+}
+
+.bac-title {
+  font-size: 50px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -1.5px;
+}
+
+.bac-sub {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.58);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── Calendly Widget ── */
+.bac-widget-section {
+  padding: 50px 24px 90px;
+  background: var(--bg-secondary);
+}
+
+.bac-widget-frame {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 850px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 1024px) {
+  .bac-title { font-size: 38px; }
+  .bac-widget-frame { height: 1050px; border-radius: 14px; }
+}
+
+@media (max-width: 600px) {
+  .bac-hero { padding: 100px 18px 40px; }
+  .bac-title { font-size: 30px; }
+  .bac-sub { font-size: 15px; }
+  .bac-widget-section { padding: 30px 14px 60px; }
+  .bac-widget-frame { height: 1150px; }
+}

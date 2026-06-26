@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import gsap from "gsap"
@@ -324,12 +323,12 @@ const GsapEffects = () => {
         // ── 20. SECTION ENTRANCE ANIMATION (works on every screen size) ──────
         gsap.utils.toArray<HTMLElement>(".stack-panel").forEach((panel) => {
           gsap.fromTo(panel,
-            { y: 70, opacity: 0, scale: 0.97 },
+            { y: 70, opacity: 0, scale: 0.97, willChange: "transform, opacity" },
             {
               y: 0, opacity: 1, scale: 1,
               duration: 0.9,
               ease: "power3.out",
-              clearProps: "transform,opacity",
+              clearProps: "transform,opacity,willChange",
               scrollTrigger: {
                 trigger: panel,
                 start: "top 92%",
@@ -356,6 +355,35 @@ const GsapEffects = () => {
           })
         }
 
+        // ── 21b. SERVICES MOBILE — cards animate as they pass through the
+        // viewport center while scrolling normally. No pin/sticky involved
+        // (this site's body/.home-container/.services-section all use
+        // overflow:hidden, which silently breaks both GSAP pin and CSS
+        // sticky) — so each card just gets its own scrubbed reveal.
+        if (servicesWrapper && window.innerWidth <= 767) {
+          const mobileCards = gsap.utils.toArray<HTMLElement>(".service-card-wrapper", servicesWrapper)
+          mobileCards.forEach((card, i) => {
+            const fromSide = i % 2 === 0 ? -110 : 110
+            // Entrance only — fades/slides in quickly, then stays fully
+            // visible until it naturally scrolls off-screen. (A matching
+            // exit fade was tried but left a long "dead zone" where the
+            // card sat at low opacity well before it actually left the
+            // viewport, making content look like it had disappeared.)
+            gsap.fromTo(card,
+              { opacity: 0.15, x: fromSide, rotate: i % 2 === 0 ? -5 : 5 },
+              {
+                opacity: 1, x: 0, rotate: 0, ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 92%",
+                  end: "top 65%",
+                  scrub: true,
+                }
+              }
+            )
+          })
+        }
+
         // ── 22. FAQ IMAGES PARALLAX ──────────────────────────────────────────
         if (document.querySelector(".faq-images")) {
           gsap.to(".faq-images", {
@@ -370,6 +398,7 @@ const GsapEffects = () => {
             { opacity: 0.5, y: 50 },
             {
               opacity: 1, y: 0, duration: 1, ease: "power3.out",
+              clearProps: "opacity,transform",
               scrollTrigger: { trigger: ".footer-site", start: "top 92%", once: true }
             }
           )

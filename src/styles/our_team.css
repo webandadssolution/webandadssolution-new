@@ -6,7 +6,7 @@
 }
 
 .team-container {
-  max-width: 2000px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 50px;
 }
@@ -56,42 +56,78 @@
     gap: 39px;
     width: max-content;
     align-items: center;
-    transition: transform 0.6s ease;
 }
 
-/* Arrow Controls */
+/* Arrow Controls — orbiting gradient ring */
 .team-arrow {
     position: absolute;
-    top: 50%;
+    top: 62%;
     transform: translateY(-50%);
     z-index: 5;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(240, 104, 32, 0.3);
+    width: 52px;
+    height: 52px;
+    border: none;
     border-radius: 50%;
-    background: var(--bg-primary);
+    background: color-mix(in srgb, var(--bg-primary) 60%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: var(--text-primary);
-    font-size: 24px;
-    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    overflow: visible;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.team-arrow-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 260deg, #f06820 320deg, #ffb27a 360deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+    animation: team-ring-spin 4s linear infinite;
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+@keyframes team-ring-spin {
+    to { transform: rotate(360deg); }
+}
+
+.team-arrow svg {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.25s ease;
 }
 
 .team-arrow:hover {
-    background: #f06820;
-    border-color: #f06820;
     color: #fff;
+    transform: translateY(-50%) scale(1.12);
+}
+
+.team-arrow:hover .team-arrow-ring {
+    animation-duration: 1.1s;
+    background: conic-gradient(from 0deg, #f06820, #ffb27a, #f06820);
+}
+
+.team-arrow:hover svg {
+    transform: scale(1.1);
+}
+
+.team-arrow:active {
+    transform: translateY(-50%) scale(0.94);
 }
 
 .team-arrow-left {
-    left: 10px;
+    left: 18px;
 }
 
 .team-arrow-right {
-    right: 10px;
+    right: 18px;
 }
 
 .team-member-card {
@@ -213,13 +249,20 @@
         font-size: 32px;
     }
 
-    /* Shows one image at a time */
     .team-member-card {
-        max-width: 80%;
-        margin: 0 auto;
+        flex: 0 0 150px;
+        max-width: 150px;
     }
+
+    .m-name { font-size: 17px; }
+    .m-role { font-size: 13px; }
 
     .team-grid {
         gap: 10px; /* Reduced gap for mobile */
+    }
+
+    .team-arrow {
+        width: 40px;
+        height: 40px;
     }
 }

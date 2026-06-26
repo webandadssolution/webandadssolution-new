@@ -390,7 +390,7 @@
   }
 
   .accordion-panel.active {
-    height: 550px; /* Expanded height for mobile active card */
+    height: 420px; /* Expanded height for mobile active card */
 
   }
 
@@ -432,6 +432,21 @@
   .item-desc {
     font-size: 1rem;
     max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .item-index {
+    font-size: 2.2rem;
+  }
+
+  .arrow-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .expanded-top {
+    margin-bottom: 12px;
   }
 
 }

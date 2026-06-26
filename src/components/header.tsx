@@ -20,7 +20,9 @@ const Header = () => {
     } else if (pathname === "/services") {
       setActiveNav("Services")
     } else if (pathname === "/about") {
-      setActiveNav("AboutUs")    
+      setActiveNav("AboutUs")
+    } else if (pathname === "/packages") {
+      setActiveNav("Packages")
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
     }
@@ -35,7 +37,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = ["Home", "AboutUs","Services", "Locations", "Industry"]
+  const navItems = ["Home", "AboutUs","Services", "Packages", "Locations", "Industry"]
 
   const dropdownData: Record<string, string[]> = {
     Services: [
@@ -100,7 +102,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               {(() => {
-                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about" }
+                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages" }
                 const to = navRoutes[item]
                 return to ? (
                   <Link
@@ -183,12 +185,12 @@ const Header = () => {
 
         {/* Right Section - CTA & Menu */}
         <div className="right-section">
-          <a href="tel:+19177087134" target="_blank" rel="noopener noreferrer" className="header-cta-outline no-underline">
+          <Link href="/contact" className="header-cta-outline no-underline">
             Get A Quote
-            </a>
-         <a href="https://calendly.com/nickimiller-webandadssolution/30min" target="_blank" rel="nofollow noopener noreferrer" className="header-cta-button no-underline">
+            </Link>
+         <Link href="/book-a-call" className="header-cta-button no-underline">
           Let's Talk
-            </a>
+            </Link>
           
 
           <ThemeToggle />
@@ -209,7 +211,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className={`nav-mobile ${isMenuOpen ? "open" : ""}`}>
         {navItems.map((item) => {
-          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about" }
+          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages" }
           const to = mobileRoutes[item]
           return to ? (
             <Link
@@ -231,7 +233,7 @@ const Header = () => {
             </a>
           )
         })}
-        <button className="cta-button-mobile" onClick={() => { document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' }); setIsMenuOpen(false); }}>Let's Talk</button>
+        <Link href="/book-a-call" className="cta-button-mobile" onClick={() => setIsMenuOpen(false)}>Let's Talk</Link>
       </nav>
     </header>
   )

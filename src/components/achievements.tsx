@@ -1,6 +1,52 @@
+"use client"
+
+import { useState } from "react"
+import type { FormEvent } from "react"
+import Script from "next/script"
 import "../styles/achievements.css"
 
+const services = [
+    "Search Engine Optimization (SEO)",
+    "Pay-Per-Click (PPC) Advertising",
+    "Social Media Optimization (SMO)",
+    "Content Marketing",
+    "Website Development",
+    "Application Development",
+    "Virtual Assistant Services",
+    "Multiple Services",
+    "Other",
+]
+
+const RECAPTCHA_SITE_KEY =
+    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+
+declare global {
+    interface Window {
+        grecaptcha?: { getResponse: (id?: number) => string; reset: (id?: number) => void }
+    }
+}
+
 const Achievements = () => {
+    const [submitted, setSubmitted] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [recaptchaError, setRecaptchaError] = useState(false)
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const token = window.grecaptcha?.getResponse()
+        if (!token) {
+            setRecaptchaError(true)
+            return
+        }
+        setRecaptchaError(false)
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+            setSubmitted(true)
+            window.grecaptcha?.reset()
+        }, 1200)
+    }
+
     return (
         <section className="achievements-section">
             <div className="achievements-container">
@@ -12,10 +58,10 @@ const Achievements = () => {
                             We are trusted <br />
                             <span className="achievements-ai-text-wrapper">
                                 <img
-                                    src="https://paimage.picode.in/aivora/php/assets/img/icon/b10c3e43e836d32554bf.gif"
+                                    src="/images/icons/icon-1.png"
                                     alt="ai-icon"
                                     className="achievements-ai-graphic"
-                                /> Ai agency
+                                /> Ai Driven-Marketing Agency
                             </span>
                         </h2>
                     </div>
@@ -26,7 +72,7 @@ const Achievements = () => {
 
                         <div className="achievements-stats-card">
                             <div className="achievements-stat-item">
-                                <h3>5K+</h3>
+                                <h3>500+</h3>
                                 <p>Projects Successfully <br /> Delivered</p>
                             </div>
                             <div className="achievements-stat-item">
@@ -43,7 +89,17 @@ const Achievements = () => {
                         <h3>Ready to collaborate with us?</h3>
                         <p className="achievements-form-subtitle">Who knows where a single message might lead you.</p>
 
-                        <form className="achievements-collab-form">
+                        {submitted ? (
+                            <div className="achievements-form-success">
+                                <div className="achievements-success-icon">✓</div>
+                                <h4>Message Received!</h4>
+                                <p>Thanks for reaching out — our team will get back to you within 2 business hours.</p>
+                                <button type="button" className="achievements-success-reset" onClick={() => setSubmitted(false)}>
+                                    Send Another Message
+                                </button>
+                            </div>
+                        ) : (
+                        <form className="achievements-collab-form" onSubmit={handleSubmit}>
                             <div className="achievements-form-row">
                                 <div className="achievements-input-group">
                                     <svg className="achievements-form-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,8 +140,9 @@ const Achievements = () => {
                                 </svg>
                                 <select required defaultValue="">
                                     <option value="" disabled></option>
-                                    <option value="ai-dev">AI Development</option>
-                                    <option value="data">Data Analysis</option>
+                                    {services.map((service) => (
+                                        <option key={service} value={service}>{service}</option>
+                                    ))}
                                 </select>
                                 <label className="achievements-floating-label">Select Service*</label>
                             </div>
@@ -98,16 +155,26 @@ const Achievements = () => {
                                 <label htmlFor="message" className="achievements-floating-label">Your Message..</label>
                             </div>
 
-                            <button type="submit" className="achievements-submit-btn">
-                                SUBMIT HERE
+                            <div className="achievements-recaptcha-wrapper">
+                                <div className="g-recaptcha" data-sitekey={RECAPTCHA_SITE_KEY}></div>
+                                {recaptchaError && (
+                                    <p className="achievements-recaptcha-error">Please verify you're not a robot.</p>
+                                )}
+                            </div>
+
+                            <button type="submit" className="achievements-submit-btn" disabled={loading}>
+                                {loading ? "SENDING..." : "SUBMIT HERE"}
                                 <span className="achievements-arrow-container">
                                     <span className="achievements-arrow-icon">↗</span>
                                 </span>
                             </button>
                         </form>
+                        )}
                     </div>
                 </div>
             </div>
+
+            <Script src="https://www.google.com/recaptcha/api.js" strategy="lazyOnload" />
         </section>
     );
 }

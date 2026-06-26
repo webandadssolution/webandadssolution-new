@@ -80,11 +80,9 @@ const Hero = () => {
 
           <h1 className="hero-title">
             <span className="hero-line">
-              <span className="word-mask"><span className="hero-word font-light">Creative</span></span>
+              <span className="word-mask"><span className="hero-word font-light">AI-Driven</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-light">Digital</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-accent">Marketing,</span></span>
+              <span className="word-mask"><span className="hero-word font-bold text-accent">Digital Marketing,</span></span>
             </span>
             <span className="hero-line hero-title-line2">
               <span className="word-mask"><span className="hero-word font-bold">Designed</span></span>

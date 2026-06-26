@@ -6,18 +6,21 @@ import "../styles/footer.css"
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      setIsVisible(window.scrollY > 300)
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      setScrollProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0)
     }
 
     window.addEventListener("scroll", toggleVisibility)
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
+
+  const RING_RADIUS = 19
+  const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -27,6 +30,7 @@ const Footer = () => {
   }
 
   return (
+    <>
     <footer className="footer-site">
       <div className="footer-container">
 
@@ -46,9 +50,21 @@ const Footer = () => {
               <span className="footer-white-text">Let's Talk</span>
               <span className="footer-accent-text">Work Together</span>
             </div>
-            <Link href="/contact" className="footer-cta-circle">
-              <span className="footer-arrow">↗</span>
-            </Link>
+            <div className="footer-cta-orbit">
+              <svg className="footer-orbit-ring" viewBox="0 0 200 200" aria-hidden="true">
+                <defs>
+                  <path id="footerOrbitPath" d="M100,100 m-85,0 a85,85 0 1,1 170,0 a85,85 0 1,1 -170,0" />
+                </defs>
+                <text>
+                  <textPath href="#footerOrbitPath">
+                    LET&apos;S START A PROJECT • LET&apos;S START A PROJECT •&nbsp;
+                  </textPath>
+                </text>
+              </svg>
+              <Link href="/contact" className="footer-cta-circle" aria-label="Let's talk, start a project">
+                <span className="footer-arrow">↗</span>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -230,13 +246,25 @@ const Footer = () => {
           </div>
         </div>
       </div>
+    </footer>
 
       {isVisible && (
         <button className="scroll-to-top" onClick={scrollToTop} aria-label="Scroll to top">
-          ↑
+          <svg className="scroll-progress-ring" viewBox="0 0 44 44" aria-hidden="true">
+            <circle className="scroll-progress-track" cx="22" cy="22" r={RING_RADIUS} />
+            <circle
+              className="scroll-progress-fill"
+              cx="22"
+              cy="22"
+              r={RING_RADIUS}
+              strokeDasharray={RING_CIRCUMFERENCE}
+              strokeDashoffset={RING_CIRCUMFERENCE - (scrollProgress / 100) * RING_CIRCUMFERENCE}
+            />
+          </svg>
+          <span className="scroll-to-top-icon">↑</span>
         </button>
       )}
-    </footer>
+    </>
   );
 };
 

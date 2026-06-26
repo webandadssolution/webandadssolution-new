@@ -1,4 +1,6 @@
-import React from "react"
+"use client"
+
+import React, { useEffect, useRef, useState } from "react"
 import "../styles/review.css"
 
 const reviews = [
@@ -7,7 +9,7 @@ const reviews = [
         text: "Nash and Yukta have truly become an invaluable part of both Bevilacqua Deck Building and Bevilacqua Homes. From day one, they brought a level of professionalism and care that you don't always find and it shows in everything they do.",
         name: "Anthony Bevilacqua",
         role: "United States",
-        image: "images/New Project (29) (1).jpg"
+        image: "/images/New Project (29) (1).jpg"
     },
     {
         rating: 5.0,
@@ -28,7 +30,7 @@ const reviews = [
         text: "I have worked with website builders before. The web and ads solution people have been outstanding. Always very patient to help me navigate their excellent instructions! They really know the best way to market a brand and my business! Aastha is the project manager. She is marvelous, well spoken and knowledgeable. I ask her to make a change and she gets right on it. Always available and happy to help!",
         name: "Chuck Rogers",
         role: "United States",
-        image: "./client/chuck-rogers.jpg"
+        image: "/client/chuck-rogers.jpg"
     },
     {
         rating: 5.0,
@@ -56,7 +58,7 @@ const reviews = [
         text: "Web and ads solutions was a great choice for me. I was frustrated with former companies and i was lucky to find these guys. I found them to be very knowledgeable, honest, and dependable. I dealt with Aastha and she was sweet, patient and extremely easy to get along with and creative. I would recommend them to anyone.",
         name: "Anthony Calderaio",
         role: "United States",
-        image: "./client/anthony-calderaio.jpg"
+        image: "/client/anthony-calderaio.jpg"
     },
     {
         rating: 5.0,
@@ -84,7 +86,7 @@ const reviews = [
         text: "I was pleased with the work that this company did, the team worked very hard and working with me sending documentation to them, pictures of how I wanted it. They were very understanding. I recommend this company.",
         name: "Jose Cofresi",
         role: "United States",
-        image: "./client/jose-cofresi.jpg"
+        image: "/client/jose-cofresi.jpg"
     },
     {
         rating: 5.0,
@@ -112,14 +114,14 @@ const reviews = [
         text: "It was a great experience with Aastha and her team. We have worked on a big project starting from scratch. If I would have to start all over I would have chosen Aastha again.",
         name: "Ekrem Yilmaz",
         role: "Netherlands",
-        image: "./client/ekrem-yilmaz.jpg"
+        image: "/client/ekrem-yilmaz.jpg"
     },
     {
         rating: 5.0,
         text: "Aastha has been conscientious and detail-oriented at every step of re-creating our website, starting with the eradication of all the malware that had plagued us. She also developed a robust SEO strategy, and has protected our site with strong firewalls.",
         name: "Peter Falk",
         role: "United States",
-        image: "./client/peter-falk.jpg"
+        image: "/client/peter-falk.jpg"
     },
     {
         rating: 5.0,
@@ -165,6 +167,94 @@ const Review = () => {
         return stars;
     };
 
+    // Double the array for a seamless infinite scroll effect
+    const displayReviews = [...reviews, ...reviews];
+
+    const trackRef = useRef<HTMLDivElement>(null);
+    const [step, setStep] = useState(430); // fallback: card width + gap
+    const offsetRef = useRef(0);
+    const pausedRef = useRef(false);
+    const inViewRef = useRef(false);
+
+    useEffect(() => {
+        const measure = () => {
+            const track = trackRef.current;
+            const card = track?.querySelector(".review-card") as HTMLElement | null;
+            if (!track || !card) return;
+            const gap = parseFloat(getComputedStyle(track).gap || "0");
+            setStep(card.getBoundingClientRect().width + gap);
+        };
+        measure();
+        window.addEventListener("resize", measure);
+        return () => window.removeEventListener("resize", measure);
+    }, []);
+
+    // Only animate while the carousel is actually on screen — keeps the
+    // main thread free during scroll through the rest of the page
+    useEffect(() => {
+        const wrapper = trackRef.current?.closest(".review-slider-wrapper");
+        if (!wrapper) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => { inViewRef.current = entry.isIntersecting; },
+            { rootMargin: "200px" }
+        );
+        observer.observe(wrapper);
+        return () => observer.disconnect();
+    }, []);
+
+    // Continuous drift: keeps moving every frame instead of jumping and
+    // pausing, looping seamlessly through the doubled review list.
+    // On mobile, a single card fills almost the whole screen, so a
+    // continuous drift constantly shows two half-cut cards — snap
+    // discretely from one full card to the next instead.
+    useEffect(() => {
+        const loopWidth = reviews.length * step;
+
+        if (window.innerWidth <= 767) {
+            const id = window.setInterval(() => {
+                if (pausedRef.current || !inViewRef.current) return;
+                offsetRef.current = (offsetRef.current + step) % loopWidth;
+                const track = trackRef.current;
+                if (track) {
+                    track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.3, 1)";
+                    track.style.transform = `translateX(-${offsetRef.current}px)`;
+                }
+            }, 3200);
+            return () => window.clearInterval(id);
+        }
+
+        const pxPerMs = step / 3500;
+        let last = performance.now();
+        let frame = requestAnimationFrame(tick);
+
+        function tick(now: number) {
+            const dt = now - last;
+            last = now;
+            if (!pausedRef.current && inViewRef.current) {
+                offsetRef.current = (offsetRef.current + pxPerMs * dt) % loopWidth;
+                if (trackRef.current) {
+                    trackRef.current.style.transform = `translateX(-${offsetRef.current}px)`;
+                }
+            }
+            frame = requestAnimationFrame(tick);
+        }
+
+        return () => cancelAnimationFrame(frame);
+    }, [step]);
+
+    const slide = (direction: 1 | -1) => {
+        const loopWidth = reviews.length * step;
+        offsetRef.current = (offsetRef.current + direction * step + loopWidth) % loopWidth;
+        const track = trackRef.current;
+        if (track) {
+            track.style.transition = "transform 0.5s ease";
+            track.style.transform = `translateX(-${offsetRef.current}px)`;
+            window.setTimeout(() => {
+                if (track) track.style.transition = "";
+            }, 500);
+        }
+    };
+
     return (
         <section className="review-section">
             <div className="review-container">
@@ -172,46 +262,75 @@ const Review = () => {
                     <span className="review-badge">● Testimonial</span>
                     <h2 className="review-title">Hear From Our
                         <span>
-                            <img src="https://paimage.picode.in/aivora/php/assets/img/icon/animated-gif03.gif" alt="image" />
+                            <img src="/images/icons/icon-2.png" alt="image" />
                         </span>
                         Happy Customers
                     </h2>
                 </div>
 
-                <div className="review-slider-wrapper scroll-reveal delay-2">
-                    <div className="review-track">
-                        {/* Triple the array to ensure no gaps during long animations */}
-                        {[...reviews, ...reviews, ...reviews].map((rev, index) => (
-                            <div className="review-card" key={index}>
-                                {/* Arrow Icon for Hover Effect */}
-                                <div className="review-arrow-icon">
-                                    <span>↗</span>
-                                </div>
+                <div
+                    className="review-slider-wrapper scroll-reveal delay-2"
+                    onMouseEnter={() => { pausedRef.current = true; }}
+                    onMouseLeave={() => { pausedRef.current = false; }}
+                >
+                    <div className="review-nav-pill" role="group" aria-label="Reviews carousel navigation">
+                        <button
+                            type="button"
+                            className="review-nav-btn"
+                            aria-label="Previous review"
+                            onClick={() => slide(-1)}
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                        <span className="review-nav-divider" />
+                        <button
+                            type="button"
+                            className="review-nav-btn"
+                            aria-label="Next review"
+                            onClick={() => slide(1)}
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
 
-                                <div className="review-card-header">
-                                    <div className="review-rating-tag">
-                                        <div className="review-stars-container">
-                                            {renderStars(rev.rating)}
+                    <div className="review-track-mask">
+                        <div ref={trackRef} className="review-track">
+                            {displayReviews.map((rev, index) => (
+                                <div className="review-card" key={index}>
+                                    {/* Arrow Icon for Hover Effect */}
+                                    <div className="review-arrow-icon">
+                                        <span>↗</span>
+                                    </div>
+
+                                    <div className="review-card-header">
+                                        <div className="review-rating-tag">
+                                            <div className="review-stars-container">
+                                                {renderStars(rev.rating)}
+                                            </div>
+                                            <span className="review-score">{rev.rating.toFixed(1)}</span>
                                         </div>
-                                        <span className="review-score">{rev.rating.toFixed(1)}</span>
+                                    </div>
+                                    <p className="review-text">“{rev.text}”</p>
+
+                                    {/* Quote Icon for Hover Effect */}
+                                    <div className="review-quote-icon">”</div>
+
+                                    <div className="review-footer">
+                                        <div className="review-user-flex">
+                                            <img src={rev.image} alt={rev.name} className="review-user-img" />
+                                            <div className="review-user-info">
+                                                <h4 className="review-user-name">{rev.name}</h4>
+                                                <p className="review-user-role">{rev.role}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <p className="review-text">“{rev.text}”</p>
-
-                                {/* Quote Icon for Hover Effect */}
-                                <div className="review-quote-icon">”</div>
-
-                                <div className="review-footer">
-                                    <div className="review-user-flex">
-                                        <img src={rev.image} alt={rev.name} className="review-user-img" />
-                                        <div className="review-user-info">
-                                            <h4 className="review-user-name">{rev.name}</h4>
-                                            <p className="review-user-role">{rev.role}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
