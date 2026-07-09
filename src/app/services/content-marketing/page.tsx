@@ -4,7 +4,7 @@ import { contentMarketingFaqs } from "../../../data/faq-content"
 import { faqJsonLd, JsonLd } from "../../../lib/seo"
 
 export const metadata: Metadata = {
-  title: "Content Marketing Services for SEO and AI Search Visibility",
+  title: { absolute: "Content Marketing Services for SEO and AI Search Visibility" },
   description:
     "Content marketing built for your funnel blogs, landing pages, and campaign copy that rank in search and get cited in AI answers. Free strategy call.",
   alternates: { canonical: "/services/content-marketing" },

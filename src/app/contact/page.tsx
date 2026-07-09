@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ContactPage from "../../views/contact-page"
 
 export const metadata: Metadata = {
-  title: "Contact Us | Get a Free Marketing Consultation",
+  title: { absolute: "Contact Us | Get a Free Marketing Consultation" },
   description:
     "Want to reach out to Web and Ads Solutions? Call us or fill out our form to speak with a strategist and get a free, customized growth plan.",
   alternates: { canonical: "/contact" },
