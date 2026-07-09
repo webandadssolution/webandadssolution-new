@@ -88,6 +88,7 @@
 }
 
 .bac-widget-frame {
+  position: relative;
   max-width: 1100px;
   margin: 0 auto;
   height: 850px;
@@ -97,6 +98,29 @@
   border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
 }
+
+.bac-widget-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #6b6b6b;
+  font-size: 14px;
+}
+
+.bac-widget-spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(240, 104, 32, 0.18);
+  border-top-color: #f06820;
+  animation: bac-spin 0.8s linear infinite;
+}
+
+@keyframes bac-spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 1024px) {
   .bac-title { font-size: 38px; }
