@@ -8,9 +8,7 @@ const Who_we_are = () => {
     "images/New Project (25).png",
     "images/New Project (26).png",
     "images/New Project (27).png",
-    "images/New Project (28).png",
-    
-    
+    "images/New Project (28).png",      
   ];
 
   // Creates a 4-layer stack for the "inside-out" tunnel effect
@@ -29,17 +27,17 @@ const Who_we_are = () => {
             <div className="who-we-are-header scroll-reveal">
                 <span className="who-we-are-badge">● Who We Are</span>
                 <h2 className="who-we-are-title">
-                    Creative Digital 
+                    Ai Driven-Creative 
                     <span>
-                        <img src="https://paimage.picode.in/aivora/php/assets/img/icon/original-66948a0d81d.gif" alt='image' />
+                        <img src="/images/icons/icon-3.png" alt='image' />
                     </span>
-                   Marketing, Designed Around 
+                   Digital Marketing,Designed
                     <span>
-                        <img src="https://paimage.picode.in/aivora/php/assets/img/icon/0deec720000b2066289b.gif" alt='image' />
+                        <img src="/images/icons/icon-4.png" alt='image' />
                     </span>
                     Business Goals.
                     <span>
-                        <img src="https://paimage.picode.in/aivora/php/assets/img/icon/b10c3e43e836d32554bf.gif" alt='image' />
+                        <img src="/images/icons/icon-1.png" alt='image' />
                     </span>
                 </h2>
             </div>

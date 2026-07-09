@@ -2,14 +2,14 @@ import type { Metadata } from "next"
 import ServicesPage from "../../views/services-page"
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "Our Digital Marketing Services | SEO, PPC, and Web Dev",
   description:
-    "Explore our full range of digital marketing services — SEO, PPC, SMO, content marketing, web development, and virtual assistants — built to grow your business.",
+    "Explore SEO, PPC, social media, content marketing, web and app development, and virtual assistant services designed to grow your business.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | Web and Ads Solutions",
+    title: "Our Digital Marketing Services | SEO, PPC, and Web Dev",
     description:
-      "Explore our full range of digital marketing services — SEO, PPC, SMO, content marketing, web development, and virtual assistants — built to grow your business.",
+      "Explore SEO, PPC, social media, content marketing, web and app development, and virtual assistant services designed to grow your business.",
     url: "/services",
   },
 }

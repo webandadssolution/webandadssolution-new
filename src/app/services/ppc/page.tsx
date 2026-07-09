@@ -4,14 +4,14 @@ import { ppcFaqs } from "../../../data/faq-content"
 import { faqJsonLd, JsonLd } from "../../../lib/seo"
 
 export const metadata: Metadata = {
-  title: "PPC Advertising Services | Maximize Your ROI",
+  title: "PPC Agency | Google Ads and Paid Ads",
   description:
-    "Pay-per-click advertising managed for maximum ROI and zero wasted spend. Get profitable PPC campaigns built around your goals.",
+    "Drive qualified leads with PPC campaigns across Google Ads, social media & e-commerce. 10+ years managing ad spend. Get a free quote today.",
   alternates: { canonical: "/services/ppc" },
   openGraph: {
-    title: "PPC Advertising Services | Web and Ads Solutions",
+    title: "PPC Agency | Google Ads and Paid Ads | Web and Ads Solutions",
     description:
-      "Pay-per-click advertising managed for maximum ROI and zero wasted spend. Get profitable PPC campaigns built around your goals.",
+      "Drive qualified leads with PPC campaigns across Google Ads, social media & e-commerce. 10+ years managing ad spend. Get a free quote today.",
     url: "/services/ppc",
   },
 }

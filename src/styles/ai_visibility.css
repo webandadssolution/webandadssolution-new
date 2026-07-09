@@ -446,3 +446,11 @@ a.ai-chat-source-chip:hover {
   .ai-visibility-title { font-size: 32px; }
   .ai-visibility-header { margin-bottom: 40px; }
 }
+
+@media (max-width: 767px) {
+  .ai-chat-border-ring { animation: none; }
+  .ai-chat-live-dot { animation: none; }
+  .ai-chat-cursor { animation: none; }
+  .ai-chat-dot { animation: none; }
+  .ai-chat-spinner { animation: none; }
+}

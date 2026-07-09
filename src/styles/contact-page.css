@@ -234,6 +234,69 @@
   text-align: center;
 }
 
+.ct-form-error {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #d92d20;
+  background: rgba(217,45,32,0.08);
+  border: 1px solid rgba(217,45,32,0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+/* ── OTP Step ── */
+.ct-otp-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.ct-otp-intro strong { color: var(--text-primary); }
+
+.ct-otp-edit {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #f06820;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+}
+
+.ct-otp-input {
+  letter-spacing: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ct-otp-resend {
+  background: none;
+  border: none;
+  color: #f06820;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+.ct-otp-resend:disabled {
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .ct-otp-intro { flex-direction: column; align-items: flex-start; }
+}
+
 /* ── Success ── */
 .ct-success {
   text-align: center;
@@ -538,4 +601,319 @@
 @media (max-width: 480px) {
   .ct-hero-title { font-size: 28px; }
   .ct-budget-row { flex-wrap: wrap; }
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE-ONLY HERO  (max-width: 767px)
+   Desktop .ct-hero-text stays hidden on mobile,
+   .ct-mobile-hero shows instead.
+───────────────────────────────────────────── */
+.ct-mobile-hero { display: none; }
+
+@media (max-width: 767px) {
+
+  /* Hide the desktop hero text */
+  .ct-hero-text { display: none; }
+
+  /* Mobile hero fills the section */
+  .ct-mobile-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    width: 100%;
+    padding: 0 4px;
+  }
+
+  /* Re-skin the hero section itself for mobile */
+  .ct-hero {
+    padding: 110px 20px 52px;
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a0800 60%, #0d0d0d 100%);
+  }
+
+  .ct-mobile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border-radius: 100px;
+    background: rgba(240,104,32,0.12);
+    border: 1px solid rgba(240,104,32,0.35);
+    color: #f06820;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+
+  .ct-mobile-title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+  }
+
+  .ct-mobile-sub {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.58);
+    max-width: 320px;
+    margin-bottom: 30px;
+  }
+
+  /* CTA buttons */
+  .ct-mobile-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .ct-mobile-call-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    background: #f06820;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 6px 28px rgba(240,104,32,0.45);
+    transition: filter 0.2s, transform 0.2s;
+    text-align: left;
+  }
+
+  .ct-mobile-call-btn:active { filter: brightness(0.9); transform: scale(0.98); }
+
+  .ct-mobile-call-icon { font-size: 26px; flex-shrink: 0; }
+
+  .ct-mobile-call-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .ct-mobile-call-num {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.3px;
+    line-height: 1;
+  }
+
+  .ct-mobile-wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 22px;
+    background: rgba(37,211,102,0.1);
+    border: 1.5px solid rgba(37,211,102,0.4);
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #25d366;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .ct-mobile-wa-btn:active { background: rgba(37,211,102,0.18); transform: scale(0.98); }
+
+  /* Trust chips */
+  .ct-mobile-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+
+  .ct-mobile-chip {
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Form scroll link */
+  .ct-mobile-form-link {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+  }
+
+  .ct-mobile-form-link:hover { color: rgba(255,255,255,0.7); }
+}
+
+/* ═══════════════════════════════════════════════
+   PREMIUM MOBILE FORM  (≤767px)
+═══════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Outer card — dark glass with orange top glow */
+  .ct-form-col {
+    background: #111111;
+    border-radius: 24px;
+    padding: 28px 20px 32px;
+    border: 1px solid rgba(240,104,32,0.2);
+    box-shadow:
+      0 0 0 1px rgba(240,104,32,0.08),
+      0 24px 60px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Orange glow strip at top of card */
+  .ct-form-col::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f06820, transparent);
+    border-radius: 0 0 4px 4px;
+  }
+
+  /* Title */
+  .ct-form-title {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .ct-form-sub {
+    font-size: 13.5px;
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+
+  /* Single column always */
+  .ct-form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ct-form { gap: 16px; }
+
+  /* Labels */
+  .ct-field label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-secondary);
+  }
+
+  /* Inputs — larger tap targets, premium border */
+  .ct-field input,
+  .ct-field select,
+  .ct-field textarea {
+    padding: 15px 16px;
+    font-size: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    min-height: 52px;
+    color: #fff;
+    -webkit-appearance: none;
+  }
+
+  .ct-field input:focus,
+  .ct-field select:focus,
+  .ct-field textarea:focus {
+    border-color: #f06820;
+    background: rgba(240,104,32,0.05);
+    box-shadow: 0 0 0 3px rgba(240,104,32,0.12);
+  }
+
+  .ct-field textarea {
+    min-height: 110px;
+    resize: none;
+  }
+
+  /* Budget chips — 2 per row */
+  .ct-budget-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ct-budget-chip {
+    padding: 12px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.65);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ct-budget-chip.selected {
+    background: rgba(240,104,32,0.12);
+    border-color: #f06820;
+    color: #f06820;
+  }
+
+  /* Submit button — full width, gradient, premium */
+  .ct-submit {
+    width: 100%;
+    padding: 18px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f06820 0%, #d9530f 100%);
+    box-shadow: 0 6px 24px rgba(240,104,32,0.4), 0 1px 0 rgba(255,255,255,0.12) inset;
+    min-height: 56px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ct-submit:active { transform: scale(0.98); box-shadow: 0 3px 12px rgba(240,104,32,0.3); }
+
+  /* OTP input styling */
+  .ct-otp-input {
+    font-size: 28px;
+    letter-spacing: 14px;
+    text-align: center;
+    min-height: 64px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: #fff;
+  }
+
+  .ct-otp-input:focus {
+    border-color: #f06820;
+    box-shadow: 0 0 0 3px rgba(240,104,32,0.12);
+  }
+
+  .ct-otp-resend {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 0;
+  }
+
+  /* Note text */
+  .ct-form-note {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 0 4px;
+  }
 }

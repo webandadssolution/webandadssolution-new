@@ -8,7 +8,12 @@
       "PowerShell(Rename-Item -Path \"src\\\\views\\\\smo-page.js\" -NewName \"smo-page.tsx\")",
       "PowerShell(Rename-Item -Path \"src\\\\views\\\\ppc-page.js\" -NewName \"ppc-page.tsx\")",
       "Bash(npx --yes playwright --version)",
-      "Bash(node -e \"console.log\\(require.resolve\\('playwright'\\)\\)\")"
+      "Bash(node -e \"console.log\\(require.resolve\\('playwright'\\)\\)\")",
+      "Bash(npx serve *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5050/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5050/_next/static/css/052011daefce08e9.css)",
+      "Bash(kill %1)",
+      "Bash(netstat -ano)"
     ]
   }
 }

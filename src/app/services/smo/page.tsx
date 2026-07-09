@@ -4,14 +4,14 @@ import { smoFaqs } from "../../../data/faq-content"
 import { faqJsonLd, JsonLd } from "../../../lib/seo"
 
 export const metadata: Metadata = {
-  title: "Social Media Optimization (SMO) Services",
+  title: "Social Media Marketing (SMO) Services | Strategy & Growth",
   description:
-    "Build an engaged community and dominate every feed with our social media optimization services across all major platforms.",
+    "Social media management with defined content themes, thoughtful design and engagement strategies built on trust. Grow your following. Free quote.",
   alternates: { canonical: "/services/smo" },
   openGraph: {
-    title: "Social Media Optimization (SMO) Services | Web and Ads Solutions",
+    title: "Social Media Marketing (SMO) Services | Strategy & Growth",
     description:
-      "Build an engaged community and dominate every feed with our social media optimization services across all major platforms.",
+      "Social media management with defined content themes, thoughtful design and engagement strategies built on trust. Grow your following. Free quote.",
     url: "/services/smo",
   },
 }

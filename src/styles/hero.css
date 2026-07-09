@@ -713,25 +713,537 @@
   .hero {
     padding: 110px 18px 48px 18px;
   }
-  
+
   .hero-title {
     font-size: clamp(1.7rem, 10vw, 2.8rem);
   }
-  
+
+  .hero-word.text-accent {
+    padding: 2px 12px;
+    border-radius: 18px;
+    text-align: center;
+  }
+
   .hero-dashboard-mockup {
-    height: 230px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
-  
-  .card-analytics {
-    width: 100%;
-    height: 220px;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  
+
+  .card-analytics,
   .card-campaigns,
   .card-ai-optimizer {
+    position: relative;
+    width: 100%;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+
+  .card-analytics {
+    height: 220px;
+  }
+
+  .card-campaigns,
+  .card-ai-optimizer {
+    height: auto;
+  }
+}
+
+/* ==========================================================================
+   MOBILE LEAD SECTION (≤767px only)
+   ========================================================================== */
+
+/* Hidden on desktop by default */
+.hero-mobile-lead {
+  display: none;
+}
+
+/* Phone-only compact banner — hidden everywhere except ≤767px (see below) */
+.hero-phone-banner {
+  display: none;
+}
+
+@media (max-width: 767px) {
+
+  /* Disable heavy animations */
+  .hero-grid-glow { animation: none; }
+  .hero-grid-lines { display: none; }
+
+  /* Hero layout: single column, text → CTAs → mobile lead → dashboard */
+  .hero {
+    padding: 100px 20px 60px 20px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-text-wrapper {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .hero-badge {
+    margin-bottom: 18px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+    letter-spacing: -1px;
+    text-align: left;
+  }
+
+  .hero-title-line2 {
+    justify-content: flex-start;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  /* Restore CTA buttons on mobile — stacked full-width */
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .cta-button-primary,
+  .cta-button-secondary {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 14px;
+  }
+
+  /* Mobile lead hidden — desktop CTAs are shown instead */
+  .hero-mobile-lead {
     display: none;
+  }
+
+  /* Desktop dashboard mockup is replaced by the compact phone banner below */
+  .hero-dashboard-container {
+    display: none !important;
+  }
+
+  /* Divider line above */
+  .hero-mobile-lead::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, #f06820 0%, color-mix(in srgb, var(--text-primary) 10%, transparent) 100%);
+    border-radius: 1px;
+    margin-bottom: 6px;
+  }
+
+  /* Stats row */
+  .hero-mobile-stats {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
+    border-radius: 16px;
+    padding: 16px 12px;
+  }
+
+  .hero-mobile-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 3px;
+  }
+
+  .hms-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f06820;
+    line-height: 1;
+    font-family: var(--font-space-grotesk, inherit);
+  }
+
+  .hms-lbl {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .hero-mobile-divider {
+    width: 1px;
+    background: color-mix(in srgb, var(--text-primary) 12%, transparent);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  /* Click-to-call button */
+  .hero-mobile-call {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #f06820 0%, #e05510 100%);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 18px 22px;
+    border-radius: 16px;
+    font-family: var(--font-space-grotesk, inherit);
+    box-shadow: 0 6px 24px rgba(240, 104, 32, 0.38), 0 1px 0 rgba(255,255,255,0.15) inset;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero-mobile-call:active {
+    transform: scale(0.975);
+    box-shadow: 0 3px 12px rgba(240, 104, 32, 0.3);
+  }
+
+  .hero-mobile-call-icon {
+    font-size: 1.7rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .hero-mobile-call-top {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.85;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+  }
+
+  .hero-mobile-call-num {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+  }
+
+  /* WhatsApp button */
+  .hero-mobile-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #20c45c;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(37, 211, 102, 0.3);
+    background: rgba(37, 211, 102, 0.07);
+    font-family: var(--font-space-grotesk, inherit);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero-mobile-wa:active {
+    background: rgba(37, 211, 102, 0.14);
+    border-color: rgba(37, 211, 102, 0.5);
+  }
+
+  /* Note line */
+  .hero-mobile-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0;
+    opacity: 0.65;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── Phone-only premium banner (replaces the desktop dashboard mockup) ── */
+  .hero-phone-banner {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  /* Ambient glow orbs behind the card for depth */
+  .hpb-glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(38px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hpb-glow-orb-1 {
+    width: 150px;
+    height: 150px;
+    top: -30px;
+    right: -30px;
+    background: radial-gradient(circle, rgba(240, 104, 32, 0.55) 0%, transparent 70%);
+    animation: hpbFloat 6s ease-in-out infinite;
+  }
+
+  .hpb-glow-orb-2 {
+    width: 130px;
+    height: 130px;
+    bottom: -20px;
+    left: -30px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, transparent 70%);
+    animation: hpbFloat 7s ease-in-out infinite reverse;
+  }
+
+  @keyframes hpbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-8px, 10px) scale(1.12); }
+  }
+
+  /* Rotating conic-gradient border glow — the ring shape stays static
+     (clipped by this element), only the gradient underneath spins,
+     so the rounded corners never wobble */
+  .hpb-border-spin {
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hpb-border-spin::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, #f06820, #ffb27a, #0ea5e9, #f06820);
+    opacity: 0.7;
+    animation: hpbSpin 5s linear infinite;
+  }
+
+  @keyframes hpbSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .hpb-inner {
+    position: relative;
+    z-index: 1;
+    margin: 2px;
+    padding: 20px 20px 18px 20px;
+    border-radius: 20px;
+    background: linear-gradient(160deg, #1c1c1c 0%, #0a0a0a 100%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Diagonal shimmer sweep for a premium finish */
+  .hpb-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.08) 50%, transparent 60%);
+    background-size: 250% 250%;
+    background-position: 200% 0;
+    animation: hpbShimmer 3.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes hpbShimmer {
+    0% { background-position: 200% 0; }
+    60%, 100% { background-position: -60% 0; }
+  }
+
+  /* Trust row: stars + rating */
+  .hpb-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hpb-stars {
+    display: flex;
+    gap: 2px;
+    color: #ffb800;
+    font-size: 11px;
+  }
+
+  .hpb-trust-text {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.2px;
+  }
+
+  .hpb-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hpb-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f06820;
+    box-shadow: 0 0 10px 2px rgba(240, 104, 32, 0.6);
+    animation: pulseIndicator 1.8s infinite;
+  }
+
+  .hpb-live-text {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-space-grotesk, inherit);
+  }
+
+  .hpb-tag {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .hpb-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .hpb-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .hpb-stat-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .hpb-icon-orange {
+    background: rgba(240, 104, 32, 0.15);
+    color: #f06820;
+  }
+
+  .hpb-icon-blue {
+    background: rgba(14, 165, 233, 0.15);
+    color: #0ea5e9;
+  }
+
+  .hpb-icon-green {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .hpb-stat-num {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.3px;
+    font-family: var(--font-space-grotesk, inherit);
+  }
+
+  .hpb-stat-lbl {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .hpb-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 6px;
+    height: 48px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+  }
+
+  .hpb-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, #f06820 0%, rgba(240, 104, 32, 0.2) 100%);
+    animation: hpbGrow 1.6s ease-out;
+  }
+
+  .hpb-bar:last-child {
+    background: linear-gradient(180deg, #ffb27a 0%, #f06820 100%);
+    box-shadow: 0 0 14px rgba(240, 104, 32, 0.5);
+  }
+
+  @keyframes hpbGrow {
+    0% { transform: scaleY(0); transform-origin: bottom; }
+    100% { transform: scaleY(1); transform-origin: bottom; }
+  }
+
+  .hpb-footer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hpb-footer-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10b981;
+    flex-shrink: 0;
   }
 }

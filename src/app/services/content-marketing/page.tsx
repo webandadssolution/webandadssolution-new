@@ -4,14 +4,14 @@ import { contentMarketingFaqs } from "../../../data/faq-content"
 import { faqJsonLd, JsonLd } from "../../../lib/seo"
 
 export const metadata: Metadata = {
-  title: "Content Marketing Services",
+  title: "Content Marketing Services for SEO and AI Search Visibility",
   description:
-    "Content marketing that attracts, converts, and compounds. We create content funnels that turn visitors into loyal customers.",
+    "Content marketing built for your funnel blogs, landing pages, and campaign copy that rank in search and get cited in AI answers. Free strategy call.",
   alternates: { canonical: "/services/content-marketing" },
   openGraph: {
-    title: "Content Marketing Services | Web and Ads Solutions",
+    title: "Content Marketing Services for SEO and AI Search Visibility",
     description:
-      "Content marketing that attracts, converts, and compounds. We create content funnels that turn visitors into loyal customers.",
+      "Content marketing built for your funnel blogs, landing pages, and campaign copy that rank in search and get cited in AI answers. Free strategy call.",
     url: "/services/content-marketing",
   },
 }

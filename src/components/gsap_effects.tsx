@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import gsap from "gsap"
@@ -22,6 +21,8 @@ const GsapEffects = () => {
   useEffect(() => {
     let ctx: ReturnType<typeof gsap.context> | undefined
 
+    const isMobile = window.innerWidth <= 767
+
     const timer = setTimeout(() => {
       ctx = gsap.context(() => {
 
@@ -35,8 +36,65 @@ const GsapEffects = () => {
           onUpdate: (self) => gsap.set(progressBar, { scaleX: self.progress })
         })
 
-        // ── 2. HERO PARALLAX ────────────────────────────────────────────────
-        if (document.querySelector(".hero-content")) {
+        // ── 19. SLIDER PAUSE — always run, even on mobile ───────────────────
+        ;[
+          { el: ".slider-track",     trigger: ".who-we-are-slider" },
+          { el: ".review-track",     trigger: ".review-section" },
+          { el: ".industries-track", trigger: ".industries-slider" },
+          { el: ".team-grid",        trigger: ".team-scroller-viewport" },
+        ].forEach(({ el: sel, trigger }) => {
+          const el = document.querySelector(sel) as HTMLElement | null
+          if (!el) return
+          ScrollTrigger.create({
+            trigger,
+            start: "top bottom", end: "bottom top",
+            onEnter:     () => (el.style.animationPlayState = "running"),
+            onLeave:     () => (el.style.animationPlayState = "paused"),
+            onEnterBack: () => (el.style.animationPlayState = "running"),
+            onLeaveBack: () => (el.style.animationPlayState = "paused"),
+          })
+        })
+
+        // ── Mobile service card 3D tilt-reveal — each card lies tilted back
+        // like a hinged panel and stands upright with a springy bounce as it
+        // scrolls into view; its icon pops in a beat after the card settles ──
+        const mobileServicesWrapper = document.querySelector(".services-cards-wrapper") as HTMLElement | null
+        if (mobileServicesWrapper && isMobile) {
+          const mobileCards = gsap.utils.toArray<HTMLElement>(".service-card-wrapper", mobileServicesWrapper)
+          mobileCards.forEach((card) => {
+            const icon = card.querySelector(".services-card-icon")
+
+            gsap.set(card, { transformPerspective: 1000, transformOrigin: "bottom center" })
+            if (icon) gsap.set(icon, { opacity: 0 })
+
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              }
+            })
+
+            tl.fromTo(card,
+              { opacity: 0, rotateX: 62, y: 70, scale: 0.92 },
+              { opacity: 1, rotateX: 0, y: 0, scale: 1, duration: 0.9, ease: "back.out(1.6)" }
+            )
+
+            if (icon) {
+              tl.fromTo(icon,
+                { opacity: 0, scale: 0.4, rotate: -18 },
+                { opacity: 1, scale: 1, rotate: 0, duration: 0.55, ease: "back.out(2.4)" },
+                "-=0.45"
+              )
+            }
+          })
+        }
+
+        // On mobile — skip all other heavy scroll animations
+        if (isMobile) { ScrollTrigger.refresh(); return }
+
+        // ── 2. HERO PARALLAX (desktop only) ─────────────────────────────────
+        if (document.querySelector(".hero-content") && window.innerWidth >= 768) {
           gsap.to(".hero-text-wrapper", {
             y: -80, ease: "none",
             scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1.5 }
@@ -251,10 +309,12 @@ const GsapEffects = () => {
               scrollTrigger: { trigger: whoImg, start: "top 94%", once: true }
             }
           )
-          gsap.to(whoImg, {
-            y: -30, ease: "none",
-            scrollTrigger: { trigger: ".who-we-are-section", start: "top bottom", end: "bottom top", scrub: 1.4 }
-          })
+          if (window.innerWidth >= 768) {
+            gsap.to(whoImg, {
+              y: -30, ease: "none",
+              scrollTrigger: { trigger: ".who-we-are-section", start: "top bottom", end: "bottom top", scrub: 1.4 }
+            })
+          }
         }
 
         const whoContent = document.querySelector(".who-we-are-content, .who-we-are-text")
@@ -302,34 +362,17 @@ const GsapEffects = () => {
           )
         }
 
-        // ── 19. SLIDER PAUSE OUT OF VIEWPORT ────────────────────────────────
-        [
-          { el: ".slider-track",    trigger: ".who-we-are-slider" },
-          { el: ".review-track",    trigger: ".review-section" },
-          { el: ".industries-track",trigger: ".industries-slider" },
-          { el: ".team-grid",       trigger: ".team-scroller-viewport" },
-        ].forEach(({ el: sel, trigger }) => {
-          const el = document.querySelector(sel) as HTMLElement | null
-          if (!el) return
-          ScrollTrigger.create({
-            trigger,
-            start: "top bottom", end: "bottom top",
-            onEnter:     () => (el.style.animationPlayState = "running"),
-            onLeave:     () => (el.style.animationPlayState = "paused"),
-            onEnterBack: () => (el.style.animationPlayState = "running"),
-            onLeaveBack: () => (el.style.animationPlayState = "paused"),
-          })
-        })
+        // slider pause handled above (runs on all devices)
 
         // ── 20. SECTION ENTRANCE ANIMATION (works on every screen size) ──────
         gsap.utils.toArray<HTMLElement>(".stack-panel").forEach((panel) => {
           gsap.fromTo(panel,
-            { y: 70, opacity: 0, scale: 0.97 },
+            { y: 70, opacity: 0, scale: 0.97, willChange: "transform, opacity" },
             {
               y: 0, opacity: 1, scale: 1,
               duration: 0.9,
               ease: "power3.out",
-              clearProps: "transform,opacity",
+              clearProps: "transform,opacity,willChange",
               scrollTrigger: {
                 trigger: panel,
                 start: "top 92%",
@@ -356,8 +399,8 @@ const GsapEffects = () => {
           })
         }
 
-        // ── 22. FAQ IMAGES PARALLAX ──────────────────────────────────────────
-        if (document.querySelector(".faq-images")) {
+        // ── 22. FAQ IMAGES PARALLAX (desktop only) ───────────────────────────
+        if (document.querySelector(".faq-images") && window.innerWidth >= 768) {
           gsap.to(".faq-images", {
             y: -60, ease: "none",
             scrollTrigger: { trigger: ".faq-section", start: "top bottom", end: "bottom top", scrub: 1.2 }
@@ -370,6 +413,7 @@ const GsapEffects = () => {
             { opacity: 0.5, y: 50 },
             {
               opacity: 1, y: 0, duration: 1, ease: "power3.out",
+              clearProps: "opacity,transform",
               scrollTrigger: { trigger: ".footer-site", start: "top 92%", once: true }
             }
           )
@@ -477,7 +521,7 @@ const GsapEffects = () => {
         // Force ScrollTrigger to refresh and calculate correct offsets
         ScrollTrigger.refresh()
       })
-    }, 150)
+    }, isMobile ? 300 : 150)
 
     return () => {
       clearTimeout(timer)

@@ -4,14 +4,14 @@ import { homeFaqs } from "../data/faq-content"
 import { faqJsonLd, JsonLd } from "../lib/seo"
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Agency for SEO, PPC & Web Development",
+  title: "The Digital Marketing Agency Built for the AI Search Era",
   description:
-    "Full-service digital marketing agency offering SEO, PPC, social media, content marketing, web development, and virtual assistant services to grow your business online.",
+    "Full-service SEO, PPC, content, web design, and AEO/GEO agency with 10+ years and 350+ brands served. Free strategy call see what we can do for you.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Web and Ads Solutions | Digital Marketing Agency",
+    title: "The Digital Marketing Agency Built for the AI Search Era",
     description:
-      "Full-service digital marketing agency offering SEO, PPC, social media, content marketing, web development, and virtual assistant services to grow your business online.",
+      "Full-service SEO, PPC, content, web design, and AEO/GEO agency with 10+ years and 350+ brands served. Free strategy call see what we can do for you.",
     url: "/",
   },
 }

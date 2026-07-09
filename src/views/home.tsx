@@ -8,25 +8,22 @@ import Our_team from "../components/our_team"
 // import Portfolio from "../components/portfolio"
 import Review from "../components/review"
 import Why_choose_us from "../components/why_choose_us"
-import Blog from "../components/blog"
 import Ai_showcase from "../components/ai_showcase"
 import Ai_visibility from "../components/ai_visibility"
 import Industries from "../components/industries"
 import Achievements from "../components/achievements"
-
 // Each entry becomes a sticky card that slides over the one before it
 const stackedSections = [
   { id: "services",   el: <Services /> },
   { id: "team",       el: <Our_team /> },
   { id: "who-we-are", el: <Who_we_are /> },
-    // { id: "portfolio",  el: <Portfolio /> },  
+    // { id: "portfolio",  el: <Portfolio /> },
   { id: "why-us",     el: <Why_choose_us /> },
   { id: "ai",         el: <Ai_showcase /> },
   { id: "ai-visibility", el: <Ai_visibility /> },
   { id: "industries", el: <Industries /> },
   { id: "achieve",    el: <Achievements /> },
   { id: "review",     el: <Review /> },
-  { id: "blog",       el: <Blog /> },
   { id: "faq",        el: <FAQ /> },
 ]
 
@@ -34,8 +31,8 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="global-decorations">
-        <img src="/images/tech-circle.png" alt="" className="decoration decoration-tech-circle" />
-        <img src="/images/gears-spinner.png" alt="" className="decoration decoration-gears" />
+        <img src="/images/tech-circle.png" alt="Technology circle background decoration" className="decoration decoration-tech-circle" />
+        <img src="/images/gears-spinner.png" alt="Spinning gears background decoration" className="decoration decoration-gears" />
       </div>
 
       {/* Hero & Ticker scroll normally — GSAP parallax applies to hero */}

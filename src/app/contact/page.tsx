@@ -2,14 +2,14 @@ import type { Metadata } from "next"
 import ContactPage from "../../views/contact-page"
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | Get a Free Marketing Consultation",
   description:
-    "Let's build something amazing together. Get in touch with our digital marketing team for a free consultation.",
+    "Want to reach out to Web and Ads Solutions? Call us or fill out our form to speak with a strategist and get a free, customized growth plan.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact Us | Web and Ads Solutions",
+    title: "Contact Us | Get a Free Marketing Consultation",
     description:
-      "Let's build something amazing together. Get in touch with our digital marketing team for a free consultation.",
+      "Want to reach out to Web and Ads Solutions? Call us or fill out our form to speak with a strategist and get a free, customized growth plan.",
     url: "/contact",
   },
 }
