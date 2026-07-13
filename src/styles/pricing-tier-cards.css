@@ -7,8 +7,8 @@
 
 .ptc-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(var(--tier-count, auto-fit), minmax(0, 1fr));
+  gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px 80px;
@@ -203,20 +203,133 @@
   color: var(--text-secondary);
 }
 
+/* ── Table view — tablet & phone ─────────────────────────────
+   Same idea as the Website Packages comparison table: rows =
+   features, columns = plans, sticky first column, horizontal
+   scroll. Swaps in for the card grid at <=1100px. ── */
+
+.ptc-table-view { display: none; }
+
+.ptc-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  margin: 0 24px 80px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ptc-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background: var(--card-bg);
+}
+
+.ptc-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg-secondary);
+}
+
+.ptc-table-feature-col {
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--card-bg);
+  min-width: 200px;
+}
+
+thead .ptc-table-feature-col { z-index: 3; background: var(--bg-secondary); }
+
+.ptc-table-plan-col {
+  text-align: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  min-width: 150px;
+}
+
+.ptc-table-plan-col.featured { background: rgba(var(--accent-rgb), 0.05); }
+
+.ptc-table-plan-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.ptc-table-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.ptc-table-plan-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.ptc-table-plan-price {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.ptc-table-price-symbol { font-size: 13px; font-weight: 700; margin-right: 1px; }
+.ptc-table-price-period { font-size: 11px; font-weight: 500; color: var(--text-secondary); }
+
+.ptc-table-cta {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ptc-table-category-row td {
+  text-align: left;
+  padding: 10px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.05);
+  position: sticky;
+  left: 0;
+}
+
+.ptc-table tbody tr:hover .ptc-table-feature-col,
+.ptc-table tbody tr:hover .ptc-table-plan-col { background: rgba(var(--accent-rgb), 0.03); }
+
+.ptc-table-check { color: var(--accent); font-size: 15px; font-weight: 800; }
+.ptc-table-dash { color: var(--text-secondary); opacity: 0.5; }
+.ptc-table-text { font-size: 12.5px; color: var(--text-primary); font-weight: 600; }
+
 @media (max-width: 1100px) {
-  .ptc-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
+  .ptc-cards-view { display: none; }
+  .ptc-table-view { display: block; }
 }
 
 @media (max-width: 640px) {
-  .ptc-grid {
-    grid-template-columns: 1fr;
-    padding: 0 16px 56px;
-  }
-
-  .ptc-card-badge {
-    right: 50%;
-    transform: translateX(50%);
-  }
+  .ptc-table-wrap { margin: 0 16px 56px; border-radius: 12px; }
+  .ptc-table-feature-col { min-width: 160px; padding: 12px 14px; font-size: 13px; }
+  .ptc-table-plan-col { min-width: 130px; padding: 10px 12px; }
 }
