@@ -130,8 +130,11 @@ const PlanQuoteModal = ({ planName, onClose }: { planName: string; onClose: () =
   return (
     <div className="pqm-overlay" onClick={onClose}>
       <div className="pqm-modal" onClick={e => e.stopPropagation()}>
-        <button type="button" className="pqm-close" onClick={onClose} aria-label="Close">×</button>
+        <div className="pqm-topbar">
+          <button type="button" className="pqm-close" onClick={onClose} aria-label="Close">×</button>
+        </div>
 
+        <div className="pqm-body">
         {step === "questionnaire" && (
           <>
             <h3 className="pqm-title">{planName} — Get Your Price</h3>
@@ -272,6 +275,7 @@ const PlanQuoteModal = ({ planName, onClose }: { planName: string; onClose: () =
             <button type="button" className="pqm-btn primary" onClick={onClose}>Close</button>
           </div>
         )}
+        </div>
       </div>
     </div>
   )

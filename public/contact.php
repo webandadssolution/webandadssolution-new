@@ -21,23 +21,58 @@ function clean_field($value) {
     return preg_replace('/(\r\n|\r|\n|%0a|%0d)/i', '', $value);
 }
 
-function contact_email_text(string $name, string $email, string $phone, string $service, string $budget, string $message): string {
+function client_ip(): string {
+    foreach (['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR'] as $key) {
+        if (!empty($_SERVER[$key])) {
+            $ip = trim(explode(',', $_SERVER[$key])[0]);
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+    }
+    return 'Unknown';
+}
+
+function client_country(string $ip): string {
+    // Cloudflare (or similar CDN) already resolves this on every request — free and instant.
+    if (!empty($_SERVER['HTTP_CF_IPCOUNTRY'])) {
+        return clean_field($_SERVER['HTTP_CF_IPCOUNTRY']);
+    }
+    // Best-effort fallback lookup. Must never block or break form submission.
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+        $ctx = stream_context_create(['http' => ['timeout' => 2]]);
+        $resp = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,country", false, $ctx);
+        if ($resp) {
+            $data = json_decode($resp, true);
+            if (($data['status'] ?? '') === 'success' && !empty($data['country'])) {
+                return $data['country'];
+            }
+        }
+    }
+    return 'Unknown';
+}
+
+function contact_email_text(string $name, string $email, string $phone, string $service, string $budget, string $message, string $ip, string $country): string {
     $body  = "You have a new message from the website contact form:\n\n";
     $body .= "Name: {$name}\n";
     $body .= "Email: {$email}\n";
     $body .= "Phone: " . ($phone !== '' ? $phone : '-') . "\n";
     $body .= "Service: {$service}\n";
     $body .= "Budget: " . ($budget !== '' ? $budget : '-') . "\n";
+    $body .= "IP Address: {$ip}\n";
+    $body .= "Country: {$country}\n";
     $body .= "Message:\n{$message}\n";
     return $body;
 }
 
-function contact_email_html(string $name, string $email, string $phone, string $service, string $budget, string $message): string {
+function contact_email_html(string $name, string $email, string $phone, string $service, string $budget, string $message, string $ip, string $country): string {
     $n = htmlspecialchars($name);
     $e = htmlspecialchars($email);
     $p = htmlspecialchars($phone !== '' ? $phone : '-');
     $s = htmlspecialchars($service);
     $b = htmlspecialchars($budget !== '' ? $budget : '-');
+    $ipEsc = htmlspecialchars($ip);
+    $cEsc = htmlspecialchars($country);
     $m = nl2br(htmlspecialchars($message));
     $year = date('Y');
 
@@ -106,9 +141,15 @@ function contact_email_html(string $name, string $email, string $phone, string $
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding:14px 22px;">
+                      <td style="padding:14px 22px;border-bottom:1px solid #e5e7eb;">
                         <div style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px;">Monthly Budget</div>
                         <div style="color:#111827;font-size:14.5px;font-weight:600;">{$b}</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:14px 22px;">
+                        <div style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px;">IP Address / Country</div>
+                        <div style="color:#111827;font-size:14.5px;font-weight:600;">{$ipEsc} &middot; {$cEsc}</div>
                       </td>
                     </tr>
 
@@ -166,10 +207,13 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+$ip = client_ip();
+$country = client_country($ip);
+
 $subject = "New Contact Form Submission from {$name}";
 
-$textBody = contact_email_text($name, $email, $phone, $service, $budget, $message);
-$htmlBody = contact_email_html($name, $email, $phone, $service, $budget, $message);
+$textBody = contact_email_text($name, $email, $phone, $service, $budget, $message, $ip, $country);
+$htmlBody = contact_email_html($name, $email, $phone, $service, $budget, $message, $ip, $country);
 
 $boundary = md5(uniqid((string) time()));
 

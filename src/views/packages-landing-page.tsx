@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import ContactForm from "../components/contact-form"
+import PlanQuoteModal from "../components/plan-quote-modal"
 import "../styles/packages-landing-page.css"
 
 const packages = [
@@ -82,22 +83,30 @@ export default function PackagesLandingPage() {
         ))}
       </div>
 
-      {activePackage && (
+      {activePackage && activePackage.title === "Website Packages" && (
+        <PlanQuoteModal planName="Website Package" onClose={() => setOpenTitle(null)} />
+      )}
+
+      {activePackage && activePackage.title !== "Website Packages" && (
         <div className="pkl-modal-backdrop" onClick={() => setOpenTitle(null)}>
           <div className="pkl-modal-box" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="pkl-modal-close"
-              onClick={() => setOpenTitle(null)}
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            <ContactForm
-              title={`Get a Quote — ${activePackage.title}`}
-              subtitle="Tell us about your goals and budget — we'll recommend the right plan for you."
-              defaultService={activePackage.service}
-            />
+            <div className="pkl-modal-topbar">
+              <button
+                type="button"
+                className="pkl-modal-close"
+                onClick={() => setOpenTitle(null)}
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="pkl-modal-scroll">
+              <ContactForm
+                title={`Get a Quote — ${activePackage.title}`}
+                subtitle="Tell us about your goals and budget — we'll recommend the right plan for you."
+                defaultService={activePackage.service}
+              />
+            </div>
           </div>
         </div>
       )}

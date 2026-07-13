@@ -35,6 +35,19 @@ html[data-theme="light"] {
   --cursor-color: #0a0a0a;
 }
 
+/* Native <select> dropdown lists are rendered by the OS/browser with a
+   white popup regardless of page theme — force dark, readable option
+   text everywhere instead of inheriting the (often near-white) dark-theme
+   text color, which becomes invisible against that white popup. */
+select {
+  color-scheme: light;
+}
+
+select option {
+  color: #111111;
+  background: #ffffff;
+}
+
 /* Main Global Styles */
 * {
   margin: 0;

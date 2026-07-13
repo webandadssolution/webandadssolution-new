@@ -4,28 +4,46 @@
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 20px;
-  z-index: 1000;
+  padding: 110px 20px 20px;
+  overflow-y: auto;
+  /* Must sit above the floating site header (z-index: 10000), otherwise
+     the header renders on top of the modal's close button. */
+  z-index: 10500;
 }
 
 .pqm-modal {
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 720px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   background: var(--card-bg, #fff);
   border-radius: 20px;
-  padding: 40px 36px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button lives in its own row above the scroll area, so the
+   scroll container's scrollbar can never sit on top of it — a native
+   scrollbar always paints above page content regardless of z-index. */
+.pqm-topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 16px 0;
+  flex-shrink: 0;
+}
+
+.pqm-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  padding: 8px 36px 40px;
 }
 
 .pqm-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -47,7 +65,6 @@
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 8px;
-  padding-right: 30px;
 }
 
 .pqm-sub {
@@ -232,7 +249,9 @@
 }
 
 @media (max-width: 640px) {
-  .pqm-modal { padding: 30px 22px; max-height: 92vh; }
+  .pqm-overlay { padding: 88px 14px 14px; }
+  .pqm-modal { max-height: 92vh; }
+  .pqm-body { padding: 4px 20px 28px; }
   .pqm-grid { grid-template-columns: 1fr; }
   .pqm-title { font-size: 20px; }
   .pqm-actions { flex-direction: column-reverse; }
