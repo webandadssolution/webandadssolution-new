@@ -59,7 +59,11 @@ const ContactForm = ({
       const sendRes = await fetch("/contact.php", {
         method: "POST",
         credentials: "same-origin",
-        body: new URLSearchParams(form),
+        body: new URLSearchParams({
+          ...form,
+          page_url: window.location.href,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        }),
       })
       const sendData = await sendRes.json()
       if (sendData.success) {

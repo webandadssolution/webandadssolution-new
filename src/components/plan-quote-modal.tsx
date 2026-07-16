@@ -110,6 +110,8 @@ const PlanQuoteModal = ({ planName, onClose }: { planName: string; onClose: () =
           service: `Website Design – ${planName}`,
           budget: "",
           message: buildMessage(),
+          page_url: window.location.href,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         }),
       })
       const data = await res.json()

@@ -17,6 +17,11 @@ const Our_team = () => {
     img: "/team/shivam.png",
   },
   {
+    name: "Shishir",
+    designation: "CTO",
+    img: "/team/shisir.png",
+  },
+  {
     name: "Shruti",
     designation: "Chief Financial Officer",
     img: "/team/shruti.png",
@@ -56,6 +61,11 @@ const Our_team = () => {
     name: "Musharraf",
     designation: "Developer",
     img: "/team/Musaaraf.png",
+  },
+  {
+    name: "Rinku",
+    designation: "SR. Graphic Designer",
+    img: "/team/rinku.png",
   },
   
   {
