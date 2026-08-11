@@ -12,25 +12,63 @@
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(4px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px;
-  z-index: 1000;
+  padding: 30px 24px 24px;
+  overflow-y: auto;
+  /* Must sit above the floating site header (z-index: 10000), otherwise
+     the header renders on top of the modal's close button. */
+  z-index: 10500;
 }
 
 .pkl-modal-box {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 680px;
   max-height: 90vh;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button lives in its own row above the scroll area, so the
+   scroll container's scrollbar can never sit on top of it — a native
+   scrollbar always paints above page content regardless of z-index. */
+.pkl-modal-topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 14px 0;
+  flex-shrink: 0;
+}
+
+.pkl-modal-scroll {
   overflow-y: auto;
-  border-radius: 16px;
+  overflow-x: hidden;
+  min-height: 0;
+}
+
+/* The form's own card chrome (background/border/radius/shadow) is
+   redundant once it's already inside the modal box — strip it so we
+   get a single, clean card instead of a box-within-a-box. */
+.pkl-modal-scroll .ct-form-col {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  position: static;
+  overflow: visible;
+  padding: 8px 40px 40px;
+}
+
+.pkl-modal-scroll .ct-form-col::before {
+  display: none;
 }
 
 .pkl-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -39,7 +77,6 @@
   color: var(--text-primary);
   font-size: 14px;
   cursor: pointer;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,4 +85,14 @@
 
 .pkl-modal-close:hover {
   background: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 640px) {
+  .pkl-modal-backdrop {
+    padding: 88px 14px 14px;
+  }
+
+  .pkl-modal-scroll .ct-form-col {
+    padding: 4px 20px 28px;
+  }
 }

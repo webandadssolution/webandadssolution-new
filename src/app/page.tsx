@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Full-service SEO, PPC, content, web design, and AEO/GEO agency with 10+ years and 350+ brands served. Free strategy call see what we can do for you.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "The Digital Marketing Agency Built for the AI Search Era | Web and Ads Solutions",
+    title: "The Digital Marketing Agency Built for the AI Search Era",
     description:
       "Full-service SEO, PPC, content, web design, and AEO/GEO agency with 10+ years and 350+ brands served. Free strategy call see what we can do for you.",
     url: "/",
