@@ -40,6 +40,7 @@ export default function ContactPage() {
         <div className="ct-hero-grid" />
         <div className="ct-hero-glow" />
         <div className="ct-hero-inner">
+          {/* Desktop hero — unchanged */}
           <div className="ct-hero-text scroll-reveal">
             <div className="ct-badge"><span className="ct-badge-dot" />Get In Touch</div>
             <h1 className="ct-hero-title">
@@ -50,11 +51,50 @@ export default function ContactPage() {
               Ready to grow your business? Fill out the form and one of our specialists will reach out within 2 hours with a custom strategy for your goals.
             </p>
           </div>
+
+          {/* Mobile-only hero upgrade */}
+          <div className="ct-mobile-hero">
+            <div className="ct-mobile-badge"><span className="ct-badge-dot" />Free Consultation Available</div>
+
+            <h1 className="ct-mobile-title">
+              Get More Customers.<br />
+              <span className="ct-accent">Start With a Free Call.</span>
+            </h1>
+
+            <p className="ct-mobile-sub">
+              Tell us your goals — we'll respond with a custom strategy within 2 hours. No pressure, no obligation.
+            </p>
+
+            {/* Primary CTAs */}
+            <div className="ct-mobile-ctas">
+              <a href="tel:+19177087134" className="ct-mobile-call-btn">
+                <span className="ct-mobile-call-icon">📞</span>
+                <div>
+                  <span className="ct-mobile-call-label">Call Us Now</span>
+                  <span className="ct-mobile-call-num">+1 917 708 7134</span>
+                </div>
+              </a>
+              <a href="https://wa.me/19177087134" className="ct-mobile-wa-btn" target="_blank" rel="noopener noreferrer">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+
+            {/* Trust chips */}
+            <div className="ct-mobile-trust">
+              <span className="ct-mobile-chip">✓ Free Consultation</span>
+              <span className="ct-mobile-chip">✓ Reply in 2 Hours</span>
+              <span className="ct-mobile-chip">✓ 500+ Clients</span>
+            </div>
+
+            <a href="#ct-form" className="ct-mobile-form-link">
+              Or fill the form below ↓
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ── MAIN CONTACT LAYOUT ── */}
-      <section className="ct-main-section">
+      <section className="ct-main-section" id="ct-form">
         <div className="ct-main-inner">
 
           {/* ── FORM ── */}

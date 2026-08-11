@@ -2,6 +2,7 @@
 import { useRef, useLayoutEffect } from "react"
 import type { MouseEvent as ReactMouseEvent } from "react"
 import gsap from "gsap"
+import { FaStar, FaChartLine, FaBolt, FaShieldAlt, FaCheckCircle } from "react-icons/fa"
 import "../styles/hero.css"
 
 const Hero = () => {
@@ -80,11 +81,9 @@ const Hero = () => {
 
           <h1 className="hero-title">
             <span className="hero-line">
-              <span className="word-mask"><span className="hero-word font-light">Creative</span></span>
+              <span className="word-mask"><span className="hero-word font-light">AI-Driven</span></span>
               <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-light">Digital</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-accent">Marketing,</span></span>
+              <span className="word-mask"><span className="hero-word font-bold text-accent">Digital Marketing,</span></span>
             </span>
             <span className="hero-line hero-title-line2">
               <span className="word-mask"><span className="hero-word font-bold">Designed</span></span>
@@ -118,6 +117,86 @@ const Hero = () => {
               Explore Our Services
             </button>
           </div>
+
+          {/* ── Mobile-only lead section ── */}
+          <div className="hero-mobile-lead">
+            <div className="hero-mobile-stats">
+              <div className="hero-mobile-stat"><span className="hms-num">500+</span><span className="hms-lbl">Happy Clients</span></div>
+              <div className="hero-mobile-divider" />
+              <div className="hero-mobile-stat"><span className="hms-num">2hr</span><span className="hms-lbl">Response Time</span></div>
+              <div className="hero-mobile-divider" />
+              <div className="hero-mobile-stat"><span className="hms-num">Free</span><span className="hms-lbl">Consultation</span></div>
+            </div>
+
+            <a href="tel:+19177087134" className="hero-mobile-call">
+              <span className="hero-mobile-call-icon">📞</span>
+              <div>
+                <span className="hero-mobile-call-top">Tap to Call — Free Consultation</span>
+                <span className="hero-mobile-call-num">+1 917 708 7134</span>
+              </div>
+            </a>
+
+            <a href="https://wa.me/19177087134" className="hero-mobile-wa" target="_blank" rel="noopener noreferrer">
+              <span>💬</span> Chat on WhatsApp
+            </a>
+
+            <p className="hero-mobile-note">Mon – Fri, 9am – 6pm CST &nbsp;·&nbsp; No obligation</p>
+          </div>
+
+          {/* ── Phone-only compact banner (replaces dashboard mockup below 768px) ── */}
+          <div className="hero-phone-banner">
+            <span className="hpb-glow-orb hpb-glow-orb-1" />
+            <span className="hpb-glow-orb hpb-glow-orb-2" />
+            <div className="hpb-border-spin" />
+
+            <div className="hpb-inner">
+              <div className="hpb-trust-row">
+                <div className="hpb-stars">
+                  <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                </div>
+                <span className="hpb-trust-text">4.9/5 · 350+ Brands Trust Us</span>
+              </div>
+
+              <div className="hpb-header">
+                <span className="hpb-live-dot" />
+                <span className="hpb-live-text">Live Growth Snapshot</span>
+                <span className="hpb-tag"><FaCheckCircle /> Verified</span>
+              </div>
+
+              <div className="hpb-stats">
+                <div className="hpb-stat">
+                  <div className="hpb-stat-icon hpb-icon-orange"><FaChartLine /></div>
+                  <span className="hpb-stat-num">+342%</span>
+                  <span className="hpb-stat-lbl">Traffic Growth</span>
+                </div>
+                <div className="hpb-stat">
+                  <div className="hpb-stat-icon hpb-icon-blue"><FaBolt /></div>
+                  <span className="hpb-stat-num">4.8x</span>
+                  <span className="hpb-stat-lbl">Google ROAS</span>
+                </div>
+                <div className="hpb-stat">
+                  <div className="hpb-stat-icon hpb-icon-green"><FaShieldAlt /></div>
+                  <span className="hpb-stat-num">98%</span>
+                  <span className="hpb-stat-lbl">AI Efficiency</span>
+                </div>
+              </div>
+
+              <div className="hpb-bars">
+                <span className="hpb-bar" style={{ height: "35%" }} />
+                <span className="hpb-bar" style={{ height: "55%" }} />
+                <span className="hpb-bar" style={{ height: "40%" }} />
+                <span className="hpb-bar" style={{ height: "70%" }} />
+                <span className="hpb-bar" style={{ height: "60%" }} />
+                <span className="hpb-bar" style={{ height: "90%" }} />
+              </div>
+
+              <div className="hpb-footer">
+                <span className="hpb-footer-dot" />
+                Trusted by 350+ growing businesses nationwide
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* Right Column: Interactive Campaigns Dashboard Mockup */}

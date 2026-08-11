@@ -152,7 +152,7 @@ const Ai_showcase = () => {
                         <div className="ai-core-glow" />
                         <div className="ai-core-ring ai-core-ring-outer" />
                         <div className="ai-core-ring ai-core-ring-inner" />
-                        <img src="https://paimage.picode.in/aivora/php/assets/img/industries/indus-logo.png" alt="AI Center" />
+                        <img src="/images/wa-logo.png" alt="AI Center" />
                     </div>
                 </div>
             </div>

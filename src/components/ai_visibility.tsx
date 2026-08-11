@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useRef, useState } from "react"
 import type { MouseEvent as ReactMouseEvent } from "react"
 import gsap from "gsap"

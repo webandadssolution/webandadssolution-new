@@ -7,14 +7,10 @@ const Our_team = () => {
    const teamMembers = [
   {
     name: "Nitesh",
-    designation: "CEO",
+    designation: "CEO & Founder",
     img: "/team/nitesh.png",
   },
-  {
-    name: "Aastha",
-    designation: "DIRECTOR",
-    img: "/team/aashtha.jpg",
-  },
+  { name: "Aastha", designation: "DIRECTOR", img: "/team/Aashta.png" }, // photo missing — add file to re-enable
   {
     name: "Shivam",
     designation: "Vice President",
@@ -26,8 +22,8 @@ const Our_team = () => {
     img: "/team/shruti.png",
   },
 
- {
-    name: "Ikra",
+   {
+    name: "Iqra",
     designation: "HR Executive",
     img: "/team/ikra.png",
   },
@@ -82,7 +78,7 @@ const Our_team = () => {
   
   {
     name: "Ashish",
-    designation: "SEO Mangager",
+    designation: "SEO Manager",
     img: "/team/Ashish.png",
   },
   
@@ -147,8 +143,10 @@ const Our_team = () => {
     const displayMembers = [...teamMembers, ...teamMembers];
 
     const trackRef = useRef<HTMLDivElement>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
     const [step, setStep] = useState(299); // fallback: card width + gap
+    const offsetRef = useRef(0);
+    const pausedRef = useRef(false);
+    const inViewRef = useRef(false);
 
     useEffect(() => {
         const measure = () => {
@@ -163,20 +161,54 @@ const Our_team = () => {
         return () => window.removeEventListener("resize", measure);
     }, []);
 
-    const slide = (direction: 1 | -1) => {
-        setActiveIndex((prev) => {
-            const next = prev + direction;
-            if (next < 0) return teamMembers.length - 1;
-            if (next >= teamMembers.length) return 0;
-            return next;
-        });
-    };
-
-    // Ambient auto-advance, paused while the user is interacting via arrows
+    // Only animate while the carousel is actually on screen — keeps the
+    // main thread free during scroll through the rest of the page
     useEffect(() => {
-        const timer = setInterval(() => slide(1), 3500);
-        return () => clearInterval(timer);
+        const viewport = trackRef.current?.closest(".team-scroller-viewport");
+        if (!viewport) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => { inViewRef.current = entry.isIntersecting; },
+            { rootMargin: "200px" }
+        );
+        observer.observe(viewport);
+        return () => observer.disconnect();
     }, []);
+
+    // Continuous drift: keeps moving every frame instead of jumping and
+    // pausing, looping seamlessly through the doubled member list
+    useEffect(() => {
+        const loopWidth = teamMembers.length * step;
+        const pxPerMs = step / 3500; // same pacing as before, but never stops
+        let last = performance.now();
+        let frame = requestAnimationFrame(tick);
+
+        function tick(now: number) {
+            const dt = now - last;
+            last = now;
+            if (!pausedRef.current && inViewRef.current) {
+                offsetRef.current = (offsetRef.current + pxPerMs * dt) % loopWidth;
+                if (trackRef.current) {
+                    trackRef.current.style.transform = `translateX(-${offsetRef.current}px)`;
+                }
+            }
+            frame = requestAnimationFrame(tick);
+        }
+
+        return () => cancelAnimationFrame(frame);
+    }, [step, teamMembers.length]);
+
+    const slide = (direction: 1 | -1) => {
+        const loopWidth = teamMembers.length * step;
+        offsetRef.current = (offsetRef.current + direction * step + loopWidth) % loopWidth;
+        const track = trackRef.current;
+        if (track) {
+            track.style.transition = "transform 0.5s ease";
+            track.style.transform = `translateX(-${offsetRef.current}px)`;
+            window.setTimeout(() => {
+                if (track) track.style.transition = "";
+            }, 500);
+        }
+    };
 
     return (
     <section className="team-section">
@@ -189,14 +221,21 @@ const Our_team = () => {
           </p>
         </div>
 
-        <div className="team-scroller-viewport scroll-reveal delay-2">
+        <div
+            className="team-scroller-viewport scroll-reveal delay-2"
+            onMouseEnter={() => { pausedRef.current = true; }}
+            onMouseLeave={() => { pausedRef.current = false; }}
+        >
             <button
                 type="button"
                 className="team-arrow team-arrow-left"
                 aria-label="Previous team member"
                 onClick={() => slide(-1)}
             >
-                ‹
+                <span className="team-arrow-ring" aria-hidden="true" />
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
             <button
                 type="button"
@@ -204,17 +243,37 @@ const Our_team = () => {
                 aria-label="Next team member"
                 onClick={() => slide(1)}
             >
-                ›
+                <span className="team-arrow-ring" aria-hidden="true" />
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
             <div
                 ref={trackRef}
                 className="team-grid"
-                style={{ transform: `translateX(-${activeIndex * step}px)` }}
             >
                 {displayMembers.map((member, i) => (
                     <div key={i} className="team-member-card">
                         <div className="image-wrapper">
-                            <img src={member.img} alt={member.name} />
+                            <img
+                              src={member.img}
+                              alt={member.name}
+                              onError={(e) => {
+                                const el = e.currentTarget
+                                el.style.display = "none"
+                                const placeholder = el.nextElementSibling as HTMLElement | null
+                                if (placeholder?.classList.contains("team-img-placeholder")) {
+                                  placeholder.style.display = "flex"
+                                }
+                              }}
+                            />
+                            <div
+                              className="team-img-placeholder"
+                              style={{ display: "none" }}
+                              aria-label={member.name}
+                            >
+                              {member.name.charAt(0).toUpperCase()}
+                            </div>
                             <div className="team-overlay">
                                 <div className="social-box">
                                     <a href="#" className="linkedin-link" aria-label="LinkedIn">

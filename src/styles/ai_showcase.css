@@ -532,8 +532,8 @@
 /* For Mobile Phones (Max 768px) */
 @media screen and (max-width: 767px) {
   .ai-showcase-section {
-    height: 1150px;
-    padding: 40px 0;
+    height: auto;
+    padding: 40px 0 60px 0;
   }
 
   .ai-showcase-container {
@@ -551,32 +551,39 @@
   }
 
   .ai-visual-wrapper {
-    height: 500px;
+    height: 600px;
   }
 
   .ai-streams-container {
-    height: 450px;
-    gap: 10px; /* Tighter gap for small screens */
+    height: 400px;
+    gap: 22px; /* Wider gap now that only 3 columns show */
+  }
+
+  /* Show only the middle 3 columns on phones — 5 columns of long
+     vertical URL text is illegible on narrow screens */
+  .ai-streams-container > .ai-column-wrapper:first-child,
+  .ai-streams-container > .ai-column-wrapper:last-child {
+    display: none;
   }
 
   .ai-data-card {
-    width: 35px; /* Scaled down cards */
-    padding: 15px 5px;
+    width: 58px; /* Bigger, legible cards now that only 3 show */
+    padding: 16px 8px;
   }
 
   .ai-url {
-    font-size: 10px;
-    height: 150px;
+    font-size: 13px;
+    height: 165px;
   }
 
   .ai-code {
-    width: 26px;
-    height: 26px;
-    font-size: 9px;
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
   }
 
   .ai-verb {
-    font-size: 7px;
+    font-size: 8.5px;
   }
 
   .ai-scan-zone {
@@ -604,15 +611,15 @@
 
   /* SVG Overlays Scaling */
   .ai-lines-top-overlay {
-    top: 68%;
+    top: 62%;
     width: 122%;
-    height: 350px;
+    height: 300px;
   }
 
   .ai-lines-bottom-overlay {
-    top: 128%;
+    top: 95%;
     width: 161%;
-    height: 180px;
+    height: 160px;
   }
   .ai-path {
       stroke-width: 3.5;
@@ -639,3 +646,16 @@
 
 
 
+
+@media (max-width: 767px) {
+  .ai-grid-bg { animation: none; }
+  .ai-pulse-dot { animation: none; }
+  .ai-metrics-value { animation: none; }
+  .ai-data-stream { animation: none; }
+  .ai-card { animation: none; }
+  .ai-card::after { animation: none; }
+  .ai-beam { animation: none; }
+  .ai-core { animation: none; }
+  .ai-orbit-ring { animation: none; }
+  .ai-orbit-ring-2 { animation: none; }
+}

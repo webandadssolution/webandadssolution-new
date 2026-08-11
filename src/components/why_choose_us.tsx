@@ -7,6 +7,18 @@ const Why_choose_us = () => {
     // Tracks the currently active panel. Initialized to 0 (first bar open).
     const [activeIndex, setActiveIndex] = useState(0);
 
+    // Mobile-only: each flip card opens independently of the others.
+    const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+
+    const toggleFlip = (index: number) => {
+        setFlippedCards((prev) => {
+            const next = new Set(prev);
+            if (next.has(index)) next.delete(index);
+            else next.add(index);
+            return next;
+        });
+    };
+
     const chooseUsData = [
       {
         title: "Understanding",
@@ -54,11 +66,12 @@ const Why_choose_us = () => {
                         Web development, social media, and <br />
                         <span className="choose-us-highlight">performance advertising designed to help growing businesses.</span>
                     </h2>
-                   
+
                 </div>
             </div>
 
-            <div className="accordion-wrapper scroll-reveal delay-2">
+            {/* ── DESKTOP / TABLET — unchanged hover accordion ── */}
+            <div className="accordion-wrapper choose-us-desktop-only scroll-reveal delay-2">
                 {chooseUsData.map((item, index) => (
                     <div
                         key={index}
@@ -85,6 +98,36 @@ const Why_choose_us = () => {
                                 <h3 className="item-title">{item.title}</h3>
                                 <p className="item-desc">{item.description}</p>
                                 <button className="explore-btn">Explore Service</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* ── PHONE ONLY — independent flip cards, all visible, fully
+                 separate markup/classes so it can never affect desktop ── */}
+            <div className="choose-us-mobile-only">
+                {chooseUsData.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`mc-card ${flippedCards.has(index) ? "mc-flipped" : ""}`}
+                        onClick={() => toggleFlip(index)}
+                    >
+                        <div className="mc-card-inner">
+                            <div
+                                className="mc-face mc-face-front"
+                                style={{ backgroundImage: `url("${item.image}")` }}
+                            >
+                                <div className="mc-front-overlay"></div>
+                                <span className="mc-index">0{index + 1}</span>
+                                <h3 className="mc-title">{item.title}</h3>
+                                <span className="mc-hint">Tap to view ↻</span>
+                            </div>
+                            <div className="mc-face mc-face-back">
+                                <span className="mc-index">0{index + 1}</span>
+                                <h3 className="mc-title">{item.title}</h3>
+                                <p className="mc-desc">{item.description}</p>
+                                <button className="mc-btn">Explore Service</button>
                             </div>
                         </div>
                     </div>

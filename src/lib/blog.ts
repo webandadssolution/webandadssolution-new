@@ -1,0 +1,184 @@
+const CMS_URL = (process.env.CMS_URL || "http://localhost:8000").replace(/\/$/, "")
+
+export interface BlogCategory {
+  name: string
+  slug: string
+  postCount: number
+}
+
+export interface BlogPost {
+  id: number
+  slug: string
+  category: string
+  categorySlug: string
+  title: string
+  excerpt: string
+  content: string
+  author: string
+  date: string
+  dateIso: string
+  readTime: string
+  tags: string[]
+  image: string | null
+  metaTitle: string
+  metaDescription: string
+  canonicalUrl: string
+  schema: Record<string, unknown>
+}
+
+export interface AuthorProfile {
+  id: number
+  slug: string
+  name: string
+  role: string
+  description: string
+  expertise: string[]
+  image: string | null
+}
+
+interface CmsCategory {
+  name: string
+  slug: string
+  post_count: number
+}
+
+interface CmsPost {
+  id: number
+  slug: string
+  title: string
+  excerpt: string
+  content?: string
+  featured_image: string | null
+  category: { name: string; slug: string } | null
+  meta: { title: string; description: string; canonical_url: string }
+  author: string | null
+  published_at: string
+  updated_at: string
+  schema: Record<string, unknown>
+}
+
+interface CmsPostsResponse {
+  data: CmsPost[]
+  pagination: { page: number; limit: number; total: number; total_pages: number }
+}
+
+interface CmsAuthor {
+  id: number
+  slug: string
+  name: string
+  role: string
+  description: string
+  expertise: string[]
+  image: string | null
+}
+
+interface CmsAuthorsResponse {
+  data: CmsAuthor[]
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+}
+
+function estimateReadTime(html: string): string {
+  const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.round(words / 200))
+  return `${minutes} min read`
+}
+
+function normalizePost(post: CmsPost): BlogPost {
+  const category = post.category?.name ?? "Uncategorized"
+  return {
+    id: post.id,
+    slug: post.slug,
+    category,
+    categorySlug: post.category?.slug ?? "",
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content ?? "",
+    author: post.author ?? "Web and Ads Solutions",
+    date: formatDate(post.published_at),
+    dateIso: post.published_at,
+    readTime: estimateReadTime(post.content ?? post.excerpt),
+    tags: [category],
+    image: post.featured_image,
+    metaTitle: post.meta.title,
+    metaDescription: post.meta.description,
+    canonicalUrl: post.meta.canonical_url,
+    schema: post.schema,
+  }
+}
+
+export async function getCategories(): Promise<BlogCategory[]> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/categories.php`, { cache: "no-store" })
+    if (!res.ok) return []
+    const { data }: { data: CmsCategory[] } = await res.json()
+    return data.map((c) => ({ name: c.name, slug: c.slug, postCount: c.post_count }))
+  } catch {
+    return []
+  }
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const posts: CmsPost[] = []
+    let page = 1
+    let totalPages = 1
+    do {
+      const res = await fetch(`${CMS_URL}/api/posts.php?page=${page}&limit=100`, { cache: "no-store" })
+      if (!res.ok) break
+      const json: CmsPostsResponse = await res.json()
+      posts.push(...json.data)
+      totalPages = json.pagination.total_pages
+      page++
+    } while (page <= totalPages)
+    return posts.filter((p) => p.category).map(normalizePost)
+  } catch {
+    return []
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/post.php?slug=${encodeURIComponent(slug)}`, { cache: "no-store" })
+    if (!res.ok) return null
+    const { data }: { data: CmsPost } = await res.json()
+    return data ? normalizePost(data) : null
+  } catch {
+    return null
+  }
+}
+
+export async function getAuthors(): Promise<AuthorProfile[]> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/authors.php`, { cache: "no-store" })
+    if (!res.ok) return []
+    const { data }: CmsAuthorsResponse = await res.json()
+    return data || []
+  } catch {
+    return []
+  }
+}
+
+export async function getAuthorBySlug(slug: string): Promise<AuthorProfile | null> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/author.php?slug=${encodeURIComponent(slug)}`, { cache: "no-store" })
+    if (!res.ok) return null
+    const { data }: { data: AuthorProfile | null } = await res.json()
+    return data
+  } catch {
+    return null
+  }
+}
+
+export async function getAuthorPosts(slug: string, limit = 6): Promise<BlogPost[]> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/author-posts.php?slug=${encodeURIComponent(slug)}&limit=${limit}`, { cache: "no-store" })
+    if (!res.ok) return []
+    const { data }: { data: CmsPost[] } = await res.json()
+    return (data || []).map(normalizePost)
+  } catch {
+    return []
+  }
+}

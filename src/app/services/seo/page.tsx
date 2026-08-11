@@ -4,14 +4,14 @@ import { seoFaqs } from "../../../data/faq-content"
 import { faqJsonLd, JsonLd } from "../../../lib/seo"
 
 export const metadata: Metadata = {
-  title: "SEO Services | Rank Higher & Grow Organic Traffic",
+  title: "SEO Services That Rank and Drive Real Revenue",
   description:
-    "Expert search engine optimization services to help your business rank higher, get found, and grow organic traffic. Get a custom SEO strategy today.",
+    "Expert SEO services for businesses of all sizes. From local SEO to full-scale SEO marketing, we deliver rankings that convert. Get a free audit today.",
   alternates: { canonical: "/services/seo" },
   openGraph: {
-    title: "SEO Services | Web and Ads Solutions",
+    title: "SEO Services That Rank and Drive Real Revenue | Web and Ads Solutions",
     description:
-      "Expert search engine optimization services to help your business rank higher, get found, and grow organic traffic.",
+      "Expert SEO services for businesses of all sizes. From local SEO to full-scale SEO marketing, we deliver rankings that convert. Get a free audit today.",
     url: "/services/seo",
   },
 }

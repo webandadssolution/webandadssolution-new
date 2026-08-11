@@ -1,132 +1,29 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import type { Dispatch, SetStateAction } from "react"
 import Link from "next/link"
-import { seoFaqs } from "../data/faq-content"
+import {
+  MdOutlineVisibility,
+  MdOutlineArticle,
+  MdOutlineLink,
+  MdOutlineLocationOn,
+  MdOutlineSmartToy,
+  MdOutlineCardGiftcard,
+  MdOutlinePerson,
+  MdOutlineBolt,
+  MdOutlineBarChart,
+  MdOutlineDoNotDisturb,
+  MdOutlineTrackChanges,
+  MdOutlineSearch,
+  MdOutlineMap,
+  MdOutlineRecordVoiceOver,
+  MdOutlinePhoneIphone,
+  MdOutlineAutoAwesome,
+  MdOutlineTrendingUp,
+  MdOutlineEmojiEvents,
+} from "react-icons/md"
 import "../styles/seo-page.css"
 
 const SEOPage = () => {
-  const statsRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  useEffect(() => {
-    const counters = document.querySelectorAll(".seo-stat-number[data-target]")
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target
-            const target = parseInt(el.getAttribute("data-target") || "0", 10)
-            const suffix = el.getAttribute("data-suffix") || ""
-            const duration = 1800
-            const step = Math.ceil(target / (duration / 16))
-            let current = 0
-            const timer = setInterval(() => {
-              current = Math.min(current + step, target)
-              el.textContent = current.toLocaleString() + suffix
-              if (current >= target) clearInterval(timer)
-            }, 16)
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
-    counters.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
-  const seoServices = [
-    {
-      icon: "🔍",
-      title: "On-Page SEO",
-      desc: "Optimize every element on your website — meta tags, headings, content structure, internal linking, and keyword placement — to rank higher and convert visitors into customers.",
-      color: "#f06820",
-    },
-    {
-      icon: "🔗",
-      title: "Off-Page SEO & Link Building",
-      desc: "Build domain authority through high-quality backlinks from trusted sources. We develop white-hat link-building strategies that boost your credibility and search rankings sustainably.",
-      color: "#6c25f7",
-    },
-    {
-      icon: "⚙️",
-      title: "Technical SEO",
-      desc: "Fix crawl errors, improve site speed, implement structured data, optimize Core Web Vitals, and ensure search engines can properly index your entire website.",
-      color: "#0cb666",
-    },
-    {
-      icon: "📍",
-      title: "Local SEO",
-      desc: "Dominate local search results with optimized Google Business Profile, local citations, geo-targeted content, and review management — perfect for businesses serving specific locations.",
-      color: "#0055cc",
-    },
-    {
-      icon: "🛒",
-      title: "E-Commerce SEO",
-      desc: "Drive qualified traffic to your product pages with category optimization, schema markup, product content strategies, and conversion-focused SEO tailored for online stores.",
-      color: "#e91e99",
-    },
-    {
-      icon: "✍️",
-      title: "Content SEO",
-      desc: "Create high-value, search-intent-aligned content that ranks and converts. Our content strategies include keyword research, topic clusters, and editorial calendars.",
-      color: "#00a2c2",
-    },
-  ]
-
-  const process = [
-    {
-      step: "01",
-      title: "SEO Audit & Analysis",
-      desc: "We perform an in-depth audit of your website, competitors, and market landscape to identify opportunities and roadblocks.",
-    },
-    {
-      step: "02",
-      title: "Keyword Research & Strategy",
-      desc: "We uncover high-intent, profitable keywords your target audience uses and build a prioritized content strategy around them.",
-    },
-    {
-      step: "03",
-      title: "On-Page Optimization",
-      desc: "We optimize your existing pages and create new content targeting the right keywords with the right structure.",
-    },
-    {
-      step: "04",
-      title: "Technical Fixes & Speed",
-      desc: "We resolve technical issues — crawlability, speed, structured data, mobile UX — that hold your rankings back.",
-    },
-    {
-      step: "05",
-      title: "Authority Building",
-      desc: "We earn powerful backlinks through digital PR, outreach, and content amplification to strengthen your domain authority.",
-    },
-    {
-      step: "06",
-      title: "Track, Report & Scale",
-      desc: "Monthly reports with ranking movement, traffic growth, and ROI. We iterate and scale what works.",
-    },
-  ]
-
-  const whyUs = [
-    { icon: "📈", title: "Data-Driven Decisions", desc: "Every strategy is backed by real data — no guesswork, only proven tactics that move the needle." },
-    { icon: "🤝", title: "100% White-Hat SEO", desc: "We only use ethical, Google-approved techniques that build long-term rankings without penalty risk." },
-    { icon: "🎯", title: "Industry-Specific Expertise", desc: "From healthcare to e-commerce, we understand your niche and craft strategies that speak to your audience." },
-    { icon: "📊", title: "Transparent Reporting", desc: "You always know what we're doing and why. Clear, honest reports with real metrics that matter." },
-    { icon: "⚡", title: "Fast Turnaround", desc: "We move quickly without cutting corners — optimizations deployed within days, not months." },
-    { icon: "🏆", title: "Proven Track Record", desc: "Hundreds of keywords ranked on Page 1, across industries ranging from local businesses to global brands." },
-  ]
-
-  const industries = [
-    "Healthcare", "E-Commerce", "Real Estate", "Legal / Law Firms", "Finance & Banking",
-    "Technology / SaaS", "Hospitality & Hotels", "Travel & Tourism", "Education", "Manufacturing",
-    "Casino & Gaming", "Astrology", "IT Companies", "Retail",
-  ]
-
   return (
     <div className="seo-page">
 
@@ -135,280 +32,272 @@ const SEOPage = () => {
         <div className="seo-hero-bg-grid" />
         <div className="seo-hero-glow seo-glow-1" />
         <div className="seo-hero-glow seo-glow-2" />
+        <div className="seo-hero-glow seo-glow-3" />
 
         <div className="seo-hero-inner">
-        <div className="seo-hero-content">
-          <div className="seo-badge scroll-reveal">
-            <span className="seo-badge-dot" />
-            Search Engine Optimization
+          <div className="seo-hero-content">
+            <div className="seo-badge scroll-reveal">
+              <span className="seo-badge-dot" />
+              SEO Services
+            </div>
+
+            <h1 className="seo-hero-title scroll-reveal delay-1">
+              Your Website Should Be<br />
+              Bringing In Opportunities.{" "}
+              <span className="seo-title-accent">Not Sitting Quietly.</span>
+            </h1>
+
+            <div className="seo-hero-body scroll-reveal delay-2">
+              <p>A surprising number of businesses invest heavily in their website and then wonder why enquiries remain inconsistent.</p>
+              <p>The design looks good. The services are clearly explained. Everything appears to be in place.</p>
+              <p className="seo-hero-callout">Yet competitors keep showing up first.</p>
+              <p className="seo-hero-emphasis">Visibility is often the missing piece.</p>
+              <p>If potential customers can't find your business when they're actively searching for your services, your website never gets the chance to do its job.</p>
+              <p className="seo-hero-pivot">That's where SEO comes in.</p>
+              <p>At Web and Ads Solution, we help businesses improve their visibility across search engines, local search results, and emerging AI-powered search experiences. The objective isn't simply to generate traffic. It's to put your business in front of people who are already looking for what you offer.</p>
+            </div>
+
+            <div className="seo-hero-stats scroll-reveal delay-2">
+              <div className="seo-hero-stat">
+                <span className="seo-hero-stat-num">500<span>+</span></span>
+                <span className="seo-hero-stat-label">Clients Served</span>
+              </div>
+              <div className="seo-stat-div" />
+              <div className="seo-hero-stat">
+                <span className="seo-hero-stat-num">8<span>yr</span></span>
+                <span className="seo-hero-stat-label">Experience</span>
+              </div>
+              <div className="seo-stat-div" />
+              <div className="seo-hero-stat">
+                <span className="seo-hero-stat-num">247<span>%</span></span>
+                <span className="seo-hero-stat-label">Avg Traffic Growth</span>
+              </div>
+            </div>
+
+            <div className="seo-hero-ctas scroll-reveal delay-3">
+              <Link href="/book-a-call" className="seo-btn-primary">Book a Free Consultation</Link>
+              <a href="#focus" className="seo-btn-outline">What We Focus On</a>
+            </div>
           </div>
 
-          <h1 className="seo-hero-title scroll-reveal delay-1">
-            Rank Higher. <br />
-            <span className="seo-title-accent">Get Found. Grow Faster.</span>
-          </h1>
+          <div className="seo-hero-visual scroll-reveal delay-2">
+            <div className="seo-visual-wrap">
+              <div className="seo-kw-bubble seo-kw-1"><MdOutlineEmojiEvents size={14} /> #1 SEO Agency</div>
+              <div className="seo-kw-bubble seo-kw-2"><MdOutlineTrendingUp size={14} /> 3.2x ROI</div>
 
-          <p className="seo-hero-subtitle scroll-reveal delay-2">
-            We build custom SEO strategies that put your business in front of the right audience at the right moment —
-            turning search traffic into predictable, scalable revenue.
-          </p>
+              <div className="seo-rank-card">
+                <div className="seo-rank-header">
+                  <div className="seo-rank-dot green" /><div className="seo-rank-dot yellow" /><div className="seo-rank-dot red" />
+                  <span>Search Rankings</span>
+                </div>
+                <div className="seo-rank-list">
+                  {["your-brand.com", "competitor-a.com", "competitor-b.com", "competitor-c.com"].map((domain, i) => (
+                    <div key={i} className={`seo-rank-row ${i === 0 ? "top-rank" : ""}`}>
+                      <span className="seo-rank-pos">#{i + 1}</span>
+                      <div className="seo-rank-bar-wrap">
+                        <div className="seo-rank-bar" style={{ width: `${100 - i * 18}%`, background: i === 0 ? "#f06820" : "rgba(255,255,255,0.15)" }} />
+                      </div>
+                      <span className="seo-rank-domain">{domain}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="seo-rank-footer">
+                  <span className="seo-rank-badge">↑ 14 positions this month</span>
+                </div>
+              </div>
 
-          <div className="seo-hero-ctas scroll-reveal delay-3">
-            <a href="#contact" className="seo-btn-primary">Get a Free SEO Audit</a>
-            <a href="#process" className="seo-btn-outline">See How We Work</a>
-          </div>
-
-          <div className="seo-hero-stats scroll-reveal delay-4">
-            <div className="seo-hero-stat">
-              <span className="seo-hero-stat-number">500<span className="seo-hero-stat-plus">+</span></span>
-              <span className="seo-hero-stat-label">Keywords on Page 1</span>
-            </div>
-            <div className="seo-hero-stat-divider" />
-            <div className="seo-hero-stat">
-              <span className="seo-hero-stat-number">3x</span>
-              <span className="seo-hero-stat-label">Average Traffic Growth</span>
-            </div>
-            <div className="seo-hero-stat-divider" />
-            <div className="seo-hero-stat">
-              <span className="seo-hero-stat-number">98<span className="seo-hero-stat-plus">%</span></span>
-              <span className="seo-hero-stat-label">Client Retention Rate</span>
+              <div className="seo-traffic-card">
+                <span className="seo-traffic-label">Organic Traffic</span>
+                <span className="seo-traffic-value">+247%</span>
+                <div className="seo-traffic-bars">
+                  {[30, 42, 38, 55, 48, 70, 88, 95].map((h, i) => (
+                    <div key={i} className="seo-traffic-bar" style={{ height: `${h}%`, animationDelay: `${i * 0.1}s` }} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="seo-hero-visual scroll-reveal delay-2">
-          <div className="seo-rank-card">
-            <div className="seo-rank-header">
-              <div className="seo-rank-dot green" /><div className="seo-rank-dot yellow" /><div className="seo-rank-dot red" />
-              <span>Search Rankings</span>
+      {/* ── GOOD BUSINESSES GET OVERLOOKED ── */}
+      <section className="seo-overlooked-section">
+        <div className="seo-section-container">
+          <div className="seo-overlooked-inner">
+            <div className="seo-overlooked-left scroll-reveal from-left">
+              <div className="seo-overlooked-num">01</div>
+              <h2 className="seo-overlooked-heading">Good Businesses Get Overlooked Every Day</h2>
+              <div className="seo-overlooked-accent-bar" />
             </div>
-            <div className="seo-rank-list">
-              {["your-brand.com", "competitor-a.com", "competitor-b.com", "competitor-c.com"].map((domain, i) => (
-                <div key={i} className={`seo-rank-row ${i === 0 ? "top-rank" : ""}`}>
-                  <span className="seo-rank-pos">#{i + 1}</span>
-                  <div className="seo-rank-bar-wrap">
-                    <div className="seo-rank-bar" style={{ width: `${100 - i * 18}%`, background: i === 0 ? "#f06820" : "#e0e0e0" }} />
+            <div className="seo-overlooked-right scroll-reveal from-right">
+              <p>Search results aren't reserved for the best businesses.</p>
+              <p>They're reserved for the businesses search engines understand best.</p>
+              <p>We've seen companies with excellent products, strong reputations, and talented teams struggle online because their competitors were easier to find.</p>
+              <p className="seo-overlooked-highlight">SEO helps close that gap.</p>
+              <p>By improving your website's structure, content, authority, and search presence, we help search engines understand who you are, what you do, and why your business deserves attention.</p>
+            </div>
+          </div>
+          <div className="seo-section-img-wrap scroll-reveal" style={{ marginTop: "56px", borderRadius: "20px", overflow: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.18)", maxHeight: "420px" }}>
+            <img src="/images/seo-overlooked.jpg" alt="Good businesses get overlooked" style={{ width: "100%", height: "420px", objectFit: "cover", display: "block" }} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT WE FOCUS ON ── */}
+      <section className="seo-focus-section" id="focus">
+        <div className="seo-section-container">
+          <div className="seo-section-header scroll-reveal">
+            <span className="seo-section-tag">What We Focus On</span>
+            <h2 className="seo-section-title">Every business has different goals, audiences, and challenges.</h2>
+            <p className="seo-section-desc">That's why we don't approach SEO with a generic checklist. Our work focuses on:</p>
+          </div>
+
+          <div className="seo-focus-grid">
+            {[
+              { num: "01", icon: <MdOutlineVisibility size={28} />, title: "Improving Visibility",    desc: "Helping your website appear for searches that are relevant to your business and your customers.", color: "#f06820" },
+              { num: "02", icon: <MdOutlineArticle   size={28} />, title: "Strengthening Content",    desc: "Creating and optimizing content that answers questions, demonstrates expertise, and supports search performance.", color: "#6c25f7" },
+              { num: "03", icon: <MdOutlineLink      size={28} />, title: "Building Authority",        desc: "Developing trust signals that help search engines view your business as a credible source within your industry.", color: "#0cb666" },
+              { num: "04", icon: <MdOutlineLocationOn size={28} />, title: "Local Search Growth",      desc: "Helping nearby customers find your business through local SEO strategies and Google Business Profile optimization.", color: "#0055cc" },
+              { num: "05", icon: <MdOutlineSmartToy  size={28} />, title: "Preparing for AI Search",  desc: "Search is evolving. We incorporate AEO and GEO strategies to help businesses remain visible across AI-powered search experiences, answer engines, and emerging discovery platforms.", color: "#e91e99" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`seo-focus-card scroll-reveal ${i === 4 ? "seo-focus-card-wide" : ""}`}
+                style={{ "--card-color": item.color } as React.CSSProperties}
+              >
+                <div className="seo-focus-card-top">
+                  <div className="seo-focus-card-icon-wrap">
+                    <span className="seo-focus-card-icon" style={{ color: item.color }}>{item.icon}</span>
                   </div>
-                  <span className="seo-rank-domain">{domain}</span>
+                  <span className="seo-focus-card-num">{item.num}</span>
                 </div>
-              ))}
-            </div>
-            <div className="seo-rank-footer">
-              <span className="seo-rank-badge">↑ 14 positions this month</span>
-            </div>
-          </div>
-
-          <div className="seo-traffic-card">
-            <span className="seo-traffic-label">Organic Traffic</span>
-            <span className="seo-traffic-value">+247%</span>
-            <div className="seo-traffic-bars">
-              {[30, 42, 38, 55, 48, 70, 88, 95].map((h, i) => (
-                <div key={i} className="seo-traffic-bar" style={{ height: `${h}%`, animationDelay: `${i * 0.1}s` }} />
-              ))}
-            </div>
-          </div>
-        </div>
-        </div>{/* end seo-hero-inner */}
-      </section>
-
-      {/* ── STATS STRIP ── */}
-      <section className="seo-stats-strip" ref={statsRef}>
-        <div className="seo-stats-container">
-          {[
-            { target: 93, suffix: "%", label: "of online experiences begin with a search engine" },
-            { target: 75, suffix: "%", label: "of users never scroll past the first page of results" },
-            { target: 1000, suffix: "%", label: "more traffic from organic vs. paid search over time" },
-            { target: 14, suffix: "x", label: "higher close rate for SEO leads than outbound" },
-          ].map((stat, i) => (
-            <div key={i} className="seo-stat-item scroll-reveal" style={{ animationDelay: `${i * 0.1}s` }}>
-              <span className="seo-stat-number" data-target={stat.target} data-suffix={stat.suffix}>0{stat.suffix}</span>
-              <span className="seo-stat-label">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── SERVICES ── */}
-      <section className="seo-services-section" id="services">
-        <div className="seo-section-container">
-          <div className="seo-section-header scroll-reveal">
-            <span className="seo-section-tag">What We Do</span>
-            <h2 className="seo-section-title">Comprehensive SEO Services</h2>
-            <p className="seo-section-desc">
-              From technical foundations to content authority — every dimension of SEO, handled by specialists.
-            </p>
-          </div>
-
-          <div className="seo-services-grid">
-            {seoServices.map((service, i) => (
-              <div key={i} className="seo-service-card scroll-reveal" style={{ animationDelay: `${i * 0.08}s` }}>
-                <div className="seo-service-icon-wrap" style={{ background: `${service.color}15`, border: `1px solid ${service.color}30` }}>
-                  <span className="seo-service-icon">{service.icon}</span>
+                <div className="seo-focus-card-text">
+                  <h3 className="seo-focus-card-title">{item.title}</h3>
+                  <p className="seo-focus-card-desc">{item.desc}</p>
                 </div>
-                <h3 className="seo-service-title">{service.title}</h3>
-                <p className="seo-service-desc">{service.desc}</p>
-                <div className="seo-service-accent" style={{ background: service.color }} />
+                <div className="seo-focus-card-glow" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── PROCESS ── */}
-      <section className="seo-process-section" id="process">
+      {/* ── SEO IS CHANGING ── */}
+      <section className="seo-changing-section">
         <div className="seo-section-container">
-          <div className="seo-section-header scroll-reveal">
-            <span className="seo-section-tag">Our Methodology</span>
-            <h2 className="seo-section-title">A Process Built for Results</h2>
-            <p className="seo-section-desc">
-              A proven 6-step framework that transforms your organic presence from the ground up.
-            </p>
-          </div>
+          <div className="seo-changing-inner">
 
-          <div className="seo-process-grid">
-            {process.map((item, i) => (
-              <div key={i} className="seo-process-card scroll-reveal" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="seo-process-step-num">{item.step}</div>
-                <div className="seo-process-line" />
-                <h3 className="seo-process-title">{item.title}</h3>
-                <p className="seo-process-desc">{item.desc}</p>
+            <div className="seo-changing-left scroll-reveal from-left">
+              <span className="seo-section-tag light">The Landscape</span>
+              <h2 className="seo-changing-title">SEO Is Changing.<br /><span className="seo-title-accent-dark">Visibility Still Matters.</span></h2>
+              <div className="seo-changing-body">
+                <p>People don't search the same way they did a few years ago.</p>
+                <p>The platforms are changing.</p>
+                <p className="seo-changing-bold">The goal isn't.</p>
+                <p>Your business needs to be visible wherever customers are looking for answers.</p>
+                <p>That's why our approach combines traditional SEO with modern search strategies designed for the way people discover information today.</p>
               </div>
-            ))}
+              <div className="scroll-reveal" style={{ marginTop: "36px", borderRadius: "16px", overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.3)" }}>
+                <img src="/images/seo-strategy.jpg" alt="SEO strategy" style={{ width: "100%", height: "260px", objectFit: "cover", display: "block" }} />
+              </div>
+            </div>
+
+            <div className="seo-changing-right scroll-reveal from-right">
+              <p className="seo-changing-intro">Some use Google. Some use Maps. Some ask ChatGPT. Others rely on AI-generated recommendations before visiting a website.</p>
+              <div className="seo-platform-grid">
+                {[
+                  { icon: <MdOutlineSearch           size={22} />, label: "Google Search",  active: true  },
+                  { icon: <MdOutlineMap              size={22} />, label: "Google Maps",    active: true  },
+                  { icon: <MdOutlineSmartToy         size={22} />, label: "ChatGPT",         active: true  },
+                  { icon: <MdOutlineAutoAwesome      size={22} />, label: "AI Answers",      active: true  },
+                  { icon: <MdOutlinePhoneIphone      size={22} />, label: "Social Search",   active: false },
+                  { icon: <MdOutlineRecordVoiceOver  size={22} />, label: "Voice Search",    active: false },
+                ].map((p, i) => (
+                  <div key={i} className={`seo-platform-chip ${p.active ? "active" : ""}`} style={{ animationDelay: `${i * 0.12}s` }}>
+                    <span className="seo-platform-icon" style={{ display:"flex", alignItems:"center" }}>{p.icon}</span>
+                    <span className="seo-platform-label">{p.label}</span>
+                    {p.active && <span className="seo-platform-dot" />}
+                  </div>
+                ))}
+              </div>
+              <p className="seo-changing-note">We optimise for every channel your customers actually use.</p>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
+      {/* ── WHY BUSINESSES ENJOY WORKING WITH US ── */}
       <section className="seo-why-section">
         <div className="seo-section-container">
           <div className="seo-why-inner">
+
             <div className="seo-why-left scroll-reveal from-left">
               <span className="seo-section-tag light">Why Choose Us</span>
               <h2 className="seo-why-title">
-                SEO That Delivers<br />
-                <span className="seo-title-accent-dark">Real Business Growth</span>
+                Why Businesses Enjoy<br />
+                <span className="seo-title-accent-dark">Working With Us</span>
               </h2>
               <p className="seo-why-desc">
-                We don't chase vanity metrics. Every tactic we employ is tied to rankings, traffic, leads, and revenue that
-                actually matter to your bottom line.
+                We're not interested in disappearing behind support tickets and automated responses.
+                When you work with Web and Ads Solution, you'll have direct communication, a dedicated account manager,
+                and a team that takes your concerns seriously.
               </p>
-              <a href="#contact" className="seo-btn-primary-dark">Start Growing Today</a>
+              <p className="seo-why-closing">Good service shouldn't be difficult to find.</p>
+              <Link href="/book-a-call" className="seo-btn-primary-dark">Book a Free Consultation</Link>
             </div>
 
             <div className="seo-why-right">
-              {whyUs.map((item, i) => (
-                <div key={i} className="seo-why-card scroll-reveal from-right" style={{ animationDelay: `${i * 0.08}s` }}>
-                  <div className="seo-why-icon">{item.icon}</div>
-                  <div>
-                    <h4 className="seo-why-card-title">{item.title}</h4>
-                    <p className="seo-why-card-desc">{item.desc}</p>
+              {[
+                { icon: <MdOutlineCardGiftcard     size={24} />, title: "Free first consultation",               color: "#f06820" },
+                { icon: <MdOutlinePerson           size={24} />, title: "Dedicated account manager",             color: "#6c25f7" },
+                { icon: <MdOutlineBolt             size={24} />, title: "Fast responses and clear communication", color: "#f59e0b" },
+                { icon: <MdOutlineBarChart         size={24} />, title: "Transparent reporting",                 color: "#0cb666" },
+                { icon: <MdOutlineDoNotDisturb     size={24} />, title: "No long support queues",                color: "#e91e99" },
+                { icon: <MdOutlineTrackChanges     size={24} />, title: "Strategies built around your goals",    color: "#0055cc" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="seo-why-card scroll-reveal"
+                  style={{ animationDelay: `${i * 0.08}s`, "--why-color": item.color } as React.CSSProperties}
+                >
+                  <div className="seo-why-icon-wrap">
+                    <span className="seo-why-icon" style={{ color: item.color }}>{item.icon}</span>
                   </div>
+                  <div className="seo-why-card-body">
+                    <h4 className="seo-why-card-title">{item.title}</h4>
+                    <div className="seo-why-check">✓</div>
+                  </div>
+                  <div className="seo-why-card-glow" />
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── RESULTS COUNTER ── */}
-      <section className="seo-results-section">
-        <div className="seo-results-bg" />
-        <div className="seo-section-container seo-results-container">
-          <div className="seo-section-header scroll-reveal">
-            <span className="seo-section-tag">Our Impact</span>
-            <h2 className="seo-section-title light">Numbers That Speak For Themselves</h2>
-          </div>
-          <div className="seo-results-grid">
-            {[
-              { target: 500, suffix: "+", label: "Keywords Ranked on Page 1" },
-              { target: 350, suffix: "+", label: "Clients Served Globally" },
-              { target: 247, suffix: "%", label: "Average Organic Traffic Increase" },
-              { target: 8, suffix: "+", label: "Years of SEO Excellence" },
-            ].map((r, i) => (
-              <div key={i} className="seo-result-item scroll-reveal scale-in" style={{ animationDelay: `${i * 0.1}s` }}>
-                <span className="seo-stat-number" data-target={r.target} data-suffix={r.suffix}>0{r.suffix}</span>
-                <span className="seo-result-label">{r.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── INDUSTRIES ── */}
-      <section className="seo-industries-section">
-        <div className="seo-section-container">
-          <div className="seo-section-header scroll-reveal">
-            <span className="seo-section-tag">Who We Serve</span>
-            <h2 className="seo-section-title">Industries We Specialize In</h2>
-            <p className="seo-section-desc">
-              Deep niche expertise means strategies built for your market — not generic playbooks.
-            </p>
-          </div>
-          <div className="seo-industries-grid scroll-reveal delay-2">
-            {industries.map((industry, i) => (
-              <div key={i} className="seo-industry-tag" style={{ animationDelay: `${i * 0.05}s` }}>
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section className="seo-faq-section">
-        <div className="seo-section-container seo-faq-container">
-          <div className="seo-section-header scroll-reveal">
-            <span className="seo-section-tag">FAQ</span>
-            <h2 className="seo-section-title">Common Questions, Honest Answers</h2>
-          </div>
-          <div className="seo-faq-list">
-            {seoFaqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.q} answer={faq.a} delay={i * 0.07} />
-            ))}
           </div>
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section className="seo-cta-section" id="contact">
-        <div className="seo-cta-glow" />
+        <div className="seo-cta-glow-1" />
+        <div className="seo-cta-glow-2" />
         <div className="seo-cta-content scroll-reveal scale-in">
           <span className="seo-cta-tag">Let's Get Started</span>
-          <h2 className="seo-cta-title">Ready to Dominate Search Rankings?</h2>
+          <h2 className="seo-cta-title">Let's Make Your Business Easier to Find</h2>
           <p className="seo-cta-desc">
-            Get a free, no-obligation SEO audit of your website and a custom growth strategy — delivered within 48 hours.
+            Your customers are already searching.<br />
+            Let's make sure they're finding you.<br />
+            Book a free consultation and discover where your biggest visibility opportunities are.
           </p>
           <div className="seo-cta-actions">
-            <a href="mailto:dev@webandadssolution.com" className="seo-btn-cta-primary">Get My Free SEO Audit</a>
+            <Link href="/book-a-call" className="seo-btn-cta-primary">Book a Free Consultation</Link>
             <Link href="/services" className="seo-btn-cta-outline">Explore All Services</Link>
           </div>
-          <p className="seo-cta-note">No credit card required · Results-focused · Cancel anytime</p>
         </div>
       </section>
 
     </div>
   )
-}
-
-function FAQItem({ question, answer, delay }: { question: string; answer: string; delay: number }) {
-  const [open, setOpen] = useToggle(false)
-
-  return (
-    <div className={`seo-faq-item scroll-reveal ${open ? "faq-open" : ""}`} style={{ animationDelay: `${delay}s` }}>
-      <button className="seo-faq-question" onClick={() => setOpen(!open)}>
-        <span>{question}</span>
-        <span className="seo-faq-icon">{open ? "−" : "+"}</span>
-      </button>
-      <div className="seo-faq-answer" style={{ maxHeight: open ? "300px" : "0" }}>
-        <p>{answer}</p>
-      </div>
-    </div>
-  )
-}
-
-function useToggle(initial: boolean): [boolean, Dispatch<SetStateAction<boolean>>] {
-  const [state, setState] = useState(initial)
-  return [state, setState]
 }
 
 export default SEOPage

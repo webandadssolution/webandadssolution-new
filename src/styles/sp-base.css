@@ -704,6 +704,35 @@
   letter-spacing: 0.3px;
 }
 
+/* ── Hero Image (shared) ────────────────────── */
+.sp-hero-img {
+  flex-shrink: 0;
+  width: 440px;
+  height: 500px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* ── Split Row (text + image) ───────────────── */
+.sp-split-row {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.sp-split-img {
+  flex-shrink: 0;
+  width: 420px;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+.sp-split-text { flex: 1; }
+
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 1024px) {
   .sp-hero-inner {
@@ -717,6 +746,9 @@
   .sp-why-inner { grid-template-columns: 1fr; gap: 48px; }
   .sp-why-left { position: static; }
   .sp-results-grid { grid-template-columns: repeat(2, 1fr); }
+  .sp-hero-img  { width: 100%; height: 300px; }
+  .sp-split-row { flex-direction: column; gap: 40px; }
+  .sp-split-img { width: 100%; height: 260px; }
 }
 
 @media (max-width: 768px) {

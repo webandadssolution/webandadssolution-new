@@ -4,6 +4,37 @@
   --accent-rgb: 240, 104, 32;
 }
 
+/* ── Hero Image ── */
+.ppc-hero-img {
+  flex-shrink: 0;
+  width: 440px;
+  height: 500px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* ── Split Row (text + image side by side) ── */
+.ppc-split-row {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.ppc-split-img {
+  flex-shrink: 0;
+  width: 420px;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+.ppc-split-text {
+  flex: 1;
+}
+
 /* ── Hero Visual — SERP Mockup ── */
 .ppc-hero-visual {
   flex-shrink: 0;
@@ -137,9 +168,14 @@
 }
 
 @media (max-width: 1024px) {
-  .ppc-hero-visual { width: 100%; max-width: 440px; }
+  .ppc-hero-visual  { width: 100%; max-width: 440px; }
+  .ppc-hero-img     { width: 100%; height: 300px; }
+  .ppc-split-row    { flex-direction: column; gap: 40px; }
+  .ppc-split-img    { width: 100%; height: 260px; }
 }
 
 @media (max-width: 480px) {
-  .ppc-metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .ppc-metrics-row  { grid-template-columns: repeat(2, 1fr); }
+  .ppc-hero-img     { height: 220px; }
+  .ppc-split-img    { height: 200px; }
 }

@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import BlogPage from "../../views/blog-page"
+import { getBlogPosts, getCategories } from "../../lib/blog"
+
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: "Blog | Insights on SEO, PPC, and Digital Marketing",
@@ -14,6 +18,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Page() {
-  return <BlogPage />
+export default async function Page() {
+  const [posts, categories] = await Promise.all([getBlogPosts(), getCategories()])
+  return <BlogPage posts={posts} categories={categories} />
 }
