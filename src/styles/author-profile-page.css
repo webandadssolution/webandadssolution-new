@@ -1,0 +1,159 @@
+/* ── Author Profile Page ─────────────────────────── */
+.ap-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+.ap-container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Header ── */
+.ap-header {
+  padding: 130px 24px 56px;
+  text-align: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 100px;
+  background: rgba(240,104,32,0.08);
+  border: 1px solid rgba(240,104,32,0.22);
+  color: #f06820;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.ap-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #f06820;
+}
+
+.ap-avatar {
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #f06820 0%, #d9530f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 42px;
+  font-weight: 800;
+  box-shadow: 0 12px 32px rgba(240,104,32,0.28);
+}
+
+.ap-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.ap-name {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.ap-role {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f06820;
+}
+
+/* ── Body ── */
+.ap-body-section { padding: 56px 24px 24px; }
+
+.ap-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.ap-bio {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.ap-bio p { margin-bottom: 16px; }
+.ap-bio p:last-child { margin-bottom: 0; }
+.ap-bio a { color: #f06820; text-decoration: underline; text-underline-offset: 2px; }
+
+.ap-sidebar-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.ap-sidebar-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.ap-expertise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ap-expertise-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ap-expertise-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #f06820;
+  flex-shrink: 0;
+}
+
+/* ── Other authors row ── */
+.ap-authors-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 40px;
+}
+
+/* ── Articles ── */
+.ap-articles-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 860px) {
+  .ap-body-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .ap-header { padding: 110px 20px 44px; }
+  .ap-avatar { width: 92px; height: 92px; font-size: 34px; }
+  .ap-name { font-size: 28px; }
+  .ap-body-section { padding: 40px 20px 20px; }
+}

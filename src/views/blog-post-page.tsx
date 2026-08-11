@@ -27,8 +27,17 @@ export default function BlogPostPage({
           </div>
           <h1 className="bp-title">{post.title}</h1>
           <div className="bp-meta">
-            <div className="bp-avatar">{post.author[0]}</div>
-            <span className="bp-meta-name">{post.author}</span>
+            {post.authorSlug ? (
+              <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
+                <div className="bp-avatar">{post.author[0]}</div>
+                <span className="bp-meta-name">{post.author}</span>
+              </Link>
+            ) : (
+              <>
+                <div className="bp-avatar">{post.author[0]}</div>
+                <span className="bp-meta-name">{post.author}</span>
+              </>
+            )}
             <span className="bp-dot">·</span>
             <span>{post.date}</span>
             <span className="bp-dot">·</span>
@@ -129,8 +138,17 @@ export default function BlogPostPage({
                     <p className="bl-post-excerpt">{p.excerpt}</p>
                     <div className="bl-post-footer">
                       <div className="bl-author-row">
-                        <div className="bl-author-avatar sm">{p.author[0]}</div>
-                        <span className="bl-author-name sm">{p.author}</span>
+                        {p.authorSlug ? (
+                          <Link href={`/authors/${p.authorSlug}`} className="bp-author-link">
+                            <div className="bl-author-avatar sm">{p.author[0]}</div>
+                            <span className="bl-author-name sm">{p.author}</span>
+                          </Link>
+                        ) : (
+                          <>
+                            <div className="bl-author-avatar sm">{p.author[0]}</div>
+                            <span className="bl-author-name sm">{p.author}</span>
+                          </>
+                        )}
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{p.readTime}</span>
                       </div>

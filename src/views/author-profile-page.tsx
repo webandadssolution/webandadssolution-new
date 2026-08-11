@@ -4,50 +4,58 @@ import { useMemo, useState } from "react"
 import Link from "next/link"
 import type { AuthorProfile, BlogPost } from "../lib/blog"
 import "../styles/blog-page.css"
+import "../styles/author-profile-page.css"
 
 export default function AuthorProfilePage({ author, authors, posts }: { author: AuthorProfile; authors: AuthorProfile[]; posts: BlogPost[] }) {
-  const [visibleCount, setVisibleCount] = useState(3)
+  const [visibleCount, setVisibleCount] = useState(6)
   const visiblePosts = useMemo(() => posts.slice(0, visibleCount), [posts, visibleCount])
   const hasMore = visibleCount < posts.length
 
   return (
-    <div className="blog-page">
-      <section className="bl-hero" style={{ paddingBottom: "40px" }}>
-        <div className="bl-hero-inner">
-          <div className="scroll-reveal" style={{ maxWidth: "820px" }}>
-            <div className="bl-badge"><span className="bl-badge-dot" />Author Profile</div>
-            <div style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap", marginTop: "16px" }}>
-              <div style={{ width: 108, height: 108, borderRadius: "999px", overflow: "hidden", background: "#111", display: "grid", placeItems: "center", color: "#fff", fontSize: "34px", fontWeight: 700 }}>
-                {author.image ? <img src={author.image} alt={author.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : author.name.charAt(0)}
-              </div>
-              <div>
-                <h1 className="bl-hero-title" style={{ fontSize: "34px", marginBottom: "8px" }}>{author.name}</h1>
-                <p className="bl-hero-sub" style={{ margin: 0 }}>{author.role}</p>
-              </div>
-            </div>
-            <p className="bl-hero-sub" style={{ marginTop: "16px", maxWidth: "760px" }}>{author.description}</p>
-            {author.expertise?.length ? (
-              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "14px" }}>
-                {author.expertise.map((item) => (
-                  <span key={item} className="bl-tag" style={{ background: "rgba(255,255,255,0.1)" }}>{item}</span>
-                ))}
-              </div>
-            ) : null}
-          </div>
+    <div className="ap-page">
+      <section className="ap-header">
+        <div className="ap-badge"><span className="ap-badge-dot" />Author Profile</div>
+        <div className="ap-avatar">
+          {author.image ? <img src={author.image} alt={author.name} /> : author.name.charAt(0)}
         </div>
+        <h1 className="ap-name">{author.name}</h1>
+        {author.role && <p className="ap-role">{author.role}</p>}
       </section>
 
-      <section className="bl-grid-section">
-        <div className="bl-container">
-          <div className="bl-filter-row scroll-reveal" style={{ justifyContent: "flex-start", gap: "10px", marginBottom: "24px" }}>
-            {authors.map((a) => (
-              <Link key={a.slug} href={`/authors/${a.slug}`} className={`bl-filter-chip${a.slug === author.slug ? " active" : ""}`}>
-                {a.name}
-              </Link>
-            ))}
-          </div>
+      <section className="ap-body-section">
+        <div className="ap-container">
+          {(author.description || author.expertise?.length) ? (
+            <div className="ap-body-grid">
+              {author.description && (
+                <div className="ap-bio" dangerouslySetInnerHTML={{ __html: author.description }} />
+              )}
+              {author.expertise?.length ? (
+                <aside className="ap-sidebar-box">
+                  <h3 className="ap-sidebar-title">Expertise</h3>
+                  <div className="ap-expertise-list">
+                    {author.expertise.map((item) => (
+                      <div key={item} className="ap-expertise-item">
+                        <span className="ap-expertise-dot" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </aside>
+              ) : null}
+            </div>
+          ) : null}
 
-          <h2 className="bl-featured-title" style={{ fontSize: "28px", marginBottom: "18px" }}>{author.name}'s latest articles</h2>
+          {authors.length > 1 && (
+            <div className="ap-authors-row">
+              {authors.map((a) => (
+                <Link key={a.slug} href={`/authors/${a.slug}`} className={`bl-filter-chip${a.slug === author.slug ? " active" : ""}`}>
+                  {a.name}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          <h2 className="ap-articles-title">Latest articles</h2>
 
           {visiblePosts.length > 0 ? (
             <div className="bl-posts-grid">

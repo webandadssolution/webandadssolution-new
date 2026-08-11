@@ -12,9 +12,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!author) return {}
 
+  const title = author.metaTitle || `${author.name} | Web and Ads Solutions`
+  const description = author.metaDescription || author.description || `Read articles written by ${author.name}.`
+
   return {
-    title: `${author.name} | Web and Ads Solutions`,
-    description: author.description || `Read articles written by ${author.name}.`,
+    title: { absolute: title },
+    description,
+    keywords: author.metaKeywords || undefined,
+    alternates: { canonical: `/authors/${author.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `/authors/${author.slug}`,
+      type: "profile",
+      images: author.image ? [{ url: author.image }] : undefined,
+    },
   }
 }
 
@@ -24,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   if (!author) notFound()
 
-  const [authors, posts] = await Promise.all([getAuthors(), getAuthorPosts(slug, 6)])
+  const [authors, posts] = await Promise.all([getAuthors(), getAuthorPosts(slug)])
 
   return <AuthorProfilePage author={author} authors={authors} posts={posts} />
 }

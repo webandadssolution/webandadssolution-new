@@ -15,6 +15,7 @@ export interface BlogPost {
   excerpt: string
   content: string
   author: string
+  authorSlug: string | null
   date: string
   dateIso: string
   readTime: string
@@ -34,6 +35,9 @@ export interface AuthorProfile {
   description: string
   expertise: string[]
   image: string | null
+  metaTitle: string
+  metaDescription: string
+  metaKeywords: string
 }
 
 interface CmsCategory {
@@ -52,6 +56,7 @@ interface CmsPost {
   category: { name: string; slug: string } | null
   meta: { title: string; description: string; canonical_url: string }
   author: string | null
+  author_slug: string | null
   published_at: string
   updated_at: string
   schema: Record<string, unknown>
@@ -70,6 +75,24 @@ interface CmsAuthor {
   description: string
   expertise: string[]
   image: string | null
+  meta_title: string
+  meta_description: string
+  meta_keywords: string
+}
+
+function normalizeAuthor(author: CmsAuthor): AuthorProfile {
+  return {
+    id: author.id,
+    slug: author.slug,
+    name: author.name,
+    role: author.role,
+    description: author.description,
+    expertise: author.expertise,
+    image: author.image,
+    metaTitle: author.meta_title || "",
+    metaDescription: author.meta_description || "",
+    metaKeywords: author.meta_keywords || "",
+  }
 }
 
 interface CmsAuthorsResponse {
@@ -97,6 +120,7 @@ function normalizePost(post: CmsPost): BlogPost {
     excerpt: post.excerpt,
     content: post.content ?? "",
     author: post.author ?? "Web and Ads Solutions",
+    authorSlug: post.author_slug ?? null,
     date: formatDate(post.published_at),
     dateIso: post.published_at,
     readTime: estimateReadTime(post.content ?? post.excerpt),
@@ -155,7 +179,7 @@ export async function getAuthors(): Promise<AuthorProfile[]> {
     const res = await fetch(`${CMS_URL}/api/authors.php`, { cache: "no-store" })
     if (!res.ok) return []
     const { data }: CmsAuthorsResponse = await res.json()
-    return data || []
+    return (data || []).map(normalizeAuthor)
   } catch {
     return []
   }
@@ -165,14 +189,14 @@ export async function getAuthorBySlug(slug: string): Promise<AuthorProfile | nul
   try {
     const res = await fetch(`${CMS_URL}/api/author.php?slug=${encodeURIComponent(slug)}`, { cache: "no-store" })
     if (!res.ok) return null
-    const { data }: { data: AuthorProfile | null } = await res.json()
-    return data
+    const { data }: { data: CmsAuthor | null } = await res.json()
+    return data ? normalizeAuthor(data) : null
   } catch {
     return null
   }
 }
 
-export async function getAuthorPosts(slug: string, limit = 6): Promise<BlogPost[]> {
+export async function getAuthorPosts(slug: string, limit = 24): Promise<BlogPost[]> {
   try {
     const res = await fetch(`${CMS_URL}/api/author-posts.php?slug=${encodeURIComponent(slug)}&limit=${limit}`, { cache: "no-store" })
     if (!res.ok) return []

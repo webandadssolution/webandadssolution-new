@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ContactForm from "../components/contact-form"
 import "../styles/sp-base.css"
 import "../styles/seo-velocity-plan-page.css"
@@ -65,7 +66,7 @@ const SeoVelocityPlanOverviewPage = () => (
             accelerated growth engine — scaled across five tiers so you only pay for what your site needs right now.
           </p>
           <div className="sp-hero-ctas">
-            <a href="/contact" className="sp-btn primary">Contact Now</a>
+            <Link href="/contact" className="sp-btn primary">Contact Now</Link>
             <a href="#seo-velocity-contact" className="sp-btn outline">Talk to an SEO Strategist</a>
           </div>
           <div className="sp-hero-stats">

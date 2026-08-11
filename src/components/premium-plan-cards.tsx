@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import "../styles/premium-plan-cards.css"
 
 export interface PremiumPlanItem {
@@ -65,7 +66,7 @@ const PremiumCard = ({
             Let&apos;s Get Started
           </a>
         ) : (
-          <a href="/contact" className="premc-cta">Let&apos;s Get Started</a>
+          <Link href="/contact" className="premc-cta">Let&apos;s Get Started</Link>
         )}
       </div>
 

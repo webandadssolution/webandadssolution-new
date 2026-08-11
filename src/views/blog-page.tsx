@@ -86,8 +86,17 @@ export default function BlogPage({ posts, categories }: { posts: BlogPost[]; cat
                 <p className="bl-featured-excerpt">{featured.excerpt}</p>
                 <div className="bl-featured-meta">
                   <div className="bl-author-row">
-                    <div className="bl-author-avatar">{featured.author[0]}</div>
-                    <span className="bl-author-name">{featured.author}</span>
+                    {featured.authorSlug ? (
+                      <Link href={`/authors/${featured.authorSlug}`} className="bp-author-link">
+                        <div className="bl-author-avatar">{featured.author[0]}</div>
+                        <span className="bl-author-name">{featured.author}</span>
+                      </Link>
+                    ) : (
+                      <>
+                        <div className="bl-author-avatar">{featured.author[0]}</div>
+                        <span className="bl-author-name">{featured.author}</span>
+                      </>
+                    )}
                     <span className="bl-meta-divider">·</span>
                     <span>{featured.date}</span>
                     <span className="bl-meta-divider">·</span>
@@ -136,8 +145,17 @@ export default function BlogPage({ posts, categories }: { posts: BlogPost[]; cat
                     </div>
                     <div className="bl-post-footer">
                       <div className="bl-author-row">
-                        <div className="bl-author-avatar sm">{post.author[0]}</div>
-                        <span className="bl-author-name sm">{post.author}</span>
+                        {post.authorSlug ? (
+                          <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
+                            <div className="bl-author-avatar sm">{post.author[0]}</div>
+                            <span className="bl-author-name sm">{post.author}</span>
+                          </Link>
+                        ) : (
+                          <>
+                            <div className="bl-author-avatar sm">{post.author[0]}</div>
+                            <span className="bl-author-name sm">{post.author}</span>
+                          </>
+                        )}
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{post.readTime}</span>
                       </div>

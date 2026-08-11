@@ -276,6 +276,16 @@
 .bl-author-name.sm { font-weight: 700; color: var(--text-secondary); }
 .bl-meta-divider { opacity: 0.4; }
 
+.bp-author-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+.bp-author-link:hover { opacity: 0.75; }
+
 .bl-read-btn {
   padding: 11px 22px;
   background: #f06820;

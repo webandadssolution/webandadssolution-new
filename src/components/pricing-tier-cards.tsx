@@ -1,5 +1,6 @@
 import { Fragment } from "react"
 import type { CSSProperties } from "react"
+import Link from "next/link"
 import type { PricingCategory, PricingTier } from "../lib/pricing-helpers"
 import "../styles/pricing-tier-cards.css"
 
@@ -9,7 +10,7 @@ const PlanCta = ({ tier, className }: { tier: PricingTier; className: string }) 
       Let&apos;s Get Started
     </a>
   ) : (
-    <a href="/contact" className={className}>Let&apos;s Get Started</a>
+    <Link href="/contact" className={className}>Let&apos;s Get Started</Link>
   )
 
 const PricingTierCards = ({
