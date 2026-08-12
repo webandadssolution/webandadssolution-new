@@ -145,7 +145,7 @@ export default function GDPage() {
               {whyUsPoints.map((point, i) => (
                 <div key={i} className="sp-why-card scroll-reveal" style={{ animationDelay: `${i * 0.07}s`, background: "var(--card-bg)", border: "1px solid var(--border-color)" }}>
                   <MdOutlineCheckCircle style={{ color: "var(--accent)", fontSize: "22px", flexShrink: 0, marginTop: "2px" }} />
-                  <div><p className="sp-why-card-title" style={{ marginBottom: 0 }}>{point}</p></div>
+                  <div><p className="sp-why-card-title" style={{ marginBottom: 0, color: "var(--text-primary)" }}>{point}</p></div>
                 </div>
               ))}
             </div>

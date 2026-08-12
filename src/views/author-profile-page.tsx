@@ -6,7 +6,7 @@ import type { AuthorProfile, BlogPost } from "../lib/blog"
 import "../styles/blog-page.css"
 import "../styles/author-profile-page.css"
 
-export default function AuthorProfilePage({ author, authors, posts }: { author: AuthorProfile; authors: AuthorProfile[]; posts: BlogPost[] }) {
+export default function AuthorProfilePage({ author, posts }: { author: AuthorProfile; posts: BlogPost[] }) {
   const [visibleCount, setVisibleCount] = useState(6)
   const visiblePosts = useMemo(() => posts.slice(0, visibleCount), [posts, visibleCount])
   const hasMore = visibleCount < posts.length
@@ -44,16 +44,6 @@ export default function AuthorProfilePage({ author, authors, posts }: { author: 
               ) : null}
             </div>
           ) : null}
-
-          {authors.length > 1 && (
-            <div className="ap-authors-row">
-              {authors.map((a) => (
-                <Link key={a.slug} href={`/authors/${a.slug}`} className={`bl-filter-chip${a.slug === author.slug ? " active" : ""}`}>
-                  {a.name}
-                </Link>
-              ))}
-            </div>
-          )}
 
           <h2 className="ap-articles-title">Latest articles</h2>
 

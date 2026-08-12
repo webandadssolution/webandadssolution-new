@@ -20,10 +20,30 @@ function ScrollAnimator() {
       { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
     )
 
-    const targets = document.querySelectorAll(".scroll-reveal:not(.is-visible)")
-    targets.forEach((el) => observer.observe(el))
+    const observeNew = (root: ParentNode) => {
+      root.querySelectorAll(".scroll-reveal:not(.is-visible)").forEach((el) => observer.observe(el))
+    }
 
-    return () => observer.disconnect()
+    observeNew(document)
+
+    // Content added after the initial scan (tab/filter switches, client-side
+    // re-renders, etc.) still needs to be picked up — otherwise it keeps the
+    // scroll-reveal class with no .is-visible and stays invisible forever.
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return
+          if (node.matches(".scroll-reveal:not(.is-visible)")) observer.observe(node)
+          observeNew(node)
+        })
+      })
+    })
+    mutationObserver.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      observer.disconnect()
+      mutationObserver.disconnect()
+    }
   }, [pathname])
 
   return null

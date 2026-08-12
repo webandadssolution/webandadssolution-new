@@ -52,12 +52,14 @@ const whyUs = [
 function FAQItem({ q, a, delay }: { q: string; a: string; delay: number }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className={`sp-faq-item${open ? " open" : ""} scroll-reveal`} style={{ animationDelay: `${delay}s` }}>
-      <button className="sp-faq-q" onClick={() => setOpen(o => !o)}>
-        <span>{q}</span><span className="sp-faq-icon">{open ? "−" : "+"}</span>
-      </button>
-      <div className="sp-faq-answer" style={{ maxHeight: open ? "300px" : "0" }}>
-        <p>{a}</p>
+    <div className="scroll-reveal" style={{ animationDelay: `${delay}s` }}>
+      <div className={`sp-faq-item${open ? " open" : ""}`}>
+        <button className="sp-faq-q" onClick={() => setOpen(o => !o)}>
+          <span>{q}</span><span className="sp-faq-icon">{open ? "−" : "+"}</span>
+        </button>
+        <div className="sp-faq-answer" style={{ maxHeight: open ? "300px" : "0" }}>
+          <p>{a}</p>
+        </div>
       </div>
     </div>
   )

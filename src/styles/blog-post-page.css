@@ -210,7 +210,7 @@
 }
 
 .bp-sidebar-box {
-  background: var(--card-bg);
+   background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 22px;

@@ -551,8 +551,8 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-top: 3px solid var(--card-color, #f06820);
   border-radius: 20px;
   padding: 28px 28px 32px;
@@ -631,7 +631,7 @@
 .seo-focus-card-title {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   line-height: 1.2;
 }
@@ -639,7 +639,7 @@
 .seo-focus-card-desc {
   font-size: 14.5px;
   line-height: 1.7;
-  color: rgba(255,255,255,0.45);
+  color: var(--text-secondary);
   margin: 0;
 }
 

@@ -29,8 +29,7 @@ export default function BlogPage({ posts, categories }: { posts: BlogPost[]; cat
     window.history.replaceState(null, "", `#${slug}`)
   }
 
-  const featured = posts[0]
-  const filtered = posts.filter((p) => p.id !== featured?.id).filter((p) => {
+  const filtered = posts.filter((p) => {
     const matchCat = activeCategory === "all" || p.categorySlug === activeCategory
     const loweredSearch = search.toLowerCase()
     const matchSearch = !loweredSearch || p.title.toLowerCase().includes(loweredSearch) || p.excerpt.toLowerCase().includes(loweredSearch)
@@ -67,48 +66,6 @@ export default function BlogPage({ posts, categories }: { posts: BlogPost[]; cat
           </div>
         </div>
       </section>
-
-      {/* ── FEATURED POST ── */}
-      {featured && (
-        <section className="bl-featured-section">
-          <div className="bl-container">
-            <span className="bl-section-tag">Featured Article</span>
-            <div className="bl-featured-card scroll-reveal">
-              <div className="bl-featured-img">
-                {featured.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={featured.image} alt={featured.title} className="bl-featured-img-el" />
-                )}
-                <span className="bl-cat-chip">{featured.category}</span>
-              </div>
-              <div className="bl-featured-content">
-                <h2 className="bl-featured-title">{featured.title}</h2>
-                <p className="bl-featured-excerpt">{featured.excerpt}</p>
-                <div className="bl-featured-meta">
-                  <div className="bl-author-row">
-                    {featured.authorSlug ? (
-                      <Link href={`/authors/${featured.authorSlug}`} className="bp-author-link">
-                        <div className="bl-author-avatar">{featured.author[0]}</div>
-                        <span className="bl-author-name">{featured.author}</span>
-                      </Link>
-                    ) : (
-                      <>
-                        <div className="bl-author-avatar">{featured.author[0]}</div>
-                        <span className="bl-author-name">{featured.author}</span>
-                      </>
-                    )}
-                    <span className="bl-meta-divider">·</span>
-                    <span>{featured.date}</span>
-                    <span className="bl-meta-divider">·</span>
-                    <span>{featured.readTime}</span>
-                  </div>
-                  <Link href={`/${featured.categorySlug}/${featured.slug}`} className="bl-read-btn">Read Article →</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── FILTER + GRID ── */}
       <section className="bl-grid-section">

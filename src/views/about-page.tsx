@@ -118,7 +118,7 @@ export default function AboutPage() {
               {services.map((service, i) => (
                 <div key={i} className="sp-why-card scroll-reveal" style={{ animationDelay: `${i * 0.05}s`, background: "var(--card-bg)", border: "1px solid var(--border-color)" }}>
                   <MdOutlineCheckCircle style={{ color: "#f06820", fontSize: "22px", flexShrink: 0, marginTop: "2px" }} />
-                  <div><p className="sp-why-card-title" style={{ marginBottom: 0 }}>{service}</p></div>
+                  <div><p className="sp-why-card-title" style={{ marginBottom: 0, color: "var(--text-primary)" }}>{service}</p></div>
                 </div>
               ))}
             </div>

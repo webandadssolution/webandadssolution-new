@@ -21,8 +21,14 @@ function truncate(text: string, maxLength = 155): string {
   return text.length > maxLength ? `${text.slice(0, maxLength - 1).trimEnd()}…` : text
 }
 
+const SITE_NAME_IN_TITLE_RE = /\s*[|\-:–—]?\s*Web and Ads Solutions?\s*(Blog)?\s*$/i
+
+function stripSiteNameFromTitle(title: string): string {
+  return title.replace(SITE_NAME_IN_TITLE_RE, "").trim()
+}
+
 export function buildBlogMetadata(post: BlogPost): Metadata {
-  const title = post.metaTitle || `${post.title} | ${BLOG_NAME}`
+  const title = stripSiteNameFromTitle(post.metaTitle || post.title) || post.title
   const description = post.metaDescription || truncate(post.excerpt || stripHtml(post.content) || `Read ${post.title} on ${BLOG_NAME}.`)
   const canonical = post.canonicalUrl || `${SITE_URL}/${post.categorySlug}/${post.slug}`
   const ogTitle = title
@@ -34,7 +40,7 @@ export function buildBlogMetadata(post: BlogPost): Metadata {
   const twitterImage = ogImage
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     keywords: [post.category, ...post.tags, "SEO", "digital marketing", "PPC"],

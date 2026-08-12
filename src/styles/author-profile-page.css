@@ -13,7 +13,7 @@
 .ap-header {
   padding: 130px 24px 56px;
   text-align: center;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
 }
 

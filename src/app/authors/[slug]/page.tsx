@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import AuthorProfilePage from "../../../views/author-profile-page"
-import { getAuthorBySlug, getAuthors, getAuthorPosts } from "../../../lib/blog"
+import { getAuthorBySlug, getAuthorPosts } from "../../../lib/blog"
 
 export const dynamic = "force-dynamic"
 export const revalidate = 0
@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   if (!author) notFound()
 
-  const [authors, posts] = await Promise.all([getAuthors(), getAuthorPosts(slug)])
+  const posts = await getAuthorPosts(slug)
 
-  return <AuthorProfilePage author={author} authors={authors} posts={posts} />
+  return <AuthorProfilePage author={author} posts={posts} />
 }
