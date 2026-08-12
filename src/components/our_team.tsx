@@ -107,11 +107,11 @@ const Our_team = () => {
     designation: "SEO Executive",
     img: "/team/Vatsla.png",
   },
-  {
-    name: "Vrijesh",
-    designation: "SEO Executive",
-    img: "/team/Virjesh.png",
-  },
+  // {
+  //   name: "Vrijesh",
+  //   designation: "SEO Executive",
+  //   img: "/team/Virjesh.png",
+  // },
   {
     name: "Yukta",
     designation: "Virtual Assistant",
