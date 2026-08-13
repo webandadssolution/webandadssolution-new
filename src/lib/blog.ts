@@ -40,13 +40,13 @@ export interface AuthorProfile {
   metaKeywords: string
 }
 
-interface CmsCategory {
+export interface CmsCategory {
   name: string
   slug: string
   post_count: number
 }
 
-interface CmsPost {
+export interface CmsPost {
   id: number
   slug: string
   title: string
@@ -62,12 +62,12 @@ interface CmsPost {
   schema: Record<string, unknown>
 }
 
-interface CmsPostsResponse {
+export interface CmsPostsResponse {
   data: CmsPost[]
   pagination: { page: number; limit: number; total: number; total_pages: number }
 }
 
-interface CmsAuthor {
+export interface CmsAuthor {
   id: number
   slug: string
   name: string
@@ -80,7 +80,7 @@ interface CmsAuthor {
   meta_keywords: string
 }
 
-function normalizeAuthor(author: CmsAuthor): AuthorProfile {
+export function normalizeAuthor(author: CmsAuthor): AuthorProfile {
   return {
     id: author.id,
     slug: author.slug,
@@ -95,21 +95,21 @@ function normalizeAuthor(author: CmsAuthor): AuthorProfile {
   }
 }
 
-interface CmsAuthorsResponse {
+export interface CmsAuthorsResponse {
   data: CmsAuthor[]
 }
 
-function formatDate(iso: string): string {
+export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
 }
 
-function estimateReadTime(html: string): string {
+export function estimateReadTime(html: string): string {
   const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length
   const minutes = Math.max(1, Math.round(words / 200))
   return `${minutes} min read`
 }
 
-function normalizePost(post: CmsPost): BlogPost {
+export function normalizePost(post: CmsPost): BlogPost {
   const category = post.category?.name ?? "Uncategorized"
   return {
     id: post.id,
@@ -135,11 +135,15 @@ function normalizePost(post: CmsPost): BlogPost {
 
 export async function getCategories(): Promise<BlogCategory[]> {
   try {
-    const res = await fetch(`${CMS_URL}/api/categories.php`, { cache: "no-store" })
-    if (!res.ok) return []
+    const res = await fetch(`${CMS_URL}/api/categories.php`)
+    if (!res.ok) {
+      console.error(`[blog] getCategories: HTTP ${res.status} from ${CMS_URL}/api/categories.php`)
+      return []
+    }
     const { data }: { data: CmsCategory[] } = await res.json()
     return data.map((c) => ({ name: c.name, slug: c.slug, postCount: c.post_count }))
-  } catch {
+  } catch (err) {
+    console.error("[blog] getCategories failed:", err)
     return []
   }
 }
@@ -150,22 +154,26 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     let page = 1
     let totalPages = 1
     do {
-      const res = await fetch(`${CMS_URL}/api/posts.php?page=${page}&limit=100`, { cache: "no-store" })
-      if (!res.ok) break
+      const res = await fetch(`${CMS_URL}/api/posts.php?page=${page}&limit=100`)
+      if (!res.ok) {
+        console.error(`[blog] getBlogPosts: HTTP ${res.status} from ${CMS_URL}/api/posts.php?page=${page}`)
+        break
+      }
       const json: CmsPostsResponse = await res.json()
       posts.push(...json.data)
       totalPages = json.pagination.total_pages
       page++
     } while (page <= totalPages)
     return posts.filter((p) => p.category).map(normalizePost)
-  } catch {
+  } catch (err) {
+    console.error("[blog] getBlogPosts failed:", err)
     return []
   }
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const res = await fetch(`${CMS_URL}/api/post.php?slug=${encodeURIComponent(slug)}`, { cache: "no-store" })
+    const res = await fetch(`${CMS_URL}/api/post.php?slug=${encodeURIComponent(slug)}`)
     if (!res.ok) return null
     const { data }: { data: CmsPost } = await res.json()
     return data ? normalizePost(data) : null
@@ -176,7 +184,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
 export async function getAuthors(): Promise<AuthorProfile[]> {
   try {
-    const res = await fetch(`${CMS_URL}/api/authors.php`, { cache: "no-store" })
+    const res = await fetch(`${CMS_URL}/api/authors.php`)
     if (!res.ok) return []
     const { data }: CmsAuthorsResponse = await res.json()
     return (data || []).map(normalizeAuthor)
@@ -187,7 +195,7 @@ export async function getAuthors(): Promise<AuthorProfile[]> {
 
 export async function getAuthorBySlug(slug: string): Promise<AuthorProfile | null> {
   try {
-    const res = await fetch(`${CMS_URL}/api/author.php?slug=${encodeURIComponent(slug)}`, { cache: "no-store" })
+    const res = await fetch(`${CMS_URL}/api/author.php?slug=${encodeURIComponent(slug)}`)
     if (!res.ok) return null
     const { data }: { data: CmsAuthor | null } = await res.json()
     return data ? normalizeAuthor(data) : null
@@ -198,7 +206,7 @@ export async function getAuthorBySlug(slug: string): Promise<AuthorProfile | nul
 
 export async function getAuthorPosts(slug: string, limit = 24): Promise<BlogPost[]> {
   try {
-    const res = await fetch(`${CMS_URL}/api/author-posts.php?slug=${encodeURIComponent(slug)}&limit=${limit}`, { cache: "no-store" })
+    const res = await fetch(`${CMS_URL}/api/author-posts.php?slug=${encodeURIComponent(slug)}&limit=${limit}`)
     if (!res.ok) return []
     const { data }: { data: CmsPost[] } = await res.json()
     return (data || []).map(normalizePost)

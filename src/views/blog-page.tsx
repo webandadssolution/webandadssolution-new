@@ -5,10 +5,18 @@ import type { FormEvent } from "react"
 import Link from "next/link"
 import "../styles/blog-page.css"
 import type { BlogCategory, BlogPost } from "../lib/blog"
+import { fetchBlogPostsLive, fetchCategoriesLive } from "../lib/blog-client"
 
-export default function BlogPage({ posts, categories }: { posts: BlogPost[]; categories: BlogCategory[] }) {
+export default function BlogPage({ posts: initialPosts, categories: initialCategories }: { posts: BlogPost[]; categories: BlogCategory[] }) {
+  const [posts, setPosts] = useState(initialPosts)
+  const [categories, setCategories] = useState(initialCategories)
   const [activeCategory, setActiveCategory] = useState("all")
   const [search, setSearch] = useState("")
+
+  useEffect(() => {
+    fetchBlogPostsLive().then((live) => { if (live.length > 0) setPosts(live) })
+    fetchCategoriesLive().then((live) => { if (live.length > 0) setCategories(live) })
+  }, [])
 
   const tabs = useMemo(() => [{ name: "All", slug: "all" }, ...categories], [categories])
 
