@@ -1,10 +1,12 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import AuthorProfilePage from "../../../views/author-profile-page"
-import { getAuthorBySlug, getAuthorPosts } from "../../../lib/blog"
+import { getAuthorBySlug, getAuthorPosts, getAuthors } from "../../../lib/blog"
 
-export const dynamic = "force-dynamic"
-export const revalidate = 0
+export async function generateStaticParams() {
+  const authors = await getAuthors()
+  return authors.map((author) => ({ slug: author.slug }))
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params

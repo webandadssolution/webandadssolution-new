@@ -2,9 +2,6 @@ import type { Metadata } from "next"
 import BlogPage from "../../views/blog-page"
 import { getBlogPosts, getCategories } from "../../lib/blog"
 
-export const dynamic = "force-dynamic"
-export const revalidate = 0
-
 export const metadata: Metadata = {
   title: "Blog | Insights on SEO, PPC, and Digital Marketing",
   description:
