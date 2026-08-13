@@ -356,7 +356,7 @@
 
 .bl-post-img-wrap {
   position: relative;
-  height: 180px;
+  height: 250px;
   overflow: hidden;
   background: linear-gradient(135deg, #f8f0ec 0%, #fde8d8 50%, #fff0e8 100%);
 }
@@ -378,6 +378,7 @@
 }
 
 .bl-post-cat {
+  display: none;
   position: absolute;
   top: 14px; left: 14px;
   padding: 4px 12px;
