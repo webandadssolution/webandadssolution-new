@@ -112,12 +112,26 @@ export default function BlogPage({ posts: initialPosts, categories: initialCateg
                       <div className="bl-author-row">
                         {post.authorSlug ? (
                           <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
-                            <div className="bl-author-avatar sm">{post.author[0]}</div>
+                            <div className="bl-author-avatar sm">
+                              {post.authorImage ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={post.authorImage} alt={post.author} />
+                              ) : (
+                                post.author[0]
+                              )}
+                            </div>
                             <span className="bl-author-name sm">{post.author}</span>
                           </Link>
                         ) : (
                           <>
-                            <div className="bl-author-avatar sm">{post.author[0]}</div>
+                            <div className="bl-author-avatar sm">
+                              {post.authorImage ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={post.authorImage} alt={post.author} />
+                              ) : (
+                                post.author[0]
+                              )}
+                            </div>
                             <span className="bl-author-name sm">{post.author}</span>
                           </>
                         )}

@@ -16,6 +16,7 @@ export interface BlogPost {
   content: string
   author: string
   authorSlug: string | null
+  authorImage: string | null
   date: string
   dateIso: string
   readTime: string
@@ -57,6 +58,7 @@ export interface CmsPost {
   meta: { title: string; description: string; canonical_url: string }
   author: string | null
   author_slug: string | null
+  author_image: string | null
   published_at: string
   updated_at: string
   schema: Record<string, unknown>
@@ -121,6 +123,7 @@ export function normalizePost(post: CmsPost): BlogPost {
     content: post.content ?? "",
     author: post.author ?? "Web and Ads Solutions",
     authorSlug: post.author_slug ?? null,
+    authorImage: post.author_image ?? null,
     date: formatDate(post.published_at),
     dateIso: post.published_at,
     readTime: estimateReadTime(post.content ?? post.excerpt),

@@ -24,12 +24,19 @@
   pointer-events: none;
 }
 
-.bp-hero-inner {
+.bp-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 780px;
+  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.bp-hero-inner {
+  text-align: left;
 }
 
 .bp-breadcrumb {
@@ -53,7 +60,7 @@
 .bp-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: wrap;
   font-size: 14px;
@@ -71,6 +78,13 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.bp-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bp-meta-name { font-weight: 700; color: #fff; }
@@ -87,9 +101,6 @@
 .bp-author-link:hover { opacity: 0.8; }
 
 .bp-hero-img-wrap {
-  max-width: 1200px;
-  margin: 44px auto 0;
-  padding: 0 24px;
   position: relative;
   z-index: 3;
 }
@@ -121,12 +132,13 @@
 }
 
 .bp-article-content {
-  font-size: 17px;
+  font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 19px;
   line-height: 1.85;
   color: var(--text-secondary);
 }
 
-.bp-article-content p { margin-bottom: 22px; }
+.bp-article-content p { margin-bottom: 26px; }
 
 .bp-article-content h2 {
   font-size: 26px;
@@ -154,13 +166,13 @@
 
 .bp-article-content ul,
 .bp-article-content ol {
-  margin: 0 0 22px 22px;
+  margin: 0 0 26px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
-.bp-article-content li { line-height: 1.7; }
+.bp-article-content li { line-height: 1.85; }
 
 .bp-article-content img {
   max-width: 100%;
@@ -404,6 +416,9 @@
 }
 
 @media (max-width: 1024px) {
+  .bp-hero-content { grid-template-columns: 1fr; gap: 32px; }
+  .bp-hero-inner { text-align: center; }
+  .bp-meta { justify-content: center; }
   .bp-body-grid { grid-template-columns: 1fr; gap: 40px; }
   .bp-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
   .bp-sidebar-box { flex: 1 1 280px; }
@@ -411,6 +426,7 @@
 
 @media (max-width: 768px) {
   .bp-title { font-size: 30px; }
-  .bp-article-content { font-size: 16px; }
+  .bp-article-content { font-size: 17px; line-height: 1.8; }
+  .bp-article-content p { margin-bottom: 24px; }
   .bp-sidebar { flex-direction: column; }
 }

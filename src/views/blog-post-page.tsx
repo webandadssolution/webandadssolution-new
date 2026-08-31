@@ -21,35 +21,51 @@ export default function BlogPostPage({
       {/* ── HERO ── */}
       <section className="bp-hero">
         <div className="bp-hero-glow" />
-        <div className="bp-hero-inner">
-          <div className="bp-breadcrumb">
-            <Link href="/blog">Blog</Link> / {post.category}
+        <div className="bp-hero-content">
+          <div className="bp-hero-inner">
+            <div className="bp-breadcrumb">
+              <Link href="/blog">Blog</Link> / {post.category}
+            </div>
+            <h1 className="bp-title">{post.title}</h1>
+            <div className="bp-meta">
+              {post.authorSlug ? (
+                <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
+                  <div className="bp-avatar">
+                    {post.authorImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={post.authorImage} alt={post.author} />
+                    ) : (
+                      post.author[0]
+                    )}
+                  </div>
+                  <span className="bp-meta-name">{post.author}</span>
+                </Link>
+              ) : (
+                <>
+                  <div className="bp-avatar">
+                    {post.authorImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={post.authorImage} alt={post.author} />
+                    ) : (
+                      post.author[0]
+                    )}
+                  </div>
+                  <span className="bp-meta-name">{post.author}</span>
+                </>
+              )}
+              <span className="bp-dot">·</span>
+              <span>{post.date}</span>
+              <span className="bp-dot">·</span>
+              <span>{post.readTime}</span>
+            </div>
           </div>
-          <h1 className="bp-title">{post.title}</h1>
-          <div className="bp-meta">
-            {post.authorSlug ? (
-              <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
-                <div className="bp-avatar">{post.author[0]}</div>
-                <span className="bp-meta-name">{post.author}</span>
-              </Link>
-            ) : (
-              <>
-                <div className="bp-avatar">{post.author[0]}</div>
-                <span className="bp-meta-name">{post.author}</span>
-              </>
-            )}
-            <span className="bp-dot">·</span>
-            <span>{post.date}</span>
-            <span className="bp-dot">·</span>
-            <span>{post.readTime}</span>
-          </div>
+          {post.image && (
+            <div className="bp-hero-img-wrap">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={post.image} alt={post.title} className="bp-hero-img" />
+            </div>
+          )}
         </div>
-        {post.image && (
-          <div className="bp-hero-img-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.image} alt={post.title} className="bp-hero-img" />
-          </div>
-        )}
       </section>
 
       {/* ── ARTICLE + SIDEBAR ── */}
@@ -140,12 +156,26 @@ export default function BlogPostPage({
                       <div className="bl-author-row">
                         {p.authorSlug ? (
                           <Link href={`/authors/${p.authorSlug}`} className="bp-author-link">
-                            <div className="bl-author-avatar sm">{p.author[0]}</div>
+                            <div className="bl-author-avatar sm">
+                              {p.authorImage ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={p.authorImage} alt={p.author} />
+                              ) : (
+                                p.author[0]
+                              )}
+                            </div>
                             <span className="bl-author-name sm">{p.author}</span>
                           </Link>
                         ) : (
                           <>
-                            <div className="bl-author-avatar sm">{p.author[0]}</div>
+                            <div className="bl-author-avatar sm">
+                              {p.authorImage ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={p.authorImage} alt={p.author} />
+                              ) : (
+                                p.author[0]
+                              )}
+                            </div>
                             <span className="bl-author-name sm">{p.author}</span>
                           </>
                         )}

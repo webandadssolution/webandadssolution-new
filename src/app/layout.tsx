@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
-import { Space_Grotesk } from "next/font/google"
+import { Space_Grotesk, Inter } from "next/font/google"
 import Script from "next/script"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -13,6 +13,13 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-space-grotesk",
+  display: "swap",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 })
 
@@ -81,7 +88,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={spaceGrotesk.variable} suppressHydrationWarning>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -125,7 +132,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-XKDC9F29Z6');`}
-        </Script>
+        </Script>        
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=4583115795291334&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         <ThemeScript />
         <script
           type="application/ld+json"

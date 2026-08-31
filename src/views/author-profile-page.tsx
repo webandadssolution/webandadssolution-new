@@ -60,7 +60,14 @@ export default function AuthorProfilePage({ author, posts }: { author: AuthorPro
                     <p className="bl-post-excerpt">{post.excerpt}</p>
                     <div className="bl-post-footer">
                       <div className="bl-author-row">
-                        <div className="bl-author-avatar sm">{post.author[0]}</div>
+                        <div className="bl-author-avatar sm">
+                        {post.authorImage ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={post.authorImage} alt={post.author} />
+                        ) : (
+                          post.author[0]
+                        )}
+                      </div>
                         <span className="bl-author-name sm">{post.author}</span>
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{post.readTime}</span>

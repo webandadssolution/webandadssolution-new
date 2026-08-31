@@ -1,1 +1,8 @@
+# Blog posts/authors published to the CMS after the last build have no static file
+# yet. Send those (and only those — existing static files/pages are served first,
+# per host default) to the client-fetched fallback shell, which reads the slug from
+# the URL and loads the content live from the CMS API. Keep in sync with .htaccess.
+/authors/:slug    /author-live/   200
+/:category/:slug  /blog-live/     200
+
 /*    /404.html   404
