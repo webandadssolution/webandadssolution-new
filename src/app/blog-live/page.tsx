@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import BlogPostPage from "../../views/blog-post-page"
-import { JsonLd, buildBlogArticleJsonLd } from "../../lib/seo"
+import { JsonLd, buildBlogArticleJsonLd, setCanonicalUrl } from "../../lib/seo"
 import type { BlogCategory, BlogPost } from "../../lib/blog"
 import { fetchBlogPostBySlugLive, fetchBlogPostsLive, fetchCategoriesLive } from "../../lib/blog-client"
 
@@ -36,6 +36,7 @@ export default function BlogLivePage() {
       if (cancelled) return
 
       document.title = post.metaTitle || post.title
+      setCanonicalUrl(post.canonicalUrl || `https://webandadssolution.com/${post.categorySlug}/${post.slug}`)
 
       setData({
         post,

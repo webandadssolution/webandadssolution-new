@@ -5,6 +5,7 @@ import Link from "next/link"
 import AuthorProfilePage from "../../views/author-profile-page"
 import type { AuthorProfile, BlogPost } from "../../lib/blog"
 import { fetchAuthorBySlugLive, fetchAuthorPostsLive } from "../../lib/blog-client"
+import { setCanonicalUrl } from "../../lib/seo"
 
 // Fallback shell for /authors/{slug}/ URLs published to the CMS after the last build.
 // `.htaccess` rewrites any unmatched path under /authors/ here; the slug comes from
@@ -35,6 +36,7 @@ export default function AuthorLivePage() {
       if (cancelled) return
 
       document.title = author.metaTitle || `${author.name} | Web and Ads Solutions`
+      setCanonicalUrl(`https://webandadssolution.com/authors/${author.slug}`)
 
       setData({ author, posts })
       setState("found")
