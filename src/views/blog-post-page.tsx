@@ -1,20 +1,47 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import "../styles/blog-page.css"
 import "../styles/blog-post-page.css"
 import type { BlogCategory, BlogPost } from "../lib/blog"
+import { fetchBlogPostBySlugLive, fetchBlogPostsLive, fetchCategoriesLive } from "../lib/blog-client"
 import SidebarContactForm from "../components/sidebar-contact-form"
 
 export default function BlogPostPage({
-  post,
-  related,
-  recentPosts,
-  categories,
+  post: initialPost,
+  related: initialRelated,
+  recentPosts: initialRecentPosts,
+  categories: initialCategories,
 }: {
   post: BlogPost
   related: BlogPost[]
   recentPosts: BlogPost[]
   categories: BlogCategory[]
 }) {
+  const [post, setPost] = useState(initialPost)
+  const [related, setRelated] = useState(initialRelated)
+  const [recentPosts, setRecentPosts] = useState(initialRecentPosts)
+  const [categories, setCategories] = useState(initialCategories)
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const livePost = await fetchBlogPostBySlugLive(initialPost.slug)
+      if (cancelled || !livePost) return
+      setPost(livePost)
+
+      const [posts, liveCategories] = await Promise.all([fetchBlogPostsLive(), fetchCategoriesLive()])
+      if (cancelled) return
+      if (posts.length > 0) {
+        setRelated(posts.filter((p) => p.id !== livePost.id && p.categorySlug === livePost.categorySlug).slice(0, 3))
+        setRecentPosts(posts.filter((p) => p.id !== livePost.id).slice(0, 5))
+      }
+      if (liveCategories.length > 0) setCategories(liveCategories)
+    })()
+    return () => { cancelled = true }
+  }, [initialPost.slug])
+
   return (
     <div className="bp-page">
 
@@ -89,6 +116,11 @@ export default function BlogPostPage({
           </article>
 
           <aside className="bp-sidebar">
+            <div className="bp-sidebar-box">
+              <h3 className="bp-sidebar-title">Get In Touch</h3>
+              <p className="bp-cf-sub">Have a question about this article or your project? Send us a message.</p>
+              <SidebarContactForm />
+            </div>
             {recentPosts.length > 0 && (
               <div className="bp-sidebar-box">
                 <h3 className="bp-sidebar-title">Recent Posts</h3>
@@ -125,11 +157,7 @@ export default function BlogPostPage({
               </div>
             )}
 
-            <div className="bp-sidebar-box">
-              <h3 className="bp-sidebar-title">Get In Touch</h3>
-              <p className="bp-cf-sub">Have a question about this article or your project? Send us a message.</p>
-              <SidebarContactForm />
-            </div>
+            
           </aside>
         </div>
       </section>
