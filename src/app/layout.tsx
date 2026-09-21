@@ -70,9 +70,10 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
-  logo: "https://webandadssolution.com/wp-content/uploads/2025/04/new-logo.png",
+  logo: "https://webandadssolution.com/images/logo.webp",
   description: SITE_DESCRIPTION,
   email: "info@webandadssolution.com",
   telephone: "+1-917-708-7134",
@@ -84,6 +85,13 @@ const organizationJsonLd = {
     postalCode: "64701",
     addressCountry: "US",
   },
+  sameAs: [
+    "https://www.facebook.com/people/Web-and-Ads-Solution/61578222435005/",
+    "https://www.instagram.com/webandadssolution/",
+    "https://www.linkedin.com/company/webandadsaolution",
+    "https://www.youtube.com/@WebAndAdsSolution",
+    "https://x.com/webadssolution",
+  ],
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

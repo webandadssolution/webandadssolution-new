@@ -56,10 +56,10 @@ export default function ContactPage() {
           <div className="ct-mobile-hero">
             <div className="ct-mobile-badge"><span className="ct-badge-dot" />Free Consultation Available</div>
 
-            <h1 className="ct-mobile-title">
+            <h2 className="ct-mobile-title">
               Get More Customers.<br />
               <span className="ct-accent">Start With a Free Call.</span>
-            </h1>
+            </h2>
 
             <p className="ct-mobile-sub">
               Tell us your goals — we'll respond with a custom strategy within 2 hours. No pressure, no obligation.

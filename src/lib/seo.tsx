@@ -87,7 +87,7 @@ export function buildBlogArticleJsonLd(post: BlogPost): Record<string, unknown> 
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
-      logo: "https://webandadssolution.com/wp-content/uploads/2025/04/new-logo.png",
+      logo: "https://webandadssolution.com/images/logo.webp",
     },
     datePublished: post.dateIso || undefined,
     dateModified: post.dateIso || undefined,
@@ -111,6 +111,35 @@ export function faqJsonLd(faqs: Faq[]): Record<string, unknown> {
         "@type": "Answer",
         text: a,
       },
+    })),
+  }
+}
+
+export function serviceJsonLd(serviceType: string, name: string, areaServed = "United States"): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType,
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: areaServed,
+    },
+    name,
+  }
+}
+
+export function breadcrumbJsonLd(items: { name: string; url: string }[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map(({ name, url }, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name,
+      item: url,
     })),
   }
 }

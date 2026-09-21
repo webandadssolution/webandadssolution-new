@@ -10,7 +10,7 @@
       rgba(0, 0, 0, 0.3) 0px,
       rgba(10, 10, 10, 0.4) 0px,
       rgba(10, 10, 10, 0.4) 0px
-    ), url("https://dev254.kodesolution.com/edigitaal/wp-content/uploads/2025/11/Object-1.png");
+    ), url("/images/Object-1.png");
   background-size: cover;
   background-position: center, center;
   background-attachment: scroll;
@@ -47,7 +47,7 @@
   right: -501px;
   width: 1500px;
   height: 1500px;
-  background-image: url("https://dev254.kodesolution.com/edigitaal/wp-content/uploads/2025/10/Bg-Object.png");
+  background-image: url("/images/Bg-Object.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

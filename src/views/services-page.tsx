@@ -19,6 +19,7 @@ import "../styles/services-page.css"
 const services = [
   {
     slug: "seo",
+    href: "/seo-search-engine-optimization",
     title: "Search Engine Optimization (SEO)",
     blurb: "Expert SEO that improves visibility, from local SEO to full-scale organic strategy that ranks and converts.",
     image: "/images/seo.jpg",
@@ -130,7 +131,7 @@ const ServicesPage = () => {
 
           <div className="services-grid">
             {services.map((service) => (
-              <Link key={service.slug} href={`/services/${service.slug}`} className="service-tile">
+              <Link key={service.slug} href={service.href ?? `/services/${service.slug}`} className="service-tile">
                 <div className="service-tile-img-wrap">
                   <img src={service.image} alt={service.title} className="service-tile-img" />
                   <div className="service-tile-icon">{service.icon}</div>

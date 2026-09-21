@@ -49,9 +49,9 @@ function fetchAuthors(): array
 }
 
 $staticRoutes = [
-    '', '/services', '/services/seo', '/services/content-marketing', '/services/ppc',
+    '', '/services', '/seo-search-engine-optimization', '/services/content-marketing', '/services/ppc',
     '/services/smo', '/services/web-development', '/services/virtual-assistant',
-    '/about', '/contact', '/blog',
+    '/about', '/contact', '/blog', '/packages', '/united-states',
 ];
 
 $now = gmdate('c');

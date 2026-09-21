@@ -27,6 +27,8 @@ const Header = () => {
       setActiveNav("Blog")
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
+    } else if (pathname.startsWith("/united-states")) {
+      setActiveNav("Locations")
     }
   }, [pathname])
 
@@ -57,9 +59,7 @@ const Header = () => {
       "Website Development",
       "Virtual Assistant Services",
     ],
-    Locations: [
-      "Argentina", "Atlanta", "Austin, Texas", "Barcelona", "Berlin", "Boston", "Brazil", "Charlotte", "Chicago", "Colombia", "Columbus, Ohio", "Costa Rica", "Dallas", "Denver", "Detroit", "Dubai", "Fort Worth, Texas", "Geneva", "Honduras", "Houston, TX", "Indianapolis", "Indonesia", "Jacksonville", "Las Vegas", "Los Angeles", "Madrid", "Melbourne", "Mexico", "Miami", "Munich", "Nashville", "New York", "Oklahoma", "Philadelphia", "Philippines", "Phoenix", "San Antonio", "San Diego", "San Francisco", "San Jose", "Seattle", "Shanghai", "Singapore", "Toronto", "Uruguay", "Washington", "Zurich",
-    ],
+    Locations: ["USA"],
     Industry: [
       "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
     ],
@@ -137,18 +137,32 @@ const Header = () => {
                 <div className={`dropdown-menu ${openDropdown === item ? "open" : ""}`}>
                   {item === "Locations" ? (
                     <div className="dropdown-grid" ref={locationScrollRef}>
-                      {dropdownData[item].map((option, index) => (
-                        <a
-                          key={index}
-                          href={`#${option.toLowerCase()}`}
-                          className="dropdown-item"
-                          style={{
-                            animationDelay: `${index * 0.05}s`,
-                          }}
-                        >
-                          {option}
-                        </a>
-                      ))}
+                      {dropdownData[item].map((option, index) => {
+                        const locationRoutes: Record<string, string> = {
+                          USA: "/united-states",
+                        }
+                        const to = locationRoutes[option]
+                        return to ? (
+                          <Link
+                            key={index}
+                            href={to}
+                            className="dropdown-item"
+                            style={{ animationDelay: `${index * 0.05}s` }}
+                            onClick={() => handleNavClick(item)}
+                          >
+                            {option}
+                          </Link>
+                        ) : (
+                          <a
+                            key={index}
+                            href={`#${option.toLowerCase()}`}
+                            className="dropdown-item"
+                            style={{ animationDelay: `${index * 0.05}s` }}
+                          >
+                            {option}
+                          </a>
+                        )
+                      })}
                     </div>
                   ) : (
                     <div className="dropdown-list">
@@ -157,7 +171,7 @@ const Header = () => {
                           "Answer Engine Optimization (AEO)":      "/services/aeo",
                           "Generative Engine Optimization (GEO)":  "/services/geo",
                           "AI Visibility":                          "/services/ai-visibility",
-                          "Search Engine Optimization (SEO)":      "/services/seo",
+                          "Search Engine Optimization (SEO)":      "/seo-search-engine-optimization",
                           "Content Marketing":                      "/services/content-marketing",
                           "Pay-Per-Click (PPC) Advertising":        "/services/ppc",
                           "Social Media Optimization (SMO)":        "/services/smo",
@@ -225,7 +239,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className={`nav-mobile ${isMenuOpen ? "open" : ""}`}>
         {navItems.map((item) => {
-          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog" }
+          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog", Locations: "/united-states" }
           const to = mobileRoutes[item]
           return to ? (
             <Link

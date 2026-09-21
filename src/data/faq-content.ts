@@ -33,46 +33,34 @@ export const homeFaqs: HomeFaq[] = [
   },
 ]
  
-export const seoFaqs: Faq[] = [
+export const seoServicesFaqs: Faq[] = [
   {
-    q: "How long does SEO take to show results?",
-    a: "SEO is a long-term investment. Most businesses start seeing measurable improvements in 3–6 months, with significant growth in 6–12 months depending on competition and starting position.",
+    q: "What are SEO services and what do they include?",
+    a: "SEO services involve technical audits, on-page optimization, content creation, keyword strategy, and authority building to improve your website's visibility on search engines and AI search platforms.",
   },
   {
-    q: "What makes your SEO different from competitors?",
-    a: "We combine deep technical expertise with creative content strategies and focus on business outcomes — not just rankings. We track leads, conversions, and revenue, not just traffic.",
+    q: "How much do SEO services cost?",
+    a: "Costs vary depending on market competitiveness, domain authority, and project scope. Pricing typically scales based on whether you need local search coverage, regional expansion, or full national enterprise execution.",
   },
   {
-    q: "Do you guarantee first-page rankings?",
-    a: "No ethical SEO agency can guarantee specific rankings — search algorithms change constantly. We do guarantee a transparent strategy, consistent execution, and a track record of real results.",
+    q: "How long does it take to see results from SEO?",
+    a: "Most businesses start noticing initial ranking movements and crawl improvements within 60 to 90 days, with substantial lead compound growth occurring between months 6 and 12.",
   },
   {
-    q: "Will you work with my existing website?",
-    a: "Absolutely. We audit and optimize websites on any platform — WordPress, Shopify, custom builds, Webflow, and more. No migration required.",
+    q: "Can small businesses afford professional SEO services?",
+    a: "Yes. Small businesses can focus on hyper-local SEO strategies that target specific geographic markets and intent-driven terms, delivering strong ROI without requiring enterprise-level budgets.",
   },
   {
-    q: "How do I know if my SEO is working?",
-    a: "You'll receive monthly reports with keyword ranking movements, organic traffic trends, conversion data, and a breakdown of tasks completed — fully transparent and jargon-free.",
+    q: "What is the difference between an SEO specialist and an SEO consultant?",
+    a: "An SEO specialist typically handles direct execution (technical fixes, on-page tweaks, link building), while an SEO consultant focuses on high-level strategy, auditing, and guiding long-term roadmap planning.",
   },
   {
-    q: "How long does SEO take to show results?",
-    a: "SEO is a gradual process. While some improvements may appear early, consistent and sustainable growth typically develops over several months, depending on your industry and competition.",
+    q: "Will SEO help my business appear on ChatGPT or Google AI Overviews?",
+    a: "Yes. Modern SEO incorporates Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO), structuring your data so AI search engines cite your brand directly in AI-generated answers.",
   },
   {
-    q: "Should I choose SEO or paid advertising?",
-    a: "Both serve different purposes. Paid ads can deliver quicker visibility, while SEO supports long-term organic growth. The right mix depends on your goals and timeline.",
-  },
-  {
-    q: "Do you offer local and international SEO?",
-    a: "Yes. We tailor strategies based on where your audience is searching, whether that's a specific region or a broader global market.",
-  },
-  {
-    q: "How do you measure SEO performance?",
-    a: "We track metrics such as organic traffic, keyword movement, and conversions, supported by transparent reporting and dashboards.",
-  },
-  {
-    q: "Is SEO still relevant with AI-driven search?",
-    a: "Search continues to evolve, but visibility remains essential. Modern SEO includes preparing content for conversational and AI-influenced search experiences.",
+    q: "How do I choose the best SEO services provider for my business?",
+    a: "Look for a provider that emphasizes transparent reporting, custom strategy development, clear technical execution, and a track record of driving revenue rather than vanity metrics.",
   },
 ]
  
@@ -108,6 +96,13 @@ export const webDevFaqs: Faq[] = [
   { q: "Do you offer ongoing maintenance after launch?", a: "Yes. We offer monthly maintenance retainers that include security updates, performance monitoring, content changes, and priority support for any issues that arise." },
 ]
  
+export const unitedStatesFaqs: Faq[] = [
+  { q: "What does a digital marketing agency in the USA typically include?", a: "Most engagements cover SEO, PPC, social media, content, and web development managed under one team so channels work together instead of being handled by separate freelancers." },
+  { q: "How much does it cost to hire a digital marketing agency in the USA?", a: "Budgets typically start around $1k–$10k+ per month depending on the channels and competitiveness of your market, with plans scoped around your specific goals." },
+  { q: "Do you work with businesses in every US state?", a: "Yes we work with businesses across all 50 states, with campaigns tailored to each local or regional market." },
+  { q: "How is Web & Ads Solution different from other agencies working with US businesses?", a: "You get a dedicated project manager, transparent reporting, and strategies built around your actual channel mix not a fixed package applied to every client." },
+]
+
 export const vaFaqs: Faq[] = [
   { q: "What tasks can a virtual assistant handle?",         a: "VA tasks span email management, scheduling, research, data entry, social media, customer support, CRM maintenance, content formatting, and much more. If it can be done on a computer and doesn't require physical presence, a VA can likely handle it." },
   { q: "How do you ensure quality and accuracy?",            a: "All VAs follow documented SOPs tailored to your processes. We conduct quality reviews, track task completion rates, and hold weekly feedback sessions. Any errors are corrected at no extra cost." },

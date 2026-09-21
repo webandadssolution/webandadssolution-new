@@ -211,13 +211,13 @@ const Footer = () => {
             <div className="footer-link-group">
               <h4 className="footer-group-title">Solutions</h4>
               <ul className="footer-list">
-                <li><Link href="/"><span className="full-text">Search Engine Optimization (SEO)</span><span className="short-text">SEO</span></Link></li>
-                <li><Link href="/"><span className="full-text">Social Media Optimization (SMO)</span><span className="short-text">SMO</span></Link></li>
-                <li><Link href="/"><span className="full-text">Content Marketing</span><span className="short-text">Content</span></Link></li>
-                <li><Link href="/"><span className="full-text">Web Development</span><span className="short-text">Web Dev</span></Link></li>
-                <li><Link href="/"><span className="full-text">Pay-Per-Click (PPC) Advertising</span><span className="short-text">PPC Ads</span></Link></li>
+                <li><Link href="/seo-search-engine-optimization"><span className="full-text">Search Engine Optimization (SEO)</span><span className="short-text">SEO</span></Link></li>
+                <li><Link href="/services/smo"><span className="full-text">Social Media Optimization (SMO)</span><span className="short-text">SMO</span></Link></li>
+                <li><Link href="/services/content-marketing"><span className="full-text">Content Marketing</span><span className="short-text">Content</span></Link></li>
+                <li><Link href="/services/web-development"><span className="full-text">Web Development</span><span className="short-text">Web Dev</span></Link></li>
+                <li><Link href="/services/ppc"><span className="full-text">Pay-Per-Click (PPC) Advertising</span><span className="short-text">PPC Ads</span></Link></li>
                 <li><a href="#"><span className="full-text">Application Development</span><span className="short-text">App Dev</span></a></li>
-                <li><Link href="/"><span className="full-text">Virtual Assistant Services</span><span className="short-text">VA Services</span></Link></li>
+                <li><Link href="/services/virtual-assistant"><span className="full-text">Virtual Assistant Services</span><span className="short-text">VA Services</span></Link></li>
               </ul>
             </div>
 

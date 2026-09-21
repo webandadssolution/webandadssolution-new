@@ -208,7 +208,7 @@ const Strategies = () => {
           <div className="strategies-center-image">
             <div className="center-image-border"></div>
             <img
-              src="https://dev254.kodesolution.com/edigitaal/wp-content/uploads/2025/10/team-02.png"
+              src="/images/team-02.png"
               alt="Team Member"
               className="team-image"
             />

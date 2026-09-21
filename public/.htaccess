@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# Old SEO service URL retired in favor of the keyword-rich slug
+RewriteRule ^services/seo/?$ /seo-search-engine-optimization/ [R=301,L]
+
 # sitemap.xml is generated fresh from the CMS on every request (see sitemap.php)
 # instead of serving the static file baked in at the last build, so new posts
 # show up immediately.
