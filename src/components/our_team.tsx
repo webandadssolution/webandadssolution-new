@@ -62,11 +62,11 @@ const Our_team = () => {
     designation: "Developer",
     img: "/team/Musaaraf.png",
   },
-  {
-    name: "Rinku",
-    designation: "SR. Graphic Designer",
-    img: "/team/rinku.png",
-  },
+  // {
+  //   name: "Rinku",
+  //   designation: "SR. Graphic Designer",
+  //   img: "/team/rinku.png",
+  // },
   
   {
     name: "Simran",
