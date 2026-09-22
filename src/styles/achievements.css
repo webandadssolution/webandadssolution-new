@@ -29,7 +29,7 @@
 }
 
 .achievements-title {
-  font-size: 45px;
+  font-size: 40px;
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 25px;
@@ -437,4 +437,16 @@
 @media (max-width: 480px) {
   .achievements-title { font-size: 32px; }
   .achievements-card-ribbon-strap { width: 35px; }
+}
+
+.achievements-desc {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 560px;
+}
+
+@media (max-width: 768px) {
+  .achievements-desc { font-size: 16px; }
 }

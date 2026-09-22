@@ -3,33 +3,27 @@ import type { Faq, HomeFaq } from "../types/faq"
 export const homeFaqs: HomeFaq[] = [
   {
     id: 1,
-    question: "How long does SEO take to show results?",
+    question: "What makes Web and Ads Solution different from other marketing agencies?",
     answer:
-      "SEO is a gradual process. While some improvements may appear early, consistent and sustainable growth typically develops over several months, depending on your industry and competition.",
+      "We focus on revenue and profit metrics rather than empty clicks. We combine traditional search engine optimization and PPC with modern AI search optimization (AEO/GEO) to ensure your brand gets recommended across Google, ChatGPT, and local maps.",
   },
   {
     id: 2,
-    question: "Should I choose SEO or paid advertising?",
+    question: "Is digital marketing actually worth it for small businesses?",
     answer:
-      "Both serve different purposes. Paid ads can deliver quicker visibility, while SEO supports long-term organic growth. The right mix depends on your goals and timeline.",
+      "Yes, when executed strategically. Digital marketing provides small businesses with hyper-targeted reach, allowing you to compete directly with larger brands by capturing high-intent search queries in your target markets.",
   },
   {
     id: 3,
-    question: "Do you offer local and international SEO?",
+    question: "How do AI search engines like ChatGPT affect my SEO?",
     answer:
-      "Yes. We tailor strategies based on where your audience is searching, whether that's a specific region or a broader global market.",
+      "Consumers are increasingly using AI assistants to get direct recommendations. We use Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) to structure your brand data so AI engines cite your business as a trusted recommendation.",
   },
   {
     id: 4,
-    question: "How do you measure SEO performance?",
+    question: "What's the difference between an SEO company and a full digital marketing agency?",
     answer:
-      "We track metrics such as organic traffic, keyword movement, and conversions, supported by transparent reporting and dashboards.",
-  },
-  {
-    id: 5,
-    question: "Is SEO still relevant with AI-driven search?",
-    answer:
-      "Search continues to evolve, but visibility remains essential. Modern SEO includes preparing content for conversational and AI-influenced search experiences.",
+      "An SEO company focuses primarily on search engine rankings and website structure. A full-service digital marketing agency manages your complete online ecosystem combining organic search, paid ads, content creation, social media, and web development to turn traffic into revenue.",
   },
 ]
  
@@ -101,6 +95,13 @@ export const unitedStatesFaqs: Faq[] = [
   { q: "How much does it cost to hire a digital marketing agency in the USA?", a: "Budgets typically start around $1k–$10k+ per month depending on the channels and competitiveness of your market, with plans scoped around your specific goals." },
   { q: "Do you work with businesses in every US state?", a: "Yes we work with businesses across all 50 states, with campaigns tailored to each local or regional market." },
   { q: "How is Web & Ads Solution different from other agencies working with US businesses?", a: "You get a dedicated project manager, transparent reporting, and strategies built around your actual channel mix not a fixed package applied to every client." },
+]
+
+export const missouriFaqs: Faq[] = [
+  { q: "Is Web & Ads Solution based in Missouri?", a: "Yes — we're headquartered in Harrisonville, Missouri, and work with businesses across the state as well as nationally." },
+  { q: "Do you work with businesses across all of Missouri, including St. Louis and Kansas City?", a: "Yes, we work with Missouri businesses statewide, from major metro areas to smaller local markets." },
+  { q: "How much does a Missouri digital marketing agency typically cost?", a: "Budgets typically start around $1k–$10k+ per month depending on the services and competitiveness of your market, with plans scoped around your specific goals." },
+  { q: "Do you offer AI SEO (AEO/GEO) for Missouri businesses?", a: "Yes — alongside traditional SEO, we optimize content and site structure so Missouri businesses are positioned to appear in AI-driven search results and answer engines, not just standard search rankings." },
 ]
 
 export const vaFaqs: Faq[] = [

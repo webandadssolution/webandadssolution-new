@@ -454,3 +454,43 @@ a.ai-chat-source-chip:hover {
   .ai-chat-dot { animation: none; }
   .ai-chat-spinner { animation: none; }
 }
+
+/* ── AI search shift: two-column copy cards ── */
+.ai-shift-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.ai-shift-card {
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  border-left: 4px solid #f06820;
+  border-radius: 20px;
+  padding: 40px 36px;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.ai-shift-card:hover {
+  border-color: rgba(240, 104, 32, 0.45);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.ai-shift-text {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1023px) {
+  .ai-shift-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-shift-card { padding: 28px 22px; }
+  .ai-shift-text { font-size: 16px; }
+}

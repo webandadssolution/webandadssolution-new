@@ -1,9 +1,20 @@
 "use client"
-import { useRef, useLayoutEffect } from "react"
+import { Fragment, useRef, useLayoutEffect } from "react"
 import type { MouseEvent as ReactMouseEvent } from "react"
 import gsap from "gsap"
-import { FaStar, FaChartLine, FaBolt, FaShieldAlt, FaCheckCircle } from "react-icons/fa"
+import { FaChartLine, FaBolt, FaShieldAlt, FaCheckCircle } from "react-icons/fa"
 import "../styles/hero.css"
+
+const heroLine1 = [
+  { word: "Most Agencies Are Still Optimizing for", cls: "font-bold" },
+  { word: "2018.", cls: "font-light" },
+]
+const heroLine2 = [
+  { word: "We Build", cls: "" },
+  { word: "Traffic Engines", cls: "text-accent" },
+  { word: "for the", cls: "" },
+  { word: "AI Era.", cls: "text-growth" },
+]
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null)
@@ -13,7 +24,6 @@ const Hero = () => {
       // Set initial hidden states for entry animations
       gsap.set(".hero-badge",          { opacity: 0, y: -16 })
       gsap.set(".hero-word",           { yPercent: 115, skewX: -3 })
-      gsap.set(".hero-period",         { opacity: 0, scale: 0.5 })
       gsap.set(".hero-subtitle",       { opacity: 0, y: 24 })
       gsap.set(".cta-buttons",         { opacity: 0, y: 18 })
       gsap.set(".hero-dashboard-mockup", { opacity: 0, y: 40, scale: 0.96 })
@@ -24,7 +34,6 @@ const Hero = () => {
 
       tl.to(".hero-badge",          { opacity: 1, y: 0, duration: 0.55 })
       tl.to(".hero-word",           { yPercent: 0, skewX: 0, stagger: 0.045, duration: 0.75 }, "-=0.25")
-      tl.to(".hero-period",         { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, "-=0.4")
       tl.to(".hero-subtitle",       { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
       tl.to(".cta-buttons",         { opacity: 1, y: 0, duration: 0.5 }, "-=0.35")
       
@@ -81,26 +90,27 @@ const Hero = () => {
 
           <h1 className="hero-title">
             <span className="hero-line">
-              <span className="word-mask"><span className="hero-word font-light">AI-Driven</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-accent">Digital Marketing,</span></span>
+              {heroLine1.map(({ word, cls }, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <span className="word-space">&nbsp;</span>}
+                  <span className="word-mask"><span className={`hero-word ${cls}`}>{word}</span></span>
+                </Fragment>
+              ))}
             </span>
             <span className="hero-line hero-title-line2">
-              <span className="word-mask"><span className="hero-word font-bold">Designed</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">Around</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">Your</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold">Business</span></span>
-              <span className="word-space">&nbsp;</span>
-              <span className="word-mask"><span className="hero-word font-bold text-growth">Goals</span></span>
-              <span className="hero-period">.</span>
+              {heroLine2.map(({ word, cls }, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <span className="word-space">&nbsp;</span>}
+                  <span className="word-mask"><span className={`hero-word font-bold ${cls}`}>{word}</span></span>
+                </Fragment>
+              ))}
             </span>
           </h1>
 
           <p className="hero-subtitle">
-            Web development, social media, Ai Visibility and performance advertising designed to help growing businesses.
+            Your buyers aren&apos;t just scrolling Google anymore—they&apos;re asking ChatGPT, checking local maps, and
+            comparing options across conversational AI. Web and Ads Solution builds performance-driven digital
+            strategies that keep your brand visible, authoritative, and impossible to ignore.
           </p>
 
           <div className="cta-buttons">
@@ -108,26 +118,12 @@ const Hero = () => {
               className="cta-button-primary"
               onClick={() => document.querySelector('.footer-site')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Book a Strategy Call &nbsp;→
-            </button>
-            <button
-              className="cta-button-secondary"
-              onClick={() => document.querySelector('.services-section')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Explore Our Services
+              Get My Free Strategy Audit &nbsp;→
             </button>
           </div>
 
           {/* ── Mobile-only lead section ── */}
           <div className="hero-mobile-lead">
-            <div className="hero-mobile-stats">
-              <div className="hero-mobile-stat"><span className="hms-num">500+</span><span className="hms-lbl">Happy Clients</span></div>
-              <div className="hero-mobile-divider" />
-              <div className="hero-mobile-stat"><span className="hms-num">2hr</span><span className="hms-lbl">Response Time</span></div>
-              <div className="hero-mobile-divider" />
-              <div className="hero-mobile-stat"><span className="hms-num">Free</span><span className="hms-lbl">Consultation</span></div>
-            </div>
-
             <a href="tel:+19177087134" className="hero-mobile-call">
               <span className="hero-mobile-call-icon">📞</span>
               <div>
@@ -150,13 +146,6 @@ const Hero = () => {
             <div className="hpb-border-spin" />
 
             <div className="hpb-inner">
-              <div className="hpb-trust-row">
-                <div className="hpb-stars">
-                  <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
-                </div>
-                <span className="hpb-trust-text">4.9/5 · 350+ Brands Trust Us</span>
-              </div>
-
               <div className="hpb-header">
                 <span className="hpb-live-dot" />
                 <span className="hpb-live-text">Live Growth Snapshot</span>
@@ -190,10 +179,6 @@ const Hero = () => {
                 <span className="hpb-bar" style={{ height: "90%" }} />
               </div>
 
-              <div className="hpb-footer">
-                <span className="hpb-footer-dot" />
-                Trusted by 350+ growing businesses nationwide
-              </div>
             </div>
           </div>
 

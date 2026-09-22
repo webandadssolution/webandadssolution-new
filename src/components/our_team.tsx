@@ -3,7 +3,17 @@
 import React, { useEffect, useRef, useState } from "react"
 import "../styles/our_team.css"
 
-const Our_team = () => {
+type OurTeamProps = {
+  badge?: string
+  title?: string
+  subtitle?: string
+}
+
+const Our_team = ({
+  badge = "● Our Team",
+  title = "Meet Our Experienced Team",
+  subtitle = "Expertise, collaboration, and passion come together to drive exceptional results",
+}: OurTeamProps) => {
    const teamMembers = [
   {
     name: "Nitesh",
@@ -224,11 +234,9 @@ const Our_team = () => {
     <section className="team-section">
       <div className="team-container">
         <div className="team-header scroll-reveal">
-          <span className="team-badge">● Our Team</span>
-          <h2 className="team-title">Meet Our Experienced Team</h2>
-          <p className="team-subtitle">
-            Expertise, collaboration, and passion come together to drive exceptional results
-          </p>
+          <span className="team-badge">{badge}</span>
+          <h2 className="team-title">{title}</h2>
+          <p className="team-subtitle">{subtitle}</p>
         </div>
 
         <div

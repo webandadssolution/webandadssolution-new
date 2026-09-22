@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { FaHeadset, FaBolt, FaShieldAlt, FaQuestion } from "react-icons/fa"
+import Link from "next/link"
+import { FaHeadset } from "react-icons/fa"
 import { homeFaqs } from "../data/faq-content"
 import "../styles/faq.css"
 
@@ -25,24 +26,11 @@ const FAQ = () => {
                 <span className="faq-visual-avatar"><FaHeadset /></span>
                 <div>
                   <span className="faq-visual-card-title">Still Have Questions?</span>
-                  <span className="faq-visual-card-sub">We typically reply within minutes</span>
-                </div>
-              </div>
-              <div className="faq-visual-stats">
-                <div className="faq-visual-stat">
-                  <span className="faq-visual-stat-num">98%</span>
-                  <span className="faq-visual-stat-label">Satisfaction</span>
-                </div>
-                <div className="faq-visual-stat">
-                  <span className="faq-visual-stat-num">&lt;2min</span>
-                  <span className="faq-visual-stat-label">Avg Response</span>
+                  <Link href="/book-a-call" className="faq-visual-card-sub">Talk to a Growth Specialist</Link>
                 </div>
               </div>
             </div>
 
-            <span className="faq-visual-chip chip-1"><FaBolt />Fast Answers</span>
-            <span className="faq-visual-chip chip-2"><FaShieldAlt />Trusted Process</span>
-            <span className="faq-visual-chip chip-3"><FaQuestion />Clear Guidance</span>
           </div>
         </div>
 

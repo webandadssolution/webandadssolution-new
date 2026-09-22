@@ -21,39 +21,19 @@ const Why_choose_us = () => {
 
     const chooseUsData = [
       {
-        title: "Understanding",
-        description: "We learn about your business, goals, and current challenges.",
-        image: "images/Understanding.jpg"
-      },
-      {
-        title: "Planning",
-        description: "We outline a strategy customized to your stage of growth.",
-        image: "images/Planning.jpg"
-      },
-      {
-        title: "Research & Audit",
-        description: "We review your website structure and content presence to identify opportunities and gaps.",
-        image: "images/Research & Audit.jpg"
-      },
-      {
-        title: "Alignment",
-        description: "Messaging, design, and performance goals are aligned across channels.",
-        image: "images/Alignment.jpg"
-      },
-      {
-        title: "Monitoring",
-        description: "We track performance consistently through dashboards and reports.",
+        title: "Built for Bottom-Line Revenue",
+        description: "We operate as a performance based marketing agency. We track qualified leads, sales pipeline, and acquisition costs—not just empty clicks and vanity impressions.",
         image: "images/Monitoring.jpg"
       },
       {
-        title: "Executing",
-        description: "We build, launch, and manage with attention to detail.",
-        image: "images/Executing.jpg"
+        title: "No Fluff, No Locked Retainers",
+        description: "As a flexible digital marketing agency, we focus on earning your business every single month through clear execution and open communication—not locking you into rigid 12-month contracts.",
+        image: "images/Alignment.jpg"
       },
       {
-        title: "Improving",
-        description: "We review performance consistently and understand what needs improvement.",
-        image: "images/Improving.jpg"
+        title: "Senior Strategists in Your Corner",
+        description: "You get direct access to experienced growth marketers who actually run your campaigns, offering custom strategies instead of automated support scripts.",
+        image: "images/Planning.jpg"
       }
     ];
 
@@ -61,10 +41,9 @@ const Why_choose_us = () => {
         <section className="choose-us-section">
             <div className="choose-us-container">
                 <div className="choose-us-header scroll-reveal">
-                    <span className="choose-us-badge">● Discover Our Advantage</span>
                     <h2 className="choose-us-title">
-                        Web development, social media, and <br />
-                        <span className="choose-us-highlight">performance advertising designed to help growing businesses.</span>
+                        Why Choose Our Performance Based Marketing Agency{" "}
+                        <span className="choose-us-highlight">Over Legacy Providers?</span>
                     </h2>
 
                 </div>
@@ -97,7 +76,6 @@ const Why_choose_us = () => {
                                 </div>
                                 <h3 className="item-title">{item.title}</h3>
                                 <p className="item-desc">{item.description}</p>
-                                <button className="explore-btn">Explore Service</button>
                             </div>
                         </div>
                     </div>
@@ -127,11 +105,14 @@ const Why_choose_us = () => {
                                 <span className="mc-index">0{index + 1}</span>
                                 <h3 className="mc-title">{item.title}</h3>
                                 <p className="mc-desc">{item.description}</p>
-                                <button className="mc-btn">Explore Service</button>
                             </div>
                         </div>
                     </div>
                 ))}
+            </div>
+
+            <div className="choose-us-cta-row">
+                <a href="#process" className="home-cta">Explore Our Growth Framework</a>
             </div>
         </section>
     )

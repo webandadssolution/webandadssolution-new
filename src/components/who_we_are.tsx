@@ -25,21 +25,25 @@ const Who_we_are = () => {
     <section className="who-we-are-section">
         <div className="who-we-are-container">
             <div className="who-we-are-header scroll-reveal">
-                <span className="who-we-are-badge">● Who We Are</span>
                 <h2 className="who-we-are-title">
-                    Ai Driven-Creative 
+                    A Digital Marketing Agency
                     <span>
                         <img src="/images/icons/icon-3.png" alt='image' />
                     </span>
-                   Digital Marketing,Designed
+                   Focused on Transparent,
                     <span>
                         <img src="/images/icons/icon-4.png" alt='image' />
                     </span>
-                    Business Goals.
+                    Data-Driven Growth
                     <span>
                         <img src="/images/icons/icon-1.png" alt='image' />
                     </span>
                 </h2>
+                <p className="who-we-are-desc">
+                    As a full-service digital marketing company, we don&apos;t bill you for “brand awareness” while
+                    your revenue stays flat. We build connected search and advertising systems designed for clear,
+                    trackable ROI.
+                </p>
             </div>
 
             <div className="who-we-are-slider scroll-reveal delay-2">

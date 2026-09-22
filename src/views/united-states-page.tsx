@@ -92,8 +92,8 @@ const UnitedStatesPage = () => {
           </div>
           <div className="us-hero-visual scroll-reveal from-right delay-1">
             <img
-              src="https://placehold.co/560x560/0a0a0a/f06820?text=USA"
-              alt="Digital marketing agency in USA - Web & Ads Solution"
+              src="/images/digital-marketing-agency-in-usa.webp"
+              alt="Digital marketing agency in USA - SEO, PPC, social media, local SEO, and web development across all 50 states"
               className="us-hero-img"
             />
           </div>

@@ -27,7 +27,7 @@ const Header = () => {
       setActiveNav("Blog")
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
-    } else if (pathname.startsWith("/united-states")) {
+    } else if (pathname.startsWith("/united-states") || pathname.startsWith("/missouri")) {
       setActiveNav("Locations")
     }
   }, [pathname])
@@ -59,7 +59,7 @@ const Header = () => {
       "Website Development",
       "Virtual Assistant Services",
     ],
-    Locations: ["USA"],
+    Locations: ["USA", "Missouri"],
     Industry: [
       "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
     ],
@@ -140,6 +140,7 @@ const Header = () => {
                       {dropdownData[item].map((option, index) => {
                         const locationRoutes: Record<string, string> = {
                           USA: "/united-states",
+                          Missouri: "/missouri",
                         }
                         const to = locationRoutes[option]
                         return to ? (

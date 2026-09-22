@@ -38,6 +38,8 @@
 }
 
 .team-subtitle {
+  max-width: 820px;
+  margin: 0 auto;
   font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.6;

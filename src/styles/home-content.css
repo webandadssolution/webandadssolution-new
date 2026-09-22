@@ -1,0 +1,237 @@
+/* Homepage sections built from the marketing copy: audience, process, comparison,
+   plus the shared CTA button used across the home page. */
+
+.home-cta {
+  display: inline-block;
+  padding: 16px 36px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: #f06820;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(240, 104, 32, 0.28);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-cta:hover {
+  transform: translateY(-2.5px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(240, 104, 32, 0.4);
+}
+
+.home-audience-section,
+.home-process-section,
+.home-compare-section {
+  padding: 90px 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-process-section {
+  background: var(--bg-secondary);
+}
+
+.home-section-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.home-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.home-section-badge {
+  color: #f06820;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.home-section-title {
+  font-size: 45px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Audience ── */
+.home-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.home-audience-card {
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  border-radius: 20px;
+  padding: 36px 30px;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.home-audience-card:hover {
+  border-color: rgba(240, 104, 32, 0.4);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+}
+
+.home-audience-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #f06820;
+  border-radius: 14px;
+  background: rgba(240, 104, 32, 0.08);
+  margin-bottom: 22px;
+}
+
+.home-audience-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.home-audience-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ── Process ── */
+.home-process-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.home-process-step {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  border-top: 3px solid #f06820;
+  border-radius: 18px;
+  padding: 30px 26px 34px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.home-process-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.2);
+}
+
+.home-process-num {
+  display: block;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(240, 104, 32, 0.85);
+  margin-bottom: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.home-process-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.home-process-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ── Comparison ── */
+.home-compare-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background: var(--card-bg);
+}
+
+.home-compare-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.home-compare-table th,
+.home-compare-table td {
+  padding: 22px 26px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.home-compare-table thead th {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+}
+
+.home-compare-table tbody th {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.home-compare-table tbody tr:last-child th,
+.home-compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.home-compare-table .home-compare-us {
+  background: rgba(240, 104, 32, 0.09);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.home-compare-table thead .home-compare-us {
+  color: #f06820;
+}
+
+@media (max-width: 1200px) {
+  .home-process-steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1023px) {
+  .home-section-title { font-size: 36px; }
+  .home-audience-grid { grid-template-columns: 1fr; gap: 22px; }
+}
+
+@media (max-width: 768px) {
+  .home-audience-section,
+  .home-process-section,
+  .home-compare-section { padding: 60px 0; }
+  .home-section-container { padding: 0 20px; }
+  .home-section-header { margin-bottom: 40px; }
+  .home-section-title { font-size: 28px; }
+  .home-process-steps { grid-template-columns: 1fr; }
+  .home-compare-table th,
+  .home-compare-table td { padding: 16px 18px; font-size: 14.5px; }
+}

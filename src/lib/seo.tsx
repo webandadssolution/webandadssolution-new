@@ -115,7 +115,13 @@ export function faqJsonLd(faqs: Faq[]): Record<string, unknown> {
   }
 }
 
-export function serviceJsonLd(serviceType: string, name: string, areaServed = "United States"): Record<string, unknown> {
+export function serviceJsonLd(
+  serviceType: string,
+  name: string,
+  areaServed = "United States",
+  areaType: "Country" | "State" | "City" = "Country",
+  description?: string
+): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -124,10 +130,11 @@ export function serviceJsonLd(serviceType: string, name: string, areaServed = "U
       "@id": `${SITE_URL}/#organization`,
     },
     areaServed: {
-      "@type": "Country",
+      "@type": areaType,
       name: areaServed,
     },
     name,
+    ...(description ? { description } : {}),
   }
 }
 

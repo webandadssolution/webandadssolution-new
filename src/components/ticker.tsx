@@ -1,34 +1,26 @@
+import { Fragment } from "react"
 import "../styles/ticker.css"
+
+const items = [
+  "SEO & AI Search (AEO & GEO)",
+  "High-Intent PPC & Paid Media",
+  "Web & App Development",
+  "Direct-Response Content",
+  "Social Media Management",
+  "Virtual Assistant Operations",
+]
 
 const Ticker = () => {
   return (
     <section className="services-ticker">
       <div className="ticker-wrapper">
         <div className="ticker-content">
-          <span className="ticker-item">Digital Marketing</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Application Development</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Virtual Assistant</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Website Development</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Social Media Optimization</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Development</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Digital Marketing</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Application Development</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Virtual Assistant</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Website Development</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Social Media Optimization</span>
-          <span className="ticker-separator">✦</span>
-          <span className="ticker-item">Development</span>
-          <span className="ticker-separator">✦</span>
+          {[...items, ...items].map((item, i) => (
+            <Fragment key={i}>
+              <span className="ticker-item">{item}</span>
+              <span className="ticker-separator">✦</span>
+            </Fragment>
+          ))}
         </div>
       </div>
     </section>

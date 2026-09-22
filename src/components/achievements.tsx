@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import ContactForm from "./contact-form"
 import "../styles/achievements.css"
 
@@ -6,35 +7,18 @@ const Achievements = () => {
     return (
         <section className="achievements-section">
             <div className="achievements-container">
-                {/* Left Side: Title and Stats Card */}
+                {/* Left Side: CTA copy */}
                 <div className="achievements-left scroll-reveal from-left">
                     <div className="achievements-header">
-                        <span className="achievements-badge">● Our Achievements</span>
                         <h2 className="achievements-title">
-                            We are trusted <br />
-                            <span className="achievements-ai-text-wrapper">
-                                <img
-                                    src="/images/icons/icon-1.png"
-                                    alt="ai-icon"
-                                    className="achievements-ai-graphic"
-                                /> Ai Driven-Marketing Agency
-                            </span>
+                            Ready to Partner with a Results-Driven Digital Marketing Agency?
                         </h2>
-                    </div>
-                    <div className="achievements-stats-card-container">
-                        <div className="achievements-card-ribbon-strap achievements-left-strap"></div>
-                        <div className="achievements-card-ribbon-strap achievements-right-strap"></div>
-
-                        <div className="achievements-stats-card">
-                            <div className="achievements-stat-item">
-                                <h3>500+</h3>
-                                <p>Projects Successfully <br /> Delivered</p>
-                            </div>
-                            <div className="achievements-stat-item">
-                                <h3>95%</h3>
-                                <p>Client Satisfaction <br /> Rate on Our Results</p>
-                            </div>
-                        </div>
+                        <p className="achievements-desc">
+                            Partner with a digital marketing agency focused on real business outcomes, transparent
+                            communication, and predictable growth. Let&apos;s build an online footprint that outranks
+                            your competitors on Google and outsmarts them in AI search.
+                        </p>
+                        <Link href="/book-a-call" className="home-cta">Start Growing My Business Today</Link>
                     </div>
                 </div>
 
