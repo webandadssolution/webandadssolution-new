@@ -214,26 +214,8 @@
 }
 
 /* ── OTHER LOCATIONS ── */
-.us-locations {
-  padding: clamp(3rem, 7vw, 5rem) 0;
-}
 
-.us-locations-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.9rem;
-}
 
-.us-location-chip {
-  padding: 0.65rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-color);
-  background: var(--card-bg);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
 
 /* ── QUOTE FORM ── */
 .us-quote {

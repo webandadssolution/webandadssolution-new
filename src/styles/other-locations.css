@@ -1,0 +1,46 @@
+.other-locations {
+  padding: clamp(3rem, 7vw, 5rem) 0;
+}
+
+.other-locations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3.75rem);
+}
+
+.other-locations-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-align: center;
+  margin: 0 0 2.5rem;
+}
+
+.other-locations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.other-location-chip {
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.other-location-chip:hover {
+  border-color: #f06820;
+  color: #f06820;
+}
+
+.other-location-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: inherit;
+}

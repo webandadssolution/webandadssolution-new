@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import ThemeToggle from "./theme-toggle"
+import { locations } from "../data/locations"
 import "../styles/header.css"
 
 const Header = () => {
@@ -27,7 +28,7 @@ const Header = () => {
       setActiveNav("Blog")
     } else if (pathname === "/contact") {
       setActiveNav("Contact")
-    } else if (pathname.startsWith("/united-states") || pathname.startsWith("/missouri")) {
+    } else if (pathname.startsWith("/locations") || locations.some((loc) => pathname.startsWith(loc.href))) {
       setActiveNav("Locations")
     }
   }, [pathname])
@@ -59,7 +60,7 @@ const Header = () => {
       "Website Development",
       "Virtual Assistant Services",
     ],
-    Locations: ["USA", "Missouri"],
+    Locations: locations.map((loc) => loc.navLabel),
     Industry: [
       "SEO for Lawyers", "Healthcare SEO services", "SEO for Astrologers", "SEO for IT Companies", "SEO for Manufacturing", "SEO Services for Hotels", "Travel SEO services",
     ],
@@ -110,7 +111,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               {(() => {
-                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog" }
+                const navRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog", Locations: "/locations" }
                 const to = navRoutes[item]
                 return to ? (
                   <Link
@@ -138,11 +139,7 @@ const Header = () => {
                   {item === "Locations" ? (
                     <div className="dropdown-grid" ref={locationScrollRef}>
                       {dropdownData[item].map((option, index) => {
-                        const locationRoutes: Record<string, string> = {
-                          USA: "/united-states",
-                          Missouri: "/missouri",
-                        }
-                        const to = locationRoutes[option]
+                        const to = locations.find((loc) => loc.navLabel === option)?.href
                         return to ? (
                           <Link
                             key={index}
@@ -240,7 +237,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       <nav className={`nav-mobile ${isMenuOpen ? "open" : ""}`}>
         {navItems.map((item) => {
-          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog", Locations: "/united-states" }
+          const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog", Locations: "/locations" }
           const to = mobileRoutes[item]
           return to ? (
             <Link

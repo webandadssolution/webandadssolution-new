@@ -120,7 +120,8 @@ export function serviceJsonLd(
   name: string,
   areaServed = "United States",
   areaType: "Country" | "State" | "City" = "Country",
-  description?: string
+  description?: string,
+  containedInState?: string
 ): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
@@ -132,6 +133,7 @@ export function serviceJsonLd(
     areaServed: {
       "@type": areaType,
       name: areaServed,
+      ...(containedInState ? { containedInPlace: { "@type": "State", name: containedInState } } : {}),
     },
     name,
     ...(description ? { description } : {}),

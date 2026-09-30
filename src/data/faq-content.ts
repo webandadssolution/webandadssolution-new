@@ -104,6 +104,13 @@ export const missouriFaqs: Faq[] = [
   { q: "Do you offer AI SEO (AEO/GEO) for Missouri businesses?", a: "Yes — alongside traditional SEO, we optimize content and site structure so Missouri businesses are positioned to appear in AI-driven search results and answer engines, not just standard search rankings." },
 ]
 
+export const kansasCityFaqs: Faq[] = [
+  { q: "Do you offer SEO for Kansas City businesses on both the Missouri and Kansas sides of the metro?", a: "Yes — we work with businesses across the full Kansas City metro area, regardless of which side of the state line you're on." },
+  { q: "How much does SEO cost for a Kansas City business?", a: "SEO investment typically starts around 1k–5k+ per month depending on competition in your industry and how aggressive your growth goals are." },
+  { q: "Is Web & Ads Solution based near Kansas City?", a: "We're headquartered in Harrisonville, Missouri — right in the Kansas City metro area — so local market knowledge comes built in." },
+  { q: "Do you offer PPC management for Kansas City businesses?", a: "Yes — we manage Google Ads and paid social campaigns for Kansas City businesses, with budgets and targeting built around your specific market and goals." },
+]
+
 export const vaFaqs: Faq[] = [
   { q: "What tasks can a virtual assistant handle?",         a: "VA tasks span email management, scheduling, research, data entry, social media, customer support, CRM maintenance, content formatting, and much more. If it can be done on a computer and doesn't require physical presence, a VA can likely handle it." },
   { q: "How do you ensure quality and accuracy?",            a: "All VAs follow documented SOPs tailored to your processes. We conduct quality reviews, track task completion rates, and hold weekly feedback sessions. Any errors are corrected at no extra cost." },

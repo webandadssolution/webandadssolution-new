@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import ContactForm from "../components/contact-form"
+import OtherLocations from "../components/other-locations"
 import { missouriFaqs } from "../data/faq-content"
 import "../styles/missouri-page.css"
 
@@ -44,14 +45,6 @@ const services = [
   },
 ]
 
-const otherLocations = [
-  { name: "United States", href: "/united-states" },
-  { name: "Texas", href: null },
-  { name: "California", href: null },
-  { name: "Kansas City, MO", href: null },
-  { name: "St. Louis, MO", href: null },
-  { name: "+ more as published", href: null },
-]
 
 const testimonials = [
   {
@@ -144,20 +137,7 @@ const MissouriPage = () => {
       </section>
 
       {/* ── OTHER LOCATIONS ── */}
-      <section className="mo-locations">
-        <div className="mo-container">
-          <h2 className="mo-section-title center scroll-reveal">Other Locations We Serve</h2>
-          <div className="mo-locations-grid scroll-reveal">
-            {otherLocations.map((loc) =>
-              loc.href ? (
-                <Link key={loc.name} href={loc.href} className="mo-location-chip">{loc.name}</Link>
-              ) : (
-                <span key={loc.name} className="mo-location-chip">{loc.name}</span>
-              )
-            )}
-          </div>
-        </div>
-      </section>
+      <OtherLocations />
 
       {/* ── CTA FORM ── */}
       <section className="mo-quote" id="quote">
