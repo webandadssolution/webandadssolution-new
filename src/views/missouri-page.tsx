@@ -109,7 +109,7 @@ const MissouriPage = () => {
         <div className="mo-container">
           <p className="mo-intro-text scroll-reveal">
             As a Missouri-based digital marketing agency headquartered right here in Harrisonville, we work closely
-            with businesses across the state — from Kansas City to St. Louis to Springfield — who want more than a
+            with businesses across the state — from Kansas City to <Link href="/st-louis">St. Louis</Link> to Springfield — who want more than a
             distant, generic marketing vendor. Digital marketing in Missouri means understanding local competition,
             regional search behavior, and the industries that drive the state, whether that&apos;s logistics along
             I-70, manufacturing, healthcare, or local services. Being Missouri digital marketing specialists

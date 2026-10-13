@@ -80,6 +80,7 @@ $staticRoutes = [
     '/united-states',
     '/missouri',
     '/kansas-city',
+    '/st-louis',
 ];
 
 $now = gmdate('c');

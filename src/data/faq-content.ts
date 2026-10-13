@@ -111,6 +111,13 @@ export const kansasCityFaqs: Faq[] = [
   { q: "Do you offer PPC management for Kansas City businesses?", a: "Yes — we manage Google Ads and paid social campaigns for Kansas City businesses, with budgets and targeting built around your specific market and goals." },
 ]
 
+export const stLouisFaqs: Faq[] = [
+  { q: "Do you work with businesses in both the City of St. Louis and St. Louis County?", a: "Yes. We plan SEO and ad targeting around both, since search behavior and competition differ between the city, Clayton, Chesterfield, and the rest of the county." },
+  { q: "Can you help St. Louis businesses on the Illinois side of the metro?", a: "Yes. We serve the full metro area, including Metro East communities like Belleville and Edwardsville, with targeting built around where your customers actually are." },
+  { q: "Should a St. Louis business start with SEO or PPC?", a: "If you need calls this month, PPC is the faster route. If you want steady leads without paying for every click, SEO is the long-term play. Many St. Louis clients run both, and we scope the split around your budget." },
+  { q: "Do you offer virtual assistant services to St. Louis businesses?", a: "Yes. Our virtual assistants handle admin, scheduling, inbox management, and lead follow-up, and can be added to any marketing package or hired on their own." },
+]
+
 export const vaFaqs: Faq[] = [
   { q: "What tasks can a virtual assistant handle?",         a: "VA tasks span email management, scheduling, research, data entry, social media, customer support, CRM maintenance, content formatting, and much more. If it can be done on a computer and doesn't require physical presence, a VA can likely handle it." },
   { q: "How do you ensure quality and accuracy?",            a: "All VAs follow documented SOPs tailored to your processes. We conduct quality reviews, track task completion rates, and hold weekly feedback sessions. Any errors are corrected at no extra cost." },

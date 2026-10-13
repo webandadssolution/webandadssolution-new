@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, JsonLd } from "../../lib/seo"
 const SITE_URL = "https://webandadssolution.com"
 const TITLE = "Locations We Serve | Web & Ads Solution"
 const DESCRIPTION =
-  "Explore the locations Web & Ads Solution serves with SEO, PPC, web design, social media & AI SEO — across the USA, Missouri, and Kansas City."
+  "Explore the locations Web & Ads Solution serves with SEO, PPC, web design, social media & AI SEO — across the USA, Missouri, Kansas City, and St. Louis."
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },

@@ -38,4 +38,13 @@ export const locations: Location[] = [
     description:
       "Web & Ads Solution is a full service digital marketing agency Kansas City businesses turn to for SEO, PPC, web design, and AI search visibility.",
   },
+  {
+    name: "St. Louis, MO",
+    navLabel: "St. Louis",
+    href: "/st-louis",
+    image: "/images/digital-marketing-st-louis.webp",
+    imageAlt: "Digital marketing company St. Louis - Web & Ads Solution",
+    description:
+      "Web & Ads Solution is a digital marketing agency St. Louis businesses hire for SEO, PPC, social media, web design, and AI search visibility.",
+  },
 ]
