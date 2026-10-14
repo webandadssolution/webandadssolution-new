@@ -49,38 +49,38 @@ function fetchAuthors(): array
 }
 
 $staticRoutes = [
-    '',
-    '/about',
-    '/contact',
-    '/book-a-call',
-    '/blog',
-    '/services',
-    '/seo-search-engine-optimization',
-    '/services/aeo',
-    '/services/geo',
-    '/services/ai-visibility',
-    '/services/content-marketing',
-    '/services/ppc',
-    '/services/smo',
-    '/services/web-development',
-    '/services/website-look-feel',
-    '/services/website-optimization',
-    '/services/graphic-design',
-    '/services/virtual-assistant',
-    '/packages',
-    '/packages/seo-packages',
-    '/packages/seo-packages/seo-packages-with-velocity-plan',
-    '/packages/seo-packages/seo-signature-plan',
-    '/packages/seo-packages/seo-premium-plan',
-    '/packages/seo-packages/seo-without-velocity-plan',
-    '/packages/ppc-packages',
-    '/packages/smo-packages',
-    '/packages/website-packages',
-    '/locations',
-    '/united-states',
-    '/missouri',
-    '/kansas-city',
-    '/st-louis',
+    '/',
+    '/about/',
+    '/contact/',
+    '/book-a-call/',
+    '/blog/',
+    '/services/',
+    '/seo-search-engine-optimization/',
+    '/services/aeo/',
+    '/services/geo/',
+    '/services/ai-visibility/',
+    '/services/content-marketing/',
+    '/services/ppc/',
+    '/services/smo/',
+    '/services/web-development/',
+    '/services/website-look-feel/',
+    '/services/website-optimization/',
+    '/services/graphic-design/',
+    '/services/virtual-assistant/',
+    '/packages/',
+    '/packages/seo-packages/',
+    '/packages/seo-packages/seo-packages-with-velocity-plan/',
+    '/packages/seo-packages/seo-signature-plan/',
+    '/packages/seo-packages/seo-premium-plan/',
+    '/packages/seo-packages/seo-without-velocity-plan/',
+    '/packages/ppc-packages/',
+    '/packages/smo-packages/',
+    '/packages/website-packages/',
+    '/locations/',
+    '/united-states/',
+    '/missouri/',
+    '/kansas-city/',
+    '/st-louis/',
 ];
 
 $now = gmdate('c');
@@ -97,7 +97,7 @@ foreach (fetchAllPosts() as $post) {
     }
     $lastmod = $post['updated_at'] ?? $post['published_at'] ?? $now;
     $urls[] = [
-        'loc' => SITE_URL . '/' . $categorySlug . '/' . $post['slug'],
+        'loc' => SITE_URL . '/' . $categorySlug . '/' . $post['slug'] . '/',
         'lastmod' => date('c', strtotime($lastmod)),
     ];
 }
@@ -106,7 +106,7 @@ foreach (fetchAuthors() as $author) {
     if (empty($author['slug'])) {
         continue;
     }
-    $urls[] = ['loc' => SITE_URL . '/authors/' . $author['slug'], 'lastmod' => $now];
+    $urls[] = ['loc' => SITE_URL . '/authors/' . $author['slug'] . '/', 'lastmod' => $now];
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

@@ -30,7 +30,7 @@ function stripSiteNameFromTitle(title: string): string {
 export function buildBlogMetadata(post: BlogPost): Metadata {
   const title = stripSiteNameFromTitle(post.metaTitle || post.title) || post.title
   const description = post.metaDescription || truncate(post.excerpt || stripHtml(post.content) || `Read ${post.title} on ${BLOG_NAME}.`)
-  const canonical = post.canonicalUrl || `${SITE_URL}/${post.categorySlug}/${post.slug}`
+  const canonical = post.canonicalUrl || `${SITE_URL}/${post.categorySlug}/${post.slug}/`
   const ogTitle = title
   const ogDescription = description
   const ogUrl = canonical
@@ -72,7 +72,7 @@ export function buildBlogArticleJsonLd(post: BlogPost): Record<string, unknown> 
     return post.schema
   }
 
-  const canonical = `${SITE_URL}/${post.categorySlug}/${post.slug}`
+  const canonical = `${SITE_URL}/${post.categorySlug}/${post.slug}/`
 
   return {
     "@context": "https://schema.org",

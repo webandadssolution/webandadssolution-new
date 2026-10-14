@@ -72,7 +72,7 @@ export default function AuthorProfilePage({ author, posts }: { author: AuthorPro
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{post.readTime}</span>
                       </div>
-                      <Link href={`/${post.categorySlug}/${post.slug}`} className="bl-post-link">Read →</Link>
+                      <Link href={`/${post.categorySlug}/${post.slug}/`} className="bl-post-link">Read →</Link>
                     </div>
                   </div>
                 </div>

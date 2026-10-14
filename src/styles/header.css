@@ -157,8 +157,6 @@
   visibility: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
   z-index: 2000;
-  max-height: 400px;
-  overflow-y: auto;
   transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
 }
 
@@ -206,27 +204,62 @@
   padding-left: 18px;
 }
 
-/* Locations double-column grid */
-.dropdown-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  padding: 0;
-  min-width: 380px;
-  max-height: 340px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+/* Locations: child pages fly out to the right of their parent (e.g. USA) */
+.dropdown-sub {
+  position: relative;
 }
 
-.dropdown-grid::-webkit-scrollbar {
-  width: 4px;
+.dropdown-item.has-submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
-.dropdown-grid::-webkit-scrollbar-track {
-  background: transparent;
+
+.submenu-arrow {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.5;
 }
-.dropdown-grid::-webkit-scrollbar-thumb {
-  background: rgba(10, 10, 10, 0.15);
-  border-radius: 10px;
+
+.dropdown-submenu {
+  position: absolute;
+  top: -8px;
+  left: calc(100% + 8px);
+  min-width: 190px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* Invisible bridge over the gap so the submenu stays open while the cursor crosses it */
+.dropdown-submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -16px;
+  width: 16px;
+}
+
+.dropdown-sub:hover .dropdown-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.dropdown-sub:hover > .dropdown-item {
+  background: rgba(10, 10, 10, 0.05);
+  color: #f06820;
 }
 
 /* ── Right Section ── */
@@ -251,6 +284,7 @@
   transition: all 0.25s ease;
   letter-spacing: 0.2px;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .header-cta-outline:hover {

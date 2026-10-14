@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: { absolute: title },
     description,
     keywords: author.metaKeywords || undefined,
-    alternates: { canonical: `/authors/${author.slug}` },
+    alternates: { canonical: `/authors/${author.slug}/` },
     openGraph: {
       title,
       description,
-      url: `/authors/${author.slug}`,
+      url: `/authors/${author.slug}/`,
       type: "profile",
       images: author.image ? [{ url: author.image }] : undefined,
     },

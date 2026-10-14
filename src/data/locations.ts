@@ -5,6 +5,9 @@ export type Location = {
   image: string
   imageAlt: string
   description: string
+  // href of the parent location; child pages show in the header as a sub-dropdown
+  // under their parent instead of at the top level.
+  parent?: string
 }
 
 // Single source for every live location page — drives the header's Locations
@@ -24,6 +27,7 @@ export const locations: Location[] = [
     name: "Missouri",
     navLabel: "Missouri",
     href: "/missouri",
+    parent: "/united-states",
     image: "/images/digital-marketing-missouri.webp",
     imageAlt: "Digital marketing agency in Missouri - Web & Ads Solution",
     description:
@@ -33,6 +37,7 @@ export const locations: Location[] = [
     name: "Kansas City, MO",
     navLabel: "Kansas City",
     href: "/kansas-city",
+    parent: "/united-states",
     image: "/images/digital-marketing-kansas-city.webp",
     imageAlt: "Digital marketing agency Kansas City - Web & Ads Solution",
     description:
@@ -42,6 +47,7 @@ export const locations: Location[] = [
     name: "St. Louis, MO",
     navLabel: "St. Louis",
     href: "/st-louis",
+    parent: "/united-states",
     image: "/images/digital-marketing-st-louis.webp",
     imageAlt: "Digital marketing company St. Louis - Web & Ads Solution",
     description:

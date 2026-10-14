@@ -36,7 +36,7 @@ export default function BlogLivePage() {
       if (cancelled) return
 
       document.title = post.metaTitle || post.title
-      setCanonicalUrl(post.canonicalUrl || `https://webandadssolution.com/${post.categorySlug}/${post.slug}`)
+      setCanonicalUrl(post.canonicalUrl || `https://webandadssolution.com/${post.categorySlug}/${post.slug}/`)
 
       setData({
         post,

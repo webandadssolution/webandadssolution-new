@@ -8,6 +8,12 @@ RewriteRule ^services/seo/?$ /seo-search-engine-optimization/ [R=301,L]
 # show up immediately.
 RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 
+# Every page URL ends with a slash (matches trailingSlash in next.config). 301 any
+# slash-less path that isn't a real file, so CMS-only posts can't be served at both.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+
 # Blog posts/authors published to the CMS after the last build have no static file
 # yet. Send those (and only those — real files/folders are left alone) to the
 # client-fetched fallback shell, which reads the slug from the URL and loads the

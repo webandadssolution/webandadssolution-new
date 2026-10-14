@@ -40,19 +40,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/kansas-city",
     "/st-louis",
   ].map((path) => ({
-    url: `${SITE_URL}${path}`,
+    url: `${SITE_URL}${path}/`,
     lastModified: new Date(),
   }))
 
   const [posts, authors] = await Promise.all([getBlogPosts(), getAuthors()])
 
   const postRoutes = posts.map((post) => ({
-    url: `${SITE_URL}/${post.categorySlug}/${post.slug}`,
+    url: `${SITE_URL}/${post.categorySlug}/${post.slug}/`,
     lastModified: new Date(post.dateIso),
   }))
 
   const authorRoutes = authors.map((author) => ({
-    url: `${SITE_URL}/authors/${author.slug}`,
+    url: `${SITE_URL}/authors/${author.slug}/`,
     lastModified: new Date(),
   }))
 

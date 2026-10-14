@@ -56,7 +56,7 @@ export default function BlogPostPage({
             <h1 className="bp-title">{post.title}</h1>
             <div className="bp-meta">
               {post.authorSlug ? (
-                <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
+                <Link href={`/authors/${post.authorSlug}/`} className="bp-author-link">
                   <div className="bp-avatar">
                     {post.authorImage ? (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -126,7 +126,7 @@ export default function BlogPostPage({
                 <h3 className="bp-sidebar-title">Recent Posts</h3>
                 <div className="bp-recent-list">
                   {recentPosts.map((p) => (
-                    <Link key={p.id} href={`/${p.categorySlug}/${p.slug}`} className="bp-recent-item">
+                    <Link key={p.id} href={`/${p.categorySlug}/${p.slug}/`} className="bp-recent-item">
                       {p.image ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={p.image} alt={p.title} className="bp-recent-thumb" />
@@ -183,7 +183,7 @@ export default function BlogPostPage({
                     <div className="bl-post-footer">
                       <div className="bl-author-row">
                         {p.authorSlug ? (
-                          <Link href={`/authors/${p.authorSlug}`} className="bp-author-link">
+                          <Link href={`/authors/${p.authorSlug}/`} className="bp-author-link">
                             <div className="bl-author-avatar sm">
                               {p.authorImage ? (
                                 // eslint-disable-next-line @next/next/no-img-element
@@ -210,7 +210,7 @@ export default function BlogPostPage({
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{p.readTime}</span>
                       </div>
-                      <Link href={`/${p.categorySlug}/${p.slug}`} className="bl-post-link">Read →</Link>
+                      <Link href={`/${p.categorySlug}/${p.slug}/`} className="bl-post-link">Read →</Link>
                     </div>
                   </div>
                 </div>

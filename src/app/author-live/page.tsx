@@ -36,7 +36,7 @@ export default function AuthorLivePage() {
       if (cancelled) return
 
       document.title = author.metaTitle || `${author.name} | Web and Ads Solutions`
-      setCanonicalUrl(`https://webandadssolution.com/authors/${author.slug}`)
+      setCanonicalUrl(`https://webandadssolution.com/authors/${author.slug}/`)
 
       setData({ author, posts })
       setState("found")

@@ -111,7 +111,7 @@ export default function BlogPage({ posts: initialPosts, categories: initialCateg
                     <div className="bl-post-footer">
                       <div className="bl-author-row">
                         {post.authorSlug ? (
-                          <Link href={`/authors/${post.authorSlug}`} className="bp-author-link">
+                          <Link href={`/authors/${post.authorSlug}/`} className="bp-author-link">
                             <div className="bl-author-avatar sm">
                               {post.authorImage ? (
                                 // eslint-disable-next-line @next/next/no-img-element
@@ -138,7 +138,7 @@ export default function BlogPage({ posts: initialPosts, categories: initialCateg
                         <span className="bl-meta-divider">·</span>
                         <span className="bl-post-date">{post.readTime}</span>
                       </div>
-                      <Link href={`/${post.categorySlug}/${post.slug}`} className="bl-post-link">Read →</Link>
+                      <Link href={`/${post.categorySlug}/${post.slug}/`} className="bl-post-link">Read →</Link>
                     </div>
                   </div>
                 </div>

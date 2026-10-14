@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import ThemeToggle from "./theme-toggle"
@@ -13,7 +13,6 @@ const Header = () => {
   const pathname = usePathname()
   const [activeNav, setActiveNav] = useState("Home")
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const locationScrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (pathname === "/") {
@@ -75,11 +74,6 @@ const Header = () => {
   const handleDropdownHover = (item: string) => {
     if (dropdownData[item]) {
       setOpenDropdown(item)
-      if (item === "Locations" && locationScrollRef.current) {
-        setTimeout(() => {
-          if (locationScrollRef.current) locationScrollRef.current.scrollTop = 0
-        }, 0)
-      }
     }
   }
 
@@ -137,28 +131,38 @@ const Header = () => {
               {dropdownData[item] && (
                 <div className={`dropdown-menu ${openDropdown === item ? "open" : ""}`}>
                   {item === "Locations" ? (
-                    <div className="dropdown-grid" ref={locationScrollRef}>
-                      {dropdownData[item].map((option, index) => {
-                        const to = locations.find((loc) => loc.navLabel === option)?.href
-                        return to ? (
+                    <div className="dropdown-list">
+                      {locations.filter((loc) => !loc.parent).map((loc, index) => {
+                        const children = locations.filter((child) => child.parent === loc.href)
+                        const link = (
                           <Link
-                            key={index}
-                            href={to}
-                            className="dropdown-item"
+                            href={loc.href}
+                            className={`dropdown-item ${children.length ? "has-submenu" : ""}`}
                             style={{ animationDelay: `${index * 0.05}s` }}
                             onClick={() => handleNavClick(item)}
                           >
-                            {option}
+                            {loc.navLabel}
+                            {children.length > 0 && <span className="submenu-arrow">›</span>}
                           </Link>
+                        )
+                        return children.length ? (
+                          <div key={loc.href} className="dropdown-sub">
+                            {link}
+                            <div className="dropdown-submenu">
+                              {children.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className="dropdown-item"
+                                  onClick={() => handleNavClick(item)}
+                                >
+                                  {child.navLabel}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ) : (
-                          <a
-                            key={index}
-                            href={`#${option.toLowerCase()}`}
-                            className="dropdown-item"
-                            style={{ animationDelay: `${index * 0.05}s` }}
-                          >
-                            {option}
-                          </a>
+                          <div key={loc.href}>{link}</div>
                         )
                       })}
                     </div>
