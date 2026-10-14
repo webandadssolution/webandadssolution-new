@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { FaChevronDown, FaChevronRight } from "react-icons/fa"
 import ThemeToggle from "./theme-toggle"
 import { locations } from "../data/locations"
 import "../styles/header.css"
@@ -13,6 +14,7 @@ const Header = () => {
   const pathname = usePathname()
   const [activeNav, setActiveNav] = useState("Home")
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
 
   useEffect(() => {
     if (pathname === "/") {
@@ -69,6 +71,7 @@ const Header = () => {
     setActiveNav(item)
     setIsMenuOpen(false)
     setOpenDropdown(null)
+    setMobileDropdown(null)
   }
 
   const handleDropdownHover = (item: string) => {
@@ -142,7 +145,7 @@ const Header = () => {
                             onClick={() => handleNavClick(item)}
                           >
                             {loc.navLabel}
-                            {children.length > 0 && <span className="submenu-arrow">›</span>}
+                            {children.length > 0 && <FaChevronRight className="submenu-arrow" />}
                           </Link>
                         )
                         return children.length ? (
@@ -243,6 +246,52 @@ const Header = () => {
         {navItems.map((item) => {
           const mobileRoutes: Record<string, string> = { Home: "/", Services: "/services", AboutUs: "/about", Packages: "/packages", Blog: "/blog", Locations: "/locations" }
           const to = mobileRoutes[item]
+          if (item === "Locations") {
+            const isOpen = mobileDropdown === item
+            return (
+              <div key={item} className="mobile-dropdown">
+                <div className="mobile-dropdown-head">
+                  <Link
+                    href={to}
+                    className={`nav-link-mobile ${activeNav === item ? "active" : ""}`}
+                    onClick={() => handleNavClick(item)}
+                  >
+                    {item}
+                  </Link>
+                  <button
+                    type="button"
+                    className={`mobile-dropdown-toggle ${isOpen ? "open" : ""}`}
+                    onClick={() => setMobileDropdown(isOpen ? null : item)}
+                    aria-expanded={isOpen}
+                    aria-label="Toggle locations"
+                  >
+                    <FaChevronDown />
+                  </button>
+                </div>
+                {isOpen && (
+                  <div className="mobile-dropdown-list">
+                    {locations.filter((loc) => !loc.parent).map((loc) => (
+                      <div key={loc.href}>
+                        <Link href={loc.href} className="mobile-dropdown-item" onClick={() => handleNavClick(item)}>
+                          {loc.navLabel}
+                        </Link>
+                        {locations.filter((child) => child.parent === loc.href).map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="mobile-dropdown-item mobile-dropdown-child"
+                            onClick={() => handleNavClick(item)}
+                          >
+                            {child.navLabel}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          }
           return to ? (
             <Link
               key={item}
