@@ -87,13 +87,17 @@ body {
   color: var(--text-primary);
   position: relative;
   overflow-x: hidden;
-  cursor: none;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Only hide system cursor on pointer devices */
+/* Hide the system cursor only once the custom cursor is running (the
+   CustomCursor component adds .has-custom-cursor to <html>). If JS fails to
+   load, the normal mouse cursor stays visible. */
 @media (hover: hover) {
-  *, *::before, *::after {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
+  html.has-custom-cursor *::before,
+  html.has-custom-cursor *::after {
     cursor: none !important;
   }
 }

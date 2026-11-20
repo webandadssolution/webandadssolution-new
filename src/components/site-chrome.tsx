@@ -61,6 +61,7 @@ function CustomCursor() {
     ring.className = "cursor-ring"
     document.body.appendChild(dot)
     document.body.appendChild(ring)
+    document.documentElement.classList.add("has-custom-cursor")
 
     let mx = -100, my = -100
     let rx = -100, ry = -100
@@ -98,6 +99,7 @@ function CustomCursor() {
       document.removeEventListener("mouseout",   out)
       cancelAnimationFrame(rafId)
       dot.remove(); ring.remove()
+      document.documentElement.classList.remove("has-custom-cursor")
     }
   }, [])
 
