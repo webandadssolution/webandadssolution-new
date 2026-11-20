@@ -118,6 +118,11 @@ export const stLouisFaqs: Faq[] = [
   { q: "Do you offer virtual assistant services to St. Louis businesses?", a: "Yes. Our virtual assistants handle admin, scheduling, inbox management, and lead follow-up, and can be added to any marketing package or hired on their own." },
 ]
 
+export const harrisonvilleFaqs: Faq[] = [
+  { q: "How much does a Harrisonville digital marketing agency typically cost?", a: "It depends on your goals, competition, and the work your site needs. Use the quote form or book a free strategy call and we’ll recommend a plan that fits your budget." },
+  { q: "Do you offer AI SEO (AEO/GEO) for Harrisonville businesses?", a: "Yes. We help local businesses show up in AI answers, including ChatGPT and Google AI Overviews." },
+]
+
 export const vaFaqs: Faq[] = [
   { q: "What tasks can a virtual assistant handle?",         a: "VA tasks span email management, scheduling, research, data entry, social media, customer support, CRM maintenance, content formatting, and much more. If it can be done on a computer and doesn't require physical presence, a VA can likely handle it." },
   { q: "How do you ensure quality and accuracy?",            a: "All VAs follow documented SOPs tailored to your processes. We conduct quality reviews, track task completion rates, and hold weekly feedback sessions. Any errors are corrected at no extra cost." },

@@ -53,4 +53,14 @@ export const locations: Location[] = [
     description:
       "Web & Ads Solution is a digital marketing agency St. Louis businesses hire for SEO, PPC, social media, web design, and AI search visibility.",
   },
+  {
+    name: "Harrisonville, MO",
+    navLabel: "Harrisonville",
+    href: "/harrisonville",
+    parent: "/united-states",
+    image: "/images/digital-marketing-harrisonville.webp",
+    imageAlt: "Digital marketing agency in Harrisonville - Web & Ads Solution",
+    description:
+      "Web & Ads Solution is a Harrisonville agency helping local businesses grow with SEO, PPC, web design, and AI-driven visibility.",
+  },
 ]

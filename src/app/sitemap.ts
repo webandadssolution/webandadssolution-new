@@ -39,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/missouri",
     "/kansas-city",
     "/st-louis",
+    "/harrisonville",
   ].map((path) => ({
     url: `${SITE_URL}${path}/`,
     lastModified: new Date(),

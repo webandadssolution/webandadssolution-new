@@ -131,7 +131,8 @@
   text-align: center;
 }
 
-.mo-intro-text a {
+.mo-intro-text a,
+.mo-service-desc a {
   color: #f06820;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -397,4 +398,17 @@
   .mo-hero-title {
     font-size: 2rem;
   }
+}
+
+.mo-quote-call {
+  margin-top: 1.25rem;
+  text-align: center;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.mo-quote-call a {
+  color: #f06820;
+  font-weight: 600;
+  text-decoration: none;
 }
