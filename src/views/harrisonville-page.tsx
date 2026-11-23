@@ -64,7 +64,7 @@ const HarrisonvillePage = () => {
           <div className="mo-hero-content scroll-reveal from-left">
             <h1 className="mo-hero-title">Digital Marketing Agency in Harrisonville</h1>
             <p className="mo-hero-subtext">
-              Searching for a digital marketing agency near me? Web &amp; Ads Solution is a Harrisonville agency
+              Searching for a digital marketing agency near me? Web & Ads Solution is a Harrisonville agency
               helping local businesses grow with SEO, PPC, web design, and AI-driven visibility.
             </p>
             <div className="mo-hero-ctas">
@@ -75,8 +75,14 @@ const HarrisonvillePage = () => {
           <div className="mo-hero-visual scroll-reveal from-right delay-1">
             <img
               src="/images/digital-marketing-harrisonville.webp"
-              alt="Digital marketing agency in Harrisonville - Web & Ads Solution"
-              className="mo-hero-img"
+              alt="Map showing Harrisonville, Missouri service area, city boundaries, and major roads including I-49, Highway 7, and Highway 291"
+              title="Harrisonville, Missouri – Service Area Map"
+              width={1200}
+              height={800}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="mo-hero-img location-map"
             />
           </div>
         </div>
@@ -86,9 +92,9 @@ const HarrisonvillePage = () => {
       <section className="mo-intro">
         <div className="mo-container">
           <p className="mo-intro-text scroll-reveal">
-            As a <Link href="/missouri/">Missouri-based marketing agency</Link> headquartered right here in
-            Harrisonville, we work with businesses across Cass County and the{" "}
-            <Link href="/kansas-city">Kansas City</Link> metro who want more than a distant, generic vendor. If
+            As a Missouri-based marketing agency headquartered right here in
+            Harrisonville, we work with businesses across Cass County and the
+            Kansas City metro who want more than a distant, generic vendor. If
             you&rsquo;ve searched for a marketing agency near me, you know proximity matters: we understand local
             competition, how people here search, and what turns clicks into calls. Whether you run a local service
             company, a clinic, or a growing business in Harrisonville, Belton, Raymore, or Pleasant Hill, we build
